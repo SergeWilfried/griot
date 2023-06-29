@@ -290,7 +290,7 @@ function ChatBox({
 
             {!disableWatermark && (
               <a
-                href="https://chaindesk.ai"
+                href="https://mongriot.com"
                 target="_blank"
                 style={{
                   textDecoration: 'none',
@@ -301,7 +301,7 @@ function ChatBox({
                   <Typography level="body3">
                     Powered by{' '}
                     <Typography color="primary" fontWeight={'bold'}>
-                      Chaindesk
+                      GriotAI
                     </Typography>
                   </Typography>
                 </Box>
