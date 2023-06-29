@@ -147,13 +147,13 @@ export function Header() {
             {/* <div className="hidden md:block">
               <NavLink href="https://app.mongriot.com">Sign in</NavLink>
             </div> */}
-            {/* <Button target="_blank" href="https://app.mongriot.com/signin" color="blue">
+            {/* <Button target="_blank" href="https://mongriot.com/signin" color="blue">
               <span>
                 Sign In
               </span>
             </Button> */}
             {/* Change following link href with /signin for local signin */}
-            <Link href="https://app.mongriot.com/signin">
+            <Link href="https://mongriot.com/signin">
               <Button variant="outlined" sx={{ borderRadius: 100 }}>
                 Sign In
               </Button>

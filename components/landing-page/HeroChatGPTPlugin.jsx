@@ -218,7 +218,7 @@ export function HeroChatGPTPlugin() {
               mt={6}
               className="justify-center sm:justify-start"
             >
-              <Link target="_blank" href={'https://app.mongriot.com/signin'}>
+              <Link target="_blank" href={'https://mongriot.com/signin'}>
                 <Button
                   variant="solid"
                   size="lg"
@@ -259,7 +259,7 @@ export function HeroChatGPTPlugin() {
         </div>
 
         <div className="flex justify-center mt-10 gap-x-6">
-          {/* <Button target="_blank" href="https://app.mongriot.com/signin">Start Building</Button> */}
+          {/* <Button target="_blank" href="https://mongriot.com/signin">Start Building</Button> */}
           {/* <Button
           href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           variant="outline"
