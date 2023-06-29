@@ -41,7 +41,7 @@ const solutions = [
     name: 'Crisp Plugin',
     description:
       'Connect your agent to Crisp. Summarize conversations and more!',
-    href: 'https://www.chaindesk.ai/products/crisp-plugin',
+    href: 'https://www.mongriot.com/products/crisp-plugin',
     icon: (props: any) => (
       <img
         {...props}
@@ -53,7 +53,7 @@ const solutions = [
   {
     name: 'Slack',
     description: 'Deploy an Agent trained on your data to Slack',
-    href: 'https://www.chaindesk.ai/products/slack-bot',
+    href: 'https://www.mongriot.com/products/slack-bot',
     icon: (props: any) => (
       <img
         {...props}
@@ -65,7 +65,7 @@ const solutions = [
   {
     name: 'Datberry API',
     description: 'Document Retrieval as a service',
-    href: 'https://docs.chaindesk.ai/introduction',
+    href: 'https://docs.mongriot.com/introduction',
     icon: ServerIcon,
   },
   {

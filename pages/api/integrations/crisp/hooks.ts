@@ -142,7 +142,7 @@ const getAgent = async (websiteId: string) => {
 //     user: {
 //       type: 'participant',
 //       nickname: agentName || 'GriotAI',
-//       avatar: 'https://chaindesk.ai/app-rounded-bg-white.png',
+//       avatar: 'https://mongriot.com/app-rounded-bg-white.png',
 //     },
 
 //     content: {
@@ -185,7 +185,7 @@ const handleQuery = async (
     //       nickname: agent?.name || 'GriotAI',
     //       avatar:
     //         agent.iconUrl ||
-    //         'https://chaindesk.ai/app-rounded-bg-white.png',
+    //         'https://mongriot.com/app-rounded-bg-white.png',
     //     },
     //   }
     // );
@@ -253,7 +253,7 @@ const handleQuery = async (
     user: {
       type: 'participant',
       nickname: agent?.name || 'GriotAI',
-      avatar: agent.iconUrl || 'https://chaindesk.ai/app-rounded-bg-white.png',
+      avatar: agent.iconUrl || 'https://mongriot.com/app-rounded-bg-white.png',
     },
   });
 
@@ -389,7 +389,7 @@ export const hook = async (req: AppNextApiRequest, res: NextApiResponse) => {
             //     user: {
             //       type: 'participant',
             //       // nickname: agent?.name || 'GriotAI',
-            //       avatar: 'https://chaindesk.ai/app-rounded-bg-white.png',
+            //       avatar: 'https://mongriot.com/app-rounded-bg-white.png',
             //     },
             //     // mentions: [data?.[0]?.user_id],
             //   }

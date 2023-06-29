@@ -10,10 +10,10 @@
   },
   "api": {
     "type": "openapi",
-    "url": "https://chaindesk.ai/.well-known/openapi.yaml",
+    "url": "https://mongriot.com/.well-known/openapi.yaml",
     "has_user_authentication": false
   },
-  "logo_url": "https://chaindesk.ai/.well-known/logo.png",
-  "contact_email": "hello@chaindesk.ai",
-  "legal_info_url": "hello@chaindesk.ai"
+  "logo_url": "https://mongriot.com/.well-known/logo.png",
+  "contact_email": "hello@mongriot.com",
+  "legal_info_url": "hello@mongriot.com"
 }

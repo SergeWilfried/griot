@@ -4,7 +4,7 @@ zapier.tools.env.inject();
 
 const baseApiUrl = process.env.API_URL
   ? process.env.API_URL
-  : 'https://api.chaindesk.ai';
+  : 'https://api.mongriot.com';
 
 module.exports = {
   display: {
@@ -50,7 +50,7 @@ module.exports = {
     },
     sample: {
       text: 'Lorem ipsum',
-      source: 'https://www.chaindesk.ai/',
+      source: 'https://www.mongriot.com/',
       score: 0.42,
     },
   },

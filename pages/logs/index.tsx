@@ -271,7 +271,7 @@ export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
     return {
       redirect: {
         statusCode: 302,
-        destination: `https://chaindesk.ai`,
+        destination: `https://mongriot.com`,
       },
     };
   }

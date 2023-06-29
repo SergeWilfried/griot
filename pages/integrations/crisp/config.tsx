@@ -165,7 +165,7 @@ export default function CrispConfig(props: { agent: Agent }) {
                       <Stack>
                         You can find your API Key in your Griot{' '}
                         <Link
-                          href={'https://app.chaindesk.ai/account'}
+                          href={'https://app.mongriot.com/account'}
                           target="_blank"
                         >
                           <Typography color="primary">

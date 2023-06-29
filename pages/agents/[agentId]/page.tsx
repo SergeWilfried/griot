@@ -77,7 +77,7 @@ function App() {
         <Stack gap={3} sx={{ justifyContent: 'center', alignItems: 'center' }}>
           <CircularProgress color="neutral" />
           <a
-            href="https://chaindesk.ai"
+            href="https://mongriot.com"
             target="_blank"
             style={{
               textDecoration: 'none',

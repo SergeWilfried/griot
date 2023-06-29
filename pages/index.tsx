@@ -74,7 +74,7 @@ export default function Home() {
           property="og:description"
           content="With our no-code platform, create a custom AI chatbot trained on your data in seconds. Streamline customer support, onboard new team members, and more!"
         />
-        <meta property="og:url" content="https://www.chaindesk.ai/" />
+        <meta property="og:url" content="https://www.mongriot.com/" />
         <meta property="og:site_name" content="Griot" />
         <meta property="og:type" content="website" />
       </Head>

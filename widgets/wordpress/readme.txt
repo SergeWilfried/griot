@@ -1,6 +1,6 @@
 === Griot ===
-Contributors: chaindesk.ai
-Donate link: https://chaindesk.ai
+Contributors: mongriot.com
+Donate link: https://mongriot.com
 Tags: chatgpt, livechat, chat, live chat, free-live-chat, live-chat, live support, chat-plugin
 Requires at least: 3.0.1
 Tested up to: 4.8

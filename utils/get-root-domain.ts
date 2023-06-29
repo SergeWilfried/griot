@@ -1,5 +1,5 @@
 // copilot
-// https://app.chaindesk.ai => chaindesk.ai
+// https://app.mongriot.com => mongriot.com
 export const getRootDomain = (url: string) => {
   const domain = url.split('/')[2];
   const parts = domain.split('.');

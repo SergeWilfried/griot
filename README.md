@@ -1,6 +1,6 @@
 <h1 align="center" style="font-weight: bold">
   <br>
-  <a href="https://chaindesk.ai"><img src="public/app-logo-icon.png" alt="WebTorrent" width="200"></a>
+  <a href="https://mongriot.com"><img src="public/app-logo-icon.png" alt="WebTorrent" width="200"></a>
   <br>
   Griot
   <br>
@@ -15,9 +15,9 @@
 <img src="public/og-image.png" alt="Griot" width="1000" style="max-width: 100%;">
 </h2>
 
-**[Griot](https://chaindesk.ai)** provides a user-friendly solution to quickly setup a semantic search system over your personal data without any technical knowledge.
+**[Griot](https://mongriot.com)** provides a user-friendly solution to quickly setup a semantic search system over your personal data without any technical knowledge.
 
-### [📄 Documentation](https://docs.chaindesk.ai/)
+### [📄 Documentation](https://docs.mongriot.com/)
 
 ### Features
 

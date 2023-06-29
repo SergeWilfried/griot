@@ -383,7 +383,7 @@ function DatastoreSettings() {
             color="info"
             startDecorator={<HelpOutlineRoundedIcon />}
             endDecorator={
-              <Link href="https://docs.chaindesk.ai" target="_blank">
+              <Link href="https://docs.mongriot.com" target="_blank">
                 <Button
                   variant="plain"
                   size="sm"
@@ -426,7 +426,7 @@ function DatastoreSettings() {
               startDecorator={<HelpOutlineRoundedIcon />}
               endDecorator={
                 <Link
-                  href="https://docs.chaindesk.ai/integrations/chatgpt-plugin"
+                  href="https://docs.mongriot.com/integrations/chatgpt-plugin"
                   target="_blank"
                 >
                   <Button

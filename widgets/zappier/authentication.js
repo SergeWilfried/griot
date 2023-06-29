@@ -1,6 +1,6 @@
 const baseApiUrl = process.env.API_URL
   ? process.env.API_URL
-  : 'https://api.chaindesk.ai';
+  : 'https://api.mongriot.com';
 
 module.exports = {
   type: 'custom',
@@ -21,7 +21,7 @@ module.exports = {
       label: 'Griot API Key',
       type: 'password',
       helpText:
-        'Your Griot API Key can be found here https://app.chaindesk.ai/account',
+        'Your Griot API Key can be found here https://app.mongriot.com/account',
     },
   ],
   customConfig: {},

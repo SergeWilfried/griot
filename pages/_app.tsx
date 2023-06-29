@@ -45,7 +45,7 @@ export default function App({
       if (window.location.host === 'app.databerry.ai') {
         window.location.href = window.location.href.replace(
           'app.databerry.ai',
-          'app.chaindesk.ai'
+          'app.mongriot.com'
         );
       }
     }

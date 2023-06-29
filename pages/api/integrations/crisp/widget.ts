@@ -74,7 +74,7 @@ export const widgetActions = async (
       origin: 'chat',
       user: {
         nickname: 'GriotAI',
-        avatar: 'https://chaindesk.ai/app-rounded-bg-white.png',
+        avatar: 'https://mongriot.com/app-rounded-bg-white.png',
       },
       stealth: true,
       content: `Summary:\n${output}`,

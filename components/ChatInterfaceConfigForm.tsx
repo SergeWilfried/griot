@@ -421,7 +421,7 @@ function ChatInterfaceConfigForm({ agentId }: Props) {
           }}
         >
           {`<iframe
-  src="https://app.chaindesk.ai/agents/${getAgentQuery?.data?.id}/iframe"
+  src="https://app.mongriot.com/agents/${getAgentQuery?.data?.id}/iframe"
   width="100%"
   height="100%"
   frameborder="0"
