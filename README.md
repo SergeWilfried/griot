@@ -2,7 +2,7 @@
   <br>
   <a href="https://chaindesk.ai"><img src="public/app-logo-icon.png" alt="WebTorrent" width="200"></a>
   <br>
-  Chaindesk
+  Griot
   <br>
     <h3 align="center">The no-code platform for building custom LLM Agents</h3>
   <br>
