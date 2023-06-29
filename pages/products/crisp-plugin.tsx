@@ -17,8 +17,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Chaindesk - Crisp Plugin</title>
-        <meta name="title" content="Chaindesk - Crisp Plugin" />
+        <title>Griot - Crisp Plugin</title>
+        <meta name="title" content="Griot - Crisp Plugin" />
         {}
         <meta
           name="description"
@@ -26,7 +26,7 @@ export default function Home() {
         />
         <meta
           name="keywords"
-          content="Chaindesk, Crisp Plugin, AI chatbot, automatic data synchronization, custom data training, fast chatbot training, easy chatbot setup"
+          content="Griot, Crisp Plugin, AI chatbot, automatic data synchronization, custom data training, fast chatbot training, easy chatbot setup"
         />
       </Head>
       <Header />

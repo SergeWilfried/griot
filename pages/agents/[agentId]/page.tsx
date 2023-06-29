@@ -87,7 +87,7 @@ function App() {
               <Typography level="body2">
                 Powered by{' '}
                 <Typography color="primary" fontWeight={'bold'}>
-                  Chaindesk
+                  Griot
                 </Typography>
               </Typography>
             </Box>

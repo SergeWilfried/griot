@@ -1,4 +1,4 @@
-=== Chaindesk ===
+=== Griot ===
 Contributors: chaindesk.ai
 Donate link: https://chaindesk.ai
 Tags: chatgpt, livechat, chat, live chat, free-live-chat, live-chat, live support, chat-plugin
@@ -8,25 +8,25 @@ Stable tag: 4.7
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
-Automate customer support with Chaindesk, the best custom ChatGPT Agent provider. Free Wordpress Plugin.
+Automate customer support with Griot, the best custom ChatGPT Agent provider. Free Wordpress Plugin.
 
 == Description ==
 
-Chaindesk is a no-code platform for building ChatGPT bots trained on custom data.
+Griot is a no-code platform for building ChatGPT bots trained on custom data.
 
 [youtube https://www.youtube.com/watch?v=Pa-cyPJzt5k]
 
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/chaindesk` directory, or install the plugin through the WordPress plugins screen directly.
-2. Use the Settings->Chaindesk screen and click on "Link with Chaindesk"
+2. Use the Settings->Griot screen and click on "Link with Griot"
 
 == Screenshots ==
 
-1. Chaindesk dashboard
+1. Griot dashboard
 2. Bubble widget
 
 == Changelog ==
 
 = 0.1 =
-* Chaindesk.ai first release
+* GriotAI first release

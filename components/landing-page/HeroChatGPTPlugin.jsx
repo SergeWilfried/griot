@@ -137,7 +137,7 @@ export function HeroChatGPTPlugin() {
         >
           <img
             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=394302&theme=light"
-            alt="Chaindesk&#0046;ai - Build&#0032;a&#0032;ChatGPT&#0032;plugin&#0032;in&#0032;minutes | Product Hunt"
+            alt="Griot&#0046;ai - Build&#0032;a&#0032;ChatGPT&#0032;plugin&#0032;in&#0032;minutes | Product Hunt"
             style={{
               width: '250px',
               height: '54px',
@@ -204,7 +204,7 @@ export function HeroChatGPTPlugin() {
                 </Stack>
                 <Typography textColor="text.secondary">
                   <b>+3.5K</b> companies have successfully <br></br>built their
-                  custom AI Agent with Chaindesk.ai
+                  custom AI Agent with GriotAI
                 </Typography>
               </Stack>
             </Box>

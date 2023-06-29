@@ -70,7 +70,7 @@ const solutions = [
   },
   {
     name: 'On Premise',
-    description: 'Install Chaindesk on your own infrastructure',
+    description: 'Install Griot on your own infrastructure',
     href: 'https://github.com/gmpetrov/chaindesk',
     icon: CpuChipIcon,
   },

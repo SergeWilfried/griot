@@ -16,19 +16,19 @@ export default function Pricing() {
   return (
     <>
       <Head>
-        <title>Chaindesk Pricing - Plans for Teams of All Sizes</title>
+        <title>Griot Pricing - Plans for Teams of All Sizes</title>
 
         <meta
           name="title"
-          content="Chaindesk Pricing - Plans for Teams of All Sizes"
+          content="Griot Pricing - Plans for Teams of All Sizes"
         />
         <meta
           name="description"
-          content="Choose an affordable plan with Chaindesk. Our offerings include Discover, Startup, Pro, and Enterprise levels, each packed with features for engaging your audience, creating customer loyalty, and driving sales."
+          content="Choose an affordable plan with Griot. Our offerings include Discover, Startup, Pro, and Enterprise levels, each packed with features for engaging your audience, creating customer loyalty, and driving sales."
         />
         <meta
           name="keywords"
-          content="Chaindesk, Pricing, Data Processing, AI, Agents, Datastores, Queries, File Upload, Data Synching, API, ChatGPT Plugin, Slack Bot, Crisp Plugin, Website Loader"
+          content="Griot, Pricing, Data Processing, AI, Agents, Datastores, Queries, File Upload, Data Synching, API, ChatGPT Plugin, Slack Bot, Crisp Plugin, Website Loader"
         />
         <meta name="robots" content="index, follow" />
       </Head>
@@ -63,7 +63,7 @@ const tiers = [
         accountConfig['level_0'].limits.maxDataProcessing / 1000000
       }MB / month`,
       'Manual data synching',
-      'Access to Chaindesk API',
+      'Access to Griot API',
       // 'ChatGPT plugin',
     ],
     mostPopular: false,

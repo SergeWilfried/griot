@@ -48,7 +48,7 @@ export function Footer() {
             {/* <Link
               href="https://twitter.com"
               className="group"
-              aria-label="Chaindesk on Twitter"
+              aria-label="Griot on Twitter"
             >
               <svg
                 aria-hidden="true"
@@ -60,7 +60,7 @@ export function Footer() {
             {/* <Link
               href="https://github.com"
               className="group"
-              aria-label="Chaindesk on GitHub"
+              aria-label="Griot on GitHub"
             >
               <svg
                 aria-hidden="true"
@@ -71,7 +71,7 @@ export function Footer() {
             </Link> */}
           </div>
           <p className="mt-6 text-sm text-slate-500 sm:mt-0">
-            Copyright &copy; {new Date().getFullYear()} Chaindesk. All rights
+            Copyright &copy; {new Date().getFullYear()} Griot. All rights
             reserved.
           </p>
         </div>

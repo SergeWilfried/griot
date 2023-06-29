@@ -71,10 +71,10 @@ export default function CrispConfig(props: { isPremium?: boolean }) {
   return (
     <>
       <Head>
-        <title>Chaindesk - Crisp Widget</title>
+        <title>Griot - Crisp Widget</title>
         <meta
           name="description"
-          content="Chaindesk is the leading document retrievial platform"
+          content="Griot is the leading document retrievial platform"
         />
       </Head>
       <Box
@@ -102,7 +102,7 @@ export default function CrispConfig(props: { isPremium?: boolean }) {
           </Stack>
         ) : (
           <Alert color="warning" sx={{ m: 2 }}>
-            This feature is restricted to Chaindesk.ai premium users
+            This feature is restricted to GriotAI premium users
           </Alert>
         )}
       </Box>

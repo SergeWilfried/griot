@@ -1,4 +1,4 @@
-## Chaindesk Wordpress Plugin
+## Griot Wordpress Plugin
 
 # Dev
 ```

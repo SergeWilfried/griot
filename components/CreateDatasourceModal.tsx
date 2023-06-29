@@ -178,7 +178,7 @@ export default function CreateDatastoreModal(props: Props) {
                     <Typography>{step.description}</Typography>
 
                     <Alert color="primary">
-                      Chaindesk works best with unstructured data. Better
+                      Griot works best with unstructured data. Better
                       support for tabular data (csv, spreadsheet, etc...) is
                       coming soon 😉
                     </Alert>

@@ -51,31 +51,31 @@ export default function Home() {
     <>
       <Head>
         <title>
-          Chaindesk - Build ChatGPT Agents trained on your custom data
+          Griot - Build ChatGPT Agents trained on your custom data
         </title>
 
         <meta
           name="title"
-          content="Chaindesk - Build ChatGPT Agents trained on your custom data"
+          content="Griot - Build ChatGPT Agents trained on your custom data"
         />
         <meta
           name="description"
-          content="Chaindesk offers a no-code platform to create custom AI chatbots trained on your data. Our solution streamlines customer support, onboards new team members, and simplifies your team's workflow."
+          content="Griot offers a no-code platform to create custom AI chatbots trained on your data. Our solution streamlines customer support, onboards new team members, and simplifies your team's workflow."
         />
         <meta
           name="keywords"
-          content="AI chatbot, No-code platform, Customer support, Onboarding, Slack AI chatbot, Automation, Chaindesk, ChatGPT Plugin"
+          content="AI chatbot, No-code platform, Customer support, Onboarding, Slack AI chatbot, Automation, Griot, ChatGPT Plugin"
         />
         <meta
           property="og:title"
-          content="Chaindesk - Build ChatGPT Agents trained on your custom data"
+          content="Griot - Build ChatGPT Agents trained on your custom data"
         />
         <meta
           property="og:description"
           content="With our no-code platform, create a custom AI chatbot trained on your data in seconds. Streamline customer support, onboard new team members, and more!"
         />
         <meta property="og:url" content="https://www.chaindesk.ai/" />
-        <meta property="og:site_name" content="Chaindesk" />
+        <meta property="og:site_name" content="Griot" />
         <meta property="og:type" content="website" />
       </Head>
       <Header />

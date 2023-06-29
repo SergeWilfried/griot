@@ -141,13 +141,13 @@ const getAgent = async (websiteId: string) => {
 //     origin: 'chat',
 //     user: {
 //       type: 'participant',
-//       nickname: agentName || 'Chaindesk.ai',
+//       nickname: agentName || 'GriotAI',
 //       avatar: 'https://chaindesk.ai/app-rounded-bg-white.png',
 //     },
 
 //     content: {
 //       id: `chaindesk-query-${cuid()}`,
-//       text: `✨ Ask ${agentName || `Chaindesk.ai`}`,
+//       text: `✨ Ask ${agentName || `GriotAI`}`,
 //       explain: 'Query',
 //       value,
 //     },
@@ -182,7 +182,7 @@ const handleQuery = async (
     //     content: 'Usage limit reached.',
     //     user: {
     //       type: 'participant',
-    //       nickname: agent?.name || 'Chaindesk.ai',
+    //       nickname: agent?.name || 'GriotAI',
     //       avatar:
     //         agent.iconUrl ||
     //         'https://chaindesk.ai/app-rounded-bg-white.png',
@@ -252,7 +252,7 @@ const handleQuery = async (
     },
     user: {
       type: 'participant',
-      nickname: agent?.name || 'Chaindesk.ai',
+      nickname: agent?.name || 'GriotAI',
       avatar: agent.iconUrl || 'https://chaindesk.ai/app-rounded-bg-white.png',
     },
   });
@@ -388,7 +388,7 @@ export const hook = async (req: AppNextApiRequest, res: NextApiResponse) => {
             //     content: 'An operator will get back to you shortly.',
             //     user: {
             //       type: 'participant',
-            //       // nickname: agent?.name || 'Chaindesk.ai',
+            //       // nickname: agent?.name || 'GriotAI',
             //       avatar: 'https://chaindesk.ai/app-rounded-bg-white.png',
             //     },
             //     // mentions: [data?.[0]?.user_id],
