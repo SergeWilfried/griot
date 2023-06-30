@@ -220,7 +220,7 @@ export default function AccountPage() {
             variant="plain"
             startDecorator={<LinkRoundedIcon />}
           >
-            API Keys
+            Clés d&apos;API
           </Button>
         </Link>
       </Stack>
@@ -390,10 +390,10 @@ export default function AccountPage() {
 
         <Box id="api-keys">
           <FormControl sx={{ gap: 1 }}>
-            <FormLabel>API Keys</FormLabel>
+            <FormLabel>Clés d&apos;API</FormLabel>
 
             <Typography level="body3">
-              Use the api key to access the Griot API
+              Utiliser la clé api pour accéder à l&apos;API Griot
             </Typography>
 
             <Stack direction={"column"} gap={2} mt={2}>
