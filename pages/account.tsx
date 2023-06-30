@@ -412,7 +412,7 @@ export default function AccountPage() {
                   </Link>
                 }
               >
-                En savoir plus sur l'API Griot API
+                En savoir plus sur Griot AI API
               </Alert>
               {getApiKeysQuery?.data?.map((each) => (
                 <>
@@ -457,7 +457,7 @@ export default function AccountPage() {
               variant="outlined"
               onClick={handleCreatApiKey}
             >
-              Create API Key
+              Créer une clé API
             </Button>
           </FormControl>
         </Box>
