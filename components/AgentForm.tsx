@@ -435,7 +435,7 @@ export default function BaseForm(props: Props) {
             sx={{ mt: 1, ml: "auto" }}
             onClick={() => setIsPromptTemplatesModalOpen(true)}
           >
-            Choose a Prompt Template
+            Choisissez une Instruction
           </Button>
         </FormControl>
 
@@ -468,7 +468,7 @@ export default function BaseForm(props: Props) {
 
           <Select
             value={tools[0]?.id}
-            placeholder="Choose a Datastore"
+            placeholder="Choisir un Document"
             onChange={(_, value) => {
               const datastore = getDatastoresQuery?.data?.find(
                 (one) => one.id === value
