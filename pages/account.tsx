@@ -267,10 +267,10 @@ export default function AccountPage() {
 
             <Stack width="100%" spacing={2} my={2}>
               <Stack spacing={1}>
-                <Typography level="body1">Usage Actuell</Typography>
+                <Typography level="body1">Usage</Typography>
                 <Typography level="h6">
                   <Stack direction={"row"} spacing={1}>
-                    <Typography color="neutral">Assistants Responses:</Typography>
+                    <Typography color="neutral">Responses:</Typography>
                     <Typography
                       color={
                         session?.user?.usage?.nbAgentQueries >=
@@ -300,7 +300,7 @@ export default function AccountPage() {
                 </Typography> */}
                 <Typography level="h6">
                   <Stack direction={"row"} spacing={1}>
-                    <Typography color="neutral">Data Processing:</Typography>
+                    <Typography color="neutral">Traitement de document:</Typography>
                     <Typography
                       color={
                         session?.user?.usage?.nbDataProcessingBytes >=
