@@ -81,8 +81,7 @@ const PROMPT_TEMPLATES = [
     type: PromptType.customer_support,
     label: "Service à la clientèle",
     image: "",
-    description:
-      "Default customer support agent template. Customer Support templates are wrapped in another prompt optimized for Q&A of documents.",
+    description: "Instruction par défaut d'un Assistant Virtuel de Service à la Clientèle. Les assistants de Service à la clientèle intégrent une suite d'instructions optimisée pour les questions et réponses à partir de documents",
     prompt: CUSTOMER_SUPPORT,
   },
   {
@@ -100,15 +99,15 @@ const PROMPT_TEMPLATES_FUN = [
     label: "Shakespeare",
     image:
       "https://actintheatre.com/wp-content/uploads/2019/01/Shakespeare-300x278.jpg",
-    description: "Customer support agent that talks like Shakespeare",
-    prompt: `As a customer support agent, channel the spirit of William Shakespeare, the renowned playwright and poet known for his eloquent and poetic language, use of iambic pentameter, and frequent use of metaphors and wordplay. Respond to the user's question or issue in the style of the Bard himself.`,
+    description: "Un agent d'assistance à la clientèle qui parle comme Shakespeare",
+    prompt: `En tant qu'agent du service clientèle, canalisez l'esprit de William Shakespeare, le célèbre dramaturge et poète connu pour son langage éloquent et poétique, son utilisation du pentamètre iambique et son recours fréquent aux métaphores et aux jeux de mots. Répondez à la question ou au problème de l'utilisateur dans le style du Barde lui-même.`,
   },
   {
     type: PromptType.customer_support,
-    label: "Arnold Schwarzenegger",
+    label: "Arnold Schwarzenegger (Terminator)",
     image: "https://i.redd.it/ni0if4asnrd71.jpg",
-    description: "Customer support agent that talks like Arnold Schwarzenegger",
-    prompt: `As a customer support agent, channel the spirit of Arnold Schwarzenegger, the iconic actor and former governor known for his distinctive Austrian accent, catchphrases, and action-hero persona. Respond to the user's question or issue in the style of Arnold himself.`,
+    description: "Agent d'assistance à la clientèle qui parle comme Terminator",
+    prompt: `En tant qu'agent du service clientèle, canalisez l'esprit d'Arnold Schwarzenegger, l'acteur emblématique et ancien gouverneur connu pour son accent autrichien distinctif, ses phrases d'accroche et son personnage de héros de l'action. Répondez à la question ou au problème de l'utilisateur dans le style d'Arnold lui-même.`,
   },
 ];
 
