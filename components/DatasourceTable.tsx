@@ -248,7 +248,7 @@ export default function DatasourceTable({
               justifyContent={"space-between"}
               alignItems={"center"}
             >
-              <FormLabel>Search for datasource (name)</FormLabel>
+              <FormLabel>Rechercher un document (nom)</FormLabel>
               <Typography level="body2" color="primary">{`${total} result${
                 total > 1 ? "s" : ""
               }`}</Typography>
@@ -383,8 +383,8 @@ export default function DatasourceTable({
               </th>
               <th style={{ width: 220, padding: 12 }}>Nom</th>
               <th style={{ width: 120, padding: 12 }}>Type</th>
-              <th style={{ width: 120, padding: 12 }}>Size</th>
-              <th style={{ width: 120, padding: 12 }}>Last Synch</th>
+              <th style={{ width: 120, padding: 12 }}>Taille</th>
+              <th style={{ width: 120, padding: 12 }}>Dernière mise à jour</th>
               <th style={{ width: 120, padding: 12 }}>Status</th>
               {/* <th style={{ width: 120, padding: 12 }}>Subscription</th> */}
               <th style={{ width: 120, padding: 12 }}> </th>
@@ -629,7 +629,7 @@ export default function DatasourceTable({
             }
           }}
         >
-          Previous
+          Precedent
         </Button>
 
         <Box sx={{ flex: 1 }} />
@@ -668,7 +668,7 @@ export default function DatasourceTable({
             }
           }}
         >
-          Next
+          Suivant
         </Button>
       </Box>
 
@@ -714,7 +714,7 @@ export default function DatasourceTable({
           color="neutral"
           startDecorator={<i data-feather="arrow-left" />}
         >
-          Previous
+          Precedent
         </Button>
 
         <Box sx={{ flex: 1 }} />
@@ -736,7 +736,7 @@ export default function DatasourceTable({
           color="neutral"
           endDecorator={<i data-feather="arrow-right" />}
         >
-          Next
+          Suivant
         </Button>
       </Box> */}
     </React.Fragment>

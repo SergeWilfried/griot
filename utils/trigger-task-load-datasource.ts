@@ -5,7 +5,12 @@ import { TaskQueue } from "@app/types";
 import { TaskLoadDatasourceRequestSchema } from "@app/types/dtos";
 import { QueuePro } from "@app/utils/bullmq-pro";
 
-const connection = new Redis(process.env.REDIS_URL!);
+  const connection = new Redis({
+    username: process.env.REDIS_USERNAME!,
+    password: process.env.REDIS_HOST_PASSWORD!,
+    host:   process.env.REDIS_HOST!,
+    port: Number(process.env.REDIS_PORT!),
+  });
 
 const datasourceLoadQueue = new QueuePro(TaskQueue.load_datasource, {
   connection: connection as any,
@@ -17,7 +22,7 @@ const datasourceLoadQueue = new QueuePro(TaskQueue.load_datasource, {
     },
   },
 });
-
+// redis://default:3bdd928c25614f6f8afd8c356e5af101@fly-griotai-redis.upstash.io
 const triggerTaskLoadDatasource = async (
   data: {
     userId: string;
