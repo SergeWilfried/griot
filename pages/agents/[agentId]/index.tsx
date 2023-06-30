@@ -537,8 +537,8 @@ export default function AgentPage() {
       />
 
       <UsageLimitModal
-        title="Upgrade to premium to use this feature"
-        description="This feature is restricted to premium users only"
+        title="Passez à la version premium pour utiliser cette fonctionnalité"
+        description="Cette fonction est réservée aux utilisateurs premium"
         isOpen={state.isUsageModalOpen}
         handleClose={() => {
           setState({

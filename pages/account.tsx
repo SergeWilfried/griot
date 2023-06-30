@@ -211,7 +211,7 @@ export default function AccountPage() {
             variant="plain"
             startDecorator={<LinkRoundedIcon />}
           >
-            Subscription
+            Souscription
           </Button>
         </Link>
         <Link href={`#api-keys`}>
@@ -380,7 +380,7 @@ export default function AccountPage() {
                 variant="plain"
                 sx={{ ml: "auto" }}
               >
-                Upgrade / Manage Subscription
+                Mettre à niveau / Gérer Souscription
               </Button>
             </UserPremium>
           </Card>

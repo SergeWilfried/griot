@@ -36,7 +36,7 @@ const UsageLimitCard = ({ title, description }: Props) => {
             {title || "Limite d'utilisation atteinte"}
           </Typography>
           <Typography fontSize="sm" sx={{ opacity: 0.8 }}>
-            {`${description || "Upgrade your plan to get higher usage"}`}
+            {`${description || "Passez à une souscription supérieure pour bénéficier d'une plus grande utilisation"}`}
           </Typography>
         </div>
       </Alert>

@@ -45,7 +45,7 @@ export default function DatastoreTable({ items }: { items: Datastore[] }) {
               <th style={{ width: 120, padding: 12 }}>Nb Documents</th>
               <th style={{ width: 220, padding: 12 }}>Prestataire</th>
               <th style={{ width: 220, padding: 12 }}>Visibilité</th>
-              {/* <th style={{ width: 120, padding: 12 }}>Subscription</th> */}
+              {/* <th style={{ width: 120, padding: 12 }}>Souscription</th> */}
               <th style={{ width: 160, padding: 12 }}> </th>
             </tr>
           </thead>

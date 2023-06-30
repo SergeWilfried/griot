@@ -386,7 +386,7 @@ export default function DatasourceTable({
               <th style={{ width: 120, padding: 12 }}>Taille</th>
               <th style={{ width: 120, padding: 12 }}>Dernière mise à jour</th>
               <th style={{ width: 120, padding: 12 }}>Status</th>
-              {/* <th style={{ width: 120, padding: 12 }}>Subscription</th> */}
+              {/* <th style={{ width: 120, padding: 12 }}>Souscription</th> */}
               <th style={{ width: 120, padding: 12 }}> </th>
             </tr>
           </thead>
