@@ -101,7 +101,7 @@ export default function Navigation() {
       //   active: router.route === RouteNames.APPS,
       // },
       {
-        label: "Account",
+        label: "Mon Compte",
         route: RouteNames.ACCOUNT,
         icon: <ManageAccountsRoundedIcon fontSize="small" />,
         active: router.route === RouteNames.ACCOUNT,

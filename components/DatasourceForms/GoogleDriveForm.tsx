@@ -94,7 +94,7 @@ function Nested() {
     <>
       <Stack gap={2}>
         <FormControl>
-          <FormLabel>Select Account</FormLabel>
+          <FormLabel>Choisir votre Compte</FormLabel>
           {/* <Button onClick={handleSignIn}>Google Drive: Sign-In</Button> */}
 
           <Stack gap={1}>
@@ -120,7 +120,7 @@ function Nested() {
               variant={"plain"}
               sx={{ mr: "auto" }}
             >
-              Google Drive: Add Account
+              Google Drive: Connecter votre compte
             </Button>
           </Stack>
         </FormControl>

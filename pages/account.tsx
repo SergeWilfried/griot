@@ -200,7 +200,7 @@ export default function AccountPage() {
         }}
       >
         <Typography level="h1" fontSize="xl4">
-          Account
+          Mon Compte
         </Typography>
       </Box>
 
