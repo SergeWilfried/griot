@@ -46,8 +46,6 @@ RUN NODE_OPTIONS="--max_old_space_size=4096" yarn build
 # If using npm comment out above and use below instead
 # RUN npm run build
 
-RUN npx prisma migrate deploy && npx prisma generate
-
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
