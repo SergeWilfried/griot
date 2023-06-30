@@ -280,7 +280,7 @@ export default function BaseForm(props: Props) {
       >
         {networkError && <Alert color="danger">{networkError}</Alert>}
         <Stack gap={1}>
-          <Typography level="body2">Icon</Typography>
+          <Typography level="body2">Icône</Typography>
           <input
             type="file"
             hidden
