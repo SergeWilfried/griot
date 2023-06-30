@@ -228,7 +228,7 @@ export function HeroChatGPTPlugin() {
               </Link>
               <Link
                 target="_blank"
-                href={'https://calendly.com/databerry-georges/15min'}
+                href={'https://calendly.com/SergeWilfried/15min'}
               >
                 <Button
                   variant="outlined"

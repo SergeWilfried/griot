@@ -46,6 +46,11 @@ RUN NODE_OPTIONS="--max_old_space_size=4096" yarn build
 # If using npm comment out above and use below instead
 # RUN npm run build
 
+RUN --mount=type=secret,id=db_secret \
+    DATABASE_URL="$(cat /run/secrets/db_secret)" \
+        npx prisma migrate deploy \
+        && npx prisma generate
+
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
@@ -74,6 +79,9 @@ RUN \
     else echo "Lockfile not found." && exit 1; \
     fi
 RUN rm -rf node_modules/.pnpm/canvas@2.11.2
+
+
+
 
 USER nextjs
 

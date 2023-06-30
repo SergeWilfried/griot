@@ -15,3 +15,5 @@ packages
 .env.local
 .env.prod.local
 .dev
+
+secrets/*

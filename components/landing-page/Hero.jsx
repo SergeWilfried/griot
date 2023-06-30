@@ -61,7 +61,7 @@ export function Hero() {
           sx={{borderRadius: 100}}
           >{`⚡️ Get Started Now`}</Button>
       </Link>
-      <Link target='_blank' href={'https://calendly.com/databerry-georges/15min'}>
+      <Link target='_blank' href={'https://calendly.com/SergeWilfried/15min'}>
         <Button variant="outlined" size="lg"
           startDecorator={<PhoneRoundedIcon />}
           sx={{borderRadius: 100}}

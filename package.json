@@ -11,7 +11,6 @@
     "build:widget:chat-bubble": "NEXT_PUBLIC_DASHBOARD_URL=https://app.mongriot.com npx parcel build widgets/chat-bubble.tsx",
     "publish:package:chat-bubble": "npm run build:widget:chat-bubble && cp dist/chat-bubble* packages/chat-bubble/ && cd packages/chat-bubble && npm version patch && npm publish --access public",
     "prisma:generate": "prisma generate",
-    "db:push": "prisma db push",
     "prisma:migrate:dev": "dotenv -e .env.local -- prisma migrate dev",
     "prisma:migrate:prod": "dotenv -e .env.local -- prisma migrate deploy",
     "worker:datasource-loader": "dotenv -e .env.local -- npx tsx --watch workers/datasource-loader.ts",
