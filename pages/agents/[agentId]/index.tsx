@@ -9,8 +9,8 @@ import IntegrationInstructionsRoundedIcon from "@mui/icons-material/IntegrationI
 import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
 import MessageRoundedIcon from "@mui/icons-material/MessageRounded";
 import PaletteRoundedIcon from "@mui/icons-material/PaletteRounded";
-import SettingsIcon from "@mui/icons-material/Settings";
 import RocketLaunchRoundedIcon from "@mui/icons-material/RocketLaunchRounded";
+import SettingsIcon from "@mui/icons-material/Settings";
 import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
 import { ColorPaletteProp, List, ListItem, ListItemButton } from "@mui/joy";
 import Alert from "@mui/joy/Alert";
@@ -461,7 +461,7 @@ export default function AgentPage() {
                         </Link>
                       }
                     >
-                      En savoir plus sur l'API Griot API
+                      En savoir plus sur GriotAI API
                     </Alert>
 
                     <Alert
