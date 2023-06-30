@@ -206,7 +206,7 @@ export default function DatastorePage() {
                 }
               }}
             >
-              Add Datasource
+              Nouveau Document
             </Button>
           </Box>
         </Box>
@@ -229,7 +229,7 @@ export default function DatastorePage() {
                 <ListItemDecorator>
                   <AutoGraphRoundedIcon />
                 </ListItemDecorator>
-                Datasources
+                Documents
               </Tab>
               <Tab value={"settings"}>
                 <ListItemDecorator>

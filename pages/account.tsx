@@ -239,7 +239,6 @@ export default function AccountPage() {
           </Card>
         </UserFree>
       </Box>
-
       <Stack
         gap={4}
         sx={(theme) => ({
