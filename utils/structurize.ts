@@ -1,8 +1,8 @@
 // Parse text into Json from a given Json Schema
-import { Configuration, OpenAIApi } from 'openai';
+import { Configuration, OpenAIApi } from "openai";
 
-import countTokens from './count-tokens';
-import splitTextByToken from './split-text-by-token';
+import countTokens from "./count-tokens";
+import splitTextByToken from "./split-text-by-token";
 
 const MAX_TOKENS = 3072;
 
@@ -42,12 +42,12 @@ const structurize = async (props: {
       : each;
 
     const completion = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo-0613',
-      messages: [{ role: 'user', content: prompt }],
+      model: "gpt-3.5-turbo-0613",
+      messages: [{ role: "user", content: prompt }],
       functions: [
         {
-          name: 'extractData',
-          description: 'Extract data from the following document',
+          name: "extractData",
+          description: "Extract data from the following document",
           parameters: props.spec,
         },
       ],
@@ -56,14 +56,14 @@ const structurize = async (props: {
     totalTokens += completion?.data?.usage?.total_tokens || 0;
 
     json = JSON.parse(
-      completion.data.choices?.[0]?.message?.function_call?.arguments || '{}'
+      completion.data.choices?.[0]?.message?.function_call?.arguments || "{}"
     );
 
-    console.log('JSON STEP', json);
+    console.log("JSON STEP", json);
   }
 
-  console.log('totalTokens', totalTokens);
-  console.log('completion', json);
+  console.log("totalTokens", totalTokens);
+  console.log("completion", json);
 
   return {
     data: json,

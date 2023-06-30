@@ -1,14 +1,14 @@
 // copilot
 // https://app.mongriot.com => mongriot.com
 export const getRootDomain = (url: string) => {
-  const domain = url.split('/')[2];
-  const parts = domain.split('.');
-  return parts.slice(parts.length - 2).join('.');
+  const domain = url.split("/")[2];
+  const parts = domain.split(".");
+  return parts.slice(parts.length - 2).join(".");
 };
 
 export function getRootDomainFromHostname(hostname: string) {
   // Remove www. prefix if present
-  const domain = hostname.replace(/^www\./, '');
+  const domain = hostname.replace(/^www\./, "");
 
   // Extract root domain using regex
   const rootDomainMatch = domain.match(/[^.]+\.[^.]+$/);

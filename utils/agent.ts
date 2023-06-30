@@ -1,15 +1,15 @@
-import { Agent, Datastore, MessageFrom, Tool, ToolType } from '@prisma/client';
-import { AgentExecutor, ZeroShotAgent } from 'langchain/agents';
-import { LLMChain } from 'langchain/chains';
-import { ChatOpenAI } from 'langchain/chat_models/openai';
+import { Agent, Datastore, MessageFrom, Tool, ToolType } from "@prisma/client";
+import { AgentExecutor, ZeroShotAgent } from "langchain/agents";
+import { LLMChain } from "langchain/chains";
+import { ChatOpenAI } from "langchain/chat_models/openai";
 import {
   ChatPromptTemplate,
   HumanMessagePromptTemplate,
   SystemMessagePromptTemplate,
-} from 'langchain/prompts';
-import { Tool as LangchainTool } from 'langchain/tools';
+} from "langchain/prompts";
+import { Tool as LangchainTool } from "langchain/tools";
 
-import chat from './chat';
+import chat from "./chat";
 
 type ToolExtended = Tool & {
   datastore: Datastore | null;
@@ -58,13 +58,13 @@ export default class AgentManager {
   async getSingleDatastoreChain() {}
 
   async runChain(query: string) {
-    const { OpenAI } = await import('langchain/llms/openai');
-    const { initializeAgentExecutor } = await import('langchain/agents');
-    const { DynamicTool, ChainTool, Tool } = await import('langchain/tools');
-    const { PromptTemplate } = await import('langchain/prompts');
+    const { OpenAI } = await import("langchain/llms/openai");
+    const { initializeAgentExecutor } = await import("langchain/agents");
+    const { DynamicTool, ChainTool, Tool } = await import("langchain/tools");
+    const { PromptTemplate } = await import("langchain/prompts");
     const model = new OpenAI({
       temperature: 0,
-      modelName: 'gpt-3.5-turbo-0613',
+      modelName: "gpt-3.5-turbo-0613",
     });
 
     const tools: LangchainTool[] = [];
@@ -101,7 +101,7 @@ export default class AgentManager {
       }
     }
 
-    console.log('TOOLS LENGTH', tools.length);
+    console.log("TOOLS LENGTH", tools.length);
 
     const prompt = ZeroShotAgent.createPrompt(tools, {
       prefix: `Answer the following questions as best you can, but speaking as a customer support agent might speak AND ANSWER ALWAYS USING ALEXANDRINE. You have access to the following tools:`,
@@ -140,7 +140,7 @@ export default class AgentManager {
 
     // const result = await executor.call({ input: query });
 
-    console.log('OUTPUT', response);
+    console.log("OUTPUT", response);
 
     return response;
     // return result.output as string;

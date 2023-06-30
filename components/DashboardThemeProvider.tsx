@@ -1,10 +1,10 @@
-import { CacheProvider } from '@emotion/react';
-import CssBaseline from '@mui/joy/CssBaseline';
-import { CssVarsProvider, StyledEngineProvider } from '@mui/joy/styles';
-import React from 'react';
+import { CacheProvider } from "@emotion/react";
+import CssBaseline from "@mui/joy/CssBaseline";
+import { CssVarsProvider, StyledEngineProvider } from "@mui/joy/styles";
+import React from "react";
 
-import createEmotionCache from '@app/utils/create-emotion-cache';
-import theme from '@app/utils/theme';
+import createEmotionCache from "@app/utils/create-emotion-cache";
+import theme from "@app/utils/theme";
 
 const clientSideEmotionCache = createEmotionCache();
 

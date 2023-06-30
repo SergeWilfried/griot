@@ -1,21 +1,21 @@
-import Cookies from 'js-cookie';
-import { useEffect } from 'react';
+import Cookies from "js-cookie";
+import { useEffect } from "react";
 
-import { getRootDomainFromHostname } from '@app/utils/get-root-domain';
+import { getRootDomainFromHostname } from "@app/utils/get-root-domain";
 
 const useUTMTracking = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const utmParams = JSON.parse(Cookies.get('utmParams') || '{}');
+    const utmParams = JSON.parse(Cookies.get("utmParams") || "{}");
 
     // Add the UTM parameters you want to track
     const utmKeys = [
-      'utm_id',
-      'utm_source',
-      'utm_medium',
-      'utm_campaign',
-      'utm_content',
-      'utm_term',
+      "utm_id",
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
     ];
 
     utmKeys.forEach((key) => {
@@ -24,9 +24,9 @@ const useUTMTracking = () => {
       }
     });
 
-    Cookies.set('utmParams', JSON.stringify(utmParams), {
+    Cookies.set("utmParams", JSON.stringify(utmParams), {
       domain: `.${getRootDomainFromHostname(window.location.hostname)}`,
-      path: '/',
+      path: "/",
     });
   }, []);
 };

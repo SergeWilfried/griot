@@ -1,4 +1,4 @@
-import { get_encoding, TiktokenEncoding } from '@dqbd/tiktoken';
+import { get_encoding, TiktokenEncoding } from "@dqbd/tiktoken";
 
 const countTokens = ({
   text,
@@ -7,7 +7,7 @@ const countTokens = ({
   text: string;
   encodingName?: TiktokenEncoding;
 }) => {
-  const encoding = get_encoding(encodingName || 'cl100k_base');
+  const encoding = get_encoding(encodingName || "cl100k_base");
   const nbTokens = encoding.encode(text).length;
   encoding.free();
 

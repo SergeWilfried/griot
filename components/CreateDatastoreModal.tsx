@@ -1,4 +1,4 @@
-import InfoIcon from '@mui/icons-material/Info';
+import InfoIcon from "@mui/icons-material/Info";
 import {
   Alert,
   Box,
@@ -8,31 +8,31 @@ import {
   ModalDialog,
   Sheet,
   Typography,
-} from '@mui/joy';
-import Button from '@mui/joy/Button';
-import Step from '@mui/material/Step';
-import StepContent from '@mui/material/StepContent';
-import StepLabel from '@mui/material/StepLabel';
-import Stepper from '@mui/material/Stepper';
+} from "@mui/joy";
+import Button from "@mui/joy/Button";
+import Step from "@mui/material/Step";
+import StepContent from "@mui/material/StepContent";
+import StepLabel from "@mui/material/StepLabel";
+import Stepper from "@mui/material/Stepper";
 import {
   AppDatasource as Datasource,
   DatasourceType,
   Datastore,
   DatastoreType,
-} from '@prisma/client';
-import dynamic from 'next/dynamic';
-import React from 'react';
+} from "@prisma/client";
+import dynamic from "next/dynamic";
+import React from "react";
 
-import useStateReducer from '@app/hooks/useStateReducer';
-import { CreateDatastoreRequestSchema } from '@app/types/dtos';
+import useStateReducer from "@app/hooks/useStateReducer";
+import { CreateDatastoreRequestSchema } from "@app/types/dtos";
 
-import DatasourceOptions from './DatasourceForms/DatasourceOptions';
-import { DatasourceFormProps } from './DatasourceForms/types';
-import { DatastoreFormProps } from './DatastoreForms/types';
-import { DatastoreFormsMap } from './DatastoreForms';
+import DatasourceOptions from "./DatasourceForms/DatasourceOptions";
+import { DatasourceFormProps } from "./DatasourceForms/types";
+import { DatastoreFormProps } from "./DatastoreForms/types";
+import { DatastoreFormsMap } from "./DatastoreForms";
 
 const DatasourceForm = dynamic(
-  () => import('@app/components/DatasourceForms'),
+  () => import("@app/components/DatasourceForms"),
   {
     ssr: false,
   }
@@ -102,7 +102,7 @@ export default function CreateDatastoreModal(props: Props) {
     //   ),
     // },
     {
-      label: 'Configuration',
+      label: "Configuration",
       // description: 'A Datastore can contain multiple datasources',
       disableButtons: true,
       component:
@@ -123,7 +123,7 @@ export default function CreateDatastoreModal(props: Props) {
                   loading={btnProps.isLoading}
                   sx={{ mt: 1, mr: 1 }}
                 >
-                  Continue
+                  Continuer
                 </Button>
                 {/* <Button
                   disabled={btnProps.isLoading}
@@ -139,8 +139,8 @@ export default function CreateDatastoreModal(props: Props) {
         } as DatastoreFormProps),
     },
     {
-      label: 'Choose a Datasource type',
-      description: `An empty Datastore is not very useful! Now add some data in it`,
+      label: "Choisir un type de document",
+      description: `Un document vide n'est pas très utile ! Ajoutons maintenant des données`,
       disableButtons: true,
       component: (
         <DatasourceOptions
@@ -154,8 +154,8 @@ export default function CreateDatastoreModal(props: Props) {
       ),
     },
     {
-      label: 'Setup the Datasource',
-      description: `An empty Datastore is not very useful! Now add some data in it`,
+      label: "Configuration de la source du document",
+      description: `Un document vide n'est pas très utile ! Ajoutons maintenant des données`,
       disableButtons: true,
       component: state.selectedSourceType && (
         <DatasourceForm
@@ -180,7 +180,7 @@ export default function CreateDatastoreModal(props: Props) {
                   loading={btnProps.isLoading}
                   sx={{ mt: 1, mr: 1 }}
                 >
-                  Finish
+                  Terminer
                 </Button>
                 <Button
                   disabled={btnProps.isLoading}
@@ -202,16 +202,16 @@ export default function CreateDatastoreModal(props: Props) {
     <Modal
       onClose={props.handleClose}
       open={props.isOpen!}
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       <Sheet
         variant="outlined"
         sx={{
           width: 600,
-          maxWidth: '100%',
-          borderRadius: 'md',
+          maxWidth: "100%",
+          borderRadius: "md",
           p: 3,
-          boxShadow: 'lg',
+          boxShadow: "lg",
         }}
       >
         <Stepper activeStep={state.activeStep} orientation="vertical">
@@ -240,7 +240,9 @@ export default function CreateDatastoreModal(props: Props) {
                           onClick={handleNext}
                           sx={{ mt: 1, mr: 1 }}
                         >
-                          {index === steps.length - 1 ? 'Finish' : 'Continue'}
+                          {index === steps.length - 1
+                            ? "Terminer"
+                            : "Continuer"}
                         </Button>
                         <Button
                           disabled={index === 0}

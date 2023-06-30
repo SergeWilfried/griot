@@ -1,45 +1,45 @@
-import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
-import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import AutorenewRounded from '@mui/icons-material/AutorenewRounded';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import CloseRounded from '@mui/icons-material/CloseRounded';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import PlayArrow from '@mui/icons-material/PlayArrow';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import SourceRoundedIcon from '@mui/icons-material/SourceRounded';
-import { Badge, Checkbox } from '@mui/joy';
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import Chip from '@mui/joy/Chip';
-import CircularProgress from '@mui/joy/CircularProgress';
-import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
-import IconButton, { iconButtonClasses } from '@mui/joy/IconButton';
-import Input from '@mui/joy/Input';
-import Option from '@mui/joy/Option';
-import Select from '@mui/joy/Select';
-import Sheet from '@mui/joy/Sheet';
-import Stack from '@mui/joy/Stack';
-import { ColorPaletteProp } from '@mui/joy/styles';
-import Table from '@mui/joy/Table';
-import Typography from '@mui/joy/Typography';
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import AutorenewRounded from "@mui/icons-material/AutorenewRounded";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import CloseRounded from "@mui/icons-material/CloseRounded";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import PlayArrow from "@mui/icons-material/PlayArrow";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import SourceRoundedIcon from "@mui/icons-material/SourceRounded";
+import { Badge, Checkbox } from "@mui/joy";
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import Chip from "@mui/joy/Chip";
+import CircularProgress from "@mui/joy/CircularProgress";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import IconButton, { iconButtonClasses } from "@mui/joy/IconButton";
+import Input from "@mui/joy/Input";
+import Option from "@mui/joy/Option";
+import Select from "@mui/joy/Select";
+import Sheet from "@mui/joy/Sheet";
+import Stack from "@mui/joy/Stack";
+import { ColorPaletteProp } from "@mui/joy/styles";
+import Table from "@mui/joy/Table";
+import Typography from "@mui/joy/Typography";
 import {
   AppDatasource as Datasource,
   DatasourceStatus,
   DatasourceType,
   Prisma,
-} from '@prisma/client';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import pDebounce from 'p-debounce';
-import * as React from 'react';
-import useSWR from 'swr';
+} from "@prisma/client";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import pDebounce from "p-debounce";
+import * as React from "react";
+import useSWR from "swr";
 
-import useGetDatastoreQuery from '@app/hooks/useGetDatastoreQuery';
-import useStateReducer from '@app/hooks/useStateReducer';
-import { RouteNames } from '@app/types';
-import pagination from '@app/utils/pagination';
-import relativeDate from '@app/utils/relative-date';
+import useGetDatastoreQuery from "@app/hooks/useGetDatastoreQuery";
+import useStateReducer from "@app/hooks/useStateReducer";
+import { RouteNames } from "@app/types";
+import pagination from "@app/utils/pagination";
+import relativeDate from "@app/utils/relative-date";
 
 const SynchButton = ({
   datasource,
@@ -50,14 +50,14 @@ const SynchButton = ({
 }) => {
   const [state, setState] = useStateReducer({
     loading: false,
-    buttonText: 'Synch',
-    color: 'info',
+    buttonText: "Synch",
+    color: "info",
   });
 
   React.useEffect(() => {
     let loading = false;
-    let buttonText = 'Synch';
-    let color = 'neutral';
+    let buttonText = "Synch";
+    let color = "neutral";
 
     if (
       datasource.status === DatasourceStatus.running ||
@@ -69,18 +69,18 @@ const SynchButton = ({
 
     switch (datasource.status) {
       case DatasourceStatus.running:
-        buttonText = 'Running';
+        buttonText = "Running";
         break;
       case DatasourceStatus.pending:
-        buttonText = 'Pending';
+        buttonText = "Pending";
         break;
       case DatasourceStatus.error:
-        buttonText = 'Synch';
-        color = 'error';
+        buttonText = "Synch";
+        color = "error";
         break;
       case DatasourceStatus.unsynched:
       case DatasourceStatus.synched:
-        buttonText = 'Synch';
+        buttonText = "Synch";
         break;
       default:
         break;
@@ -110,7 +110,7 @@ const SynchButton = ({
         ? {
             loading: true,
             startDecorator: <PlayArrow />,
-            loadingPosition: 'start',
+            loadingPosition: "start",
           }
         : {
             startDecorator: <PlayArrow />,
@@ -178,7 +178,7 @@ export default function DatasourceTable({
 
   const handleSearch = React.useCallback(
     pDebounce(async (query?: string) => {
-      router.query.search = query || '';
+      router.query.search = query || "";
       router.replace(router, undefined, { shallow: true });
     }, 1000),
     [router]
@@ -195,7 +195,7 @@ export default function DatasourceTable({
           size="sm"
           startDecorator={<DeleteRoundedIcon />}
           sx={{
-            mr: 'auto',
+            mr: "auto",
             mb: 1,
           }}
         >
@@ -210,7 +210,7 @@ export default function DatasourceTable({
           color="primary"
           size="sm"
           sx={{
-            mr: 'auto',
+            mr: "auto",
             mb: 1,
           }}
           onClick={() => {
@@ -225,18 +225,18 @@ export default function DatasourceTable({
       <Box
         className="SearchAndFilters-tabletUp"
         sx={{
-          borderRadius: 'sm',
+          borderRadius: "sm",
           pb: 2,
           display: {
-            xs: 'none',
-            sm: 'flex',
+            xs: "none",
+            sm: "flex",
           },
-          flexWrap: 'wrap',
+          flexWrap: "wrap",
           gap: 1.5,
-          '& > *': {
+          "& > *": {
             minWidth: {
-              xs: '120px',
-              md: '160px',
+              xs: "120px",
+              md: "160px",
             },
           },
         }}
@@ -244,13 +244,13 @@ export default function DatasourceTable({
         <Stack width="100%" direction="row" gap={2}>
           <FormControl sx={{ flex: 1 }} size="sm">
             <Stack
-              direction={'row'}
-              justifyContent={'space-between'}
-              alignItems={'center'}
+              direction={"row"}
+              justifyContent={"space-between"}
+              alignItems={"center"}
             >
               <FormLabel>Search for datasource (name)</FormLabel>
               <Typography level="body2" color="primary">{`${total} result${
-                total > 1 ? 's' : ''
+                total > 1 ? "s" : ""
               }`}</Typography>
             </Stack>
             <Input
@@ -264,7 +264,7 @@ export default function DatasourceTable({
                 ) : null
               }
               onChange={(e) => {
-                const value = e?.currentTarget?.value || '';
+                const value = e?.currentTarget?.value || "";
 
                 handleSearch(value);
               }}
@@ -272,11 +272,11 @@ export default function DatasourceTable({
           </FormControl>
 
           <FormControl size="sm">
-            <FormLabel sx={{ ml: 'auto' }}>Status</FormLabel>
+            <FormLabel sx={{ ml: "auto" }}>Status</FormLabel>
             <Select
               placeholder="Filter by status"
               value={status}
-              slotProps={{ button: { sx: { whiteSpace: 'nowrap' } } }}
+              slotProps={{ button: { sx: { whiteSpace: "nowrap" } } }}
               onChange={(_, value) => {
                 if (value) {
                   router.query.status = value as string;
@@ -296,7 +296,7 @@ export default function DatasourceTable({
                       event.stopPropagation();
                     }}
                     onClick={() => {
-                      router.query.status = '';
+                      router.query.status = "";
                       router.replace(router, undefined, { shallow: true });
                     }}
                   >
@@ -342,10 +342,10 @@ export default function DatasourceTable({
         className="DatasourceTableContainer"
         variant="outlined"
         sx={{
-          width: '100%',
-          borderRadius: 'md',
+          width: "100%",
+          borderRadius: "md",
           flex: 1,
-          overflow: 'auto',
+          overflow: "auto",
           minHeight: 0,
         }}
       >
@@ -354,16 +354,16 @@ export default function DatasourceTable({
           stickyHeader
           hoverRow
           sx={{
-            '--TableCell-headBackground': (theme) =>
+            "--TableCell-headBackground": (theme) =>
               theme.vars.palette.background.level1,
-            '--Table-headerUnderlineThickness': '1px',
-            '--TableRow-hoverBackground': (theme) =>
+            "--Table-headerUnderlineThickness": "1px",
+            "--TableRow-hoverBackground": (theme) =>
               theme.vars.palette.background.level1,
           }}
         >
           <thead>
             <tr>
-              <th style={{ width: 48, textAlign: 'center', padding: 12 }}>
+              <th style={{ width: 48, textAlign: "center", padding: 12 }}>
                 <Checkbox
                   disabled={state.isBulkDeleting}
                   // indeterminate={
@@ -378,7 +378,7 @@ export default function DatasourceTable({
                         : []
                     );
                   }}
-                  sx={{ verticalAlign: 'text-bottom' }}
+                  sx={{ verticalAlign: "text-bottom" }}
                 />
               </th>
               <th style={{ width: 220, padding: 12 }}>Nom</th>
@@ -430,7 +430,7 @@ export default function DatasourceTable({
                   <div className="flex flex-col">
                     <Stack
                       direction="row"
-                      alignItems={'center'}
+                      alignItems={"center"}
                       spacing={2}
                       className="max-w-full"
                     >
@@ -446,7 +446,7 @@ export default function DatasourceTable({
                             variant="soft"
                             color="primary"
                             onClick={() => {
-                              router.query.offset = '0';
+                              router.query.offset = "0";
                               router.query.groupId = datasource.id;
                               router.query.groupName = datasource.name;
                               router.replace(router, undefined, {
@@ -465,7 +465,7 @@ export default function DatasourceTable({
                         href={`${RouteNames.DATASTORES}/${datasource.datastoreId}/${datasource.id}`}
                         className="truncate hover:underline"
                       >
-                        <Typography className="truncate" fontWeight={'bold'}>
+                        <Typography className="truncate" fontWeight={"bold"}>
                           {datasource.name}
                         </Typography>
                       </Link>
@@ -496,7 +496,7 @@ export default function DatasourceTable({
                     //     private: 'neutral',
                     //   }[datastore.visibility] as ColorPaletteProp
                     // }
-                    color={'neutral'}
+                    color={"neutral"}
                   >
                     {datasource.type}
                   </Chip>
@@ -544,16 +544,16 @@ export default function DatasourceTable({
                     //   }[row.status]
                     // }
                     sx={{
-                      textTransform: 'capitalize2',
+                      textTransform: "capitalize2",
                     }}
                     color={
                       {
-                        unsynched: 'neutral',
-                        pending: 'primary',
-                        running: 'info',
-                        synched: 'success',
-                        error: 'danger',
-                        usage_limit_reached: 'warning',
+                        unsynched: "neutral",
+                        pending: "primary",
+                        running: "info",
+                        synched: "success",
+                        error: "danger",
+                        usage_limit_reached: "warning",
                       }[
                         datasource?.children?.[0]
                           ? DatasourceStatus.running
@@ -583,7 +583,7 @@ export default function DatasourceTable({
 
       <Box
         className="Pagination-mobile"
-        sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}
+        sx={{ display: { xs: "flex", md: "none" }, alignItems: "center" }}
       >
         <IconButton
           aria-label="previous page"
@@ -610,10 +610,10 @@ export default function DatasourceTable({
         sx={{
           pt: 4,
           gap: 1,
-          [`& .${iconButtonClasses.root}`]: { borderRadius: '50%' },
+          [`& .${iconButtonClasses.root}`]: { borderRadius: "50%" },
           display: {
-            xs: 'none',
-            md: 'flex',
+            xs: "none",
+            md: "flex",
           },
         }}
       >
@@ -637,11 +637,11 @@ export default function DatasourceTable({
           <IconButton
             key={page}
             size="sm"
-            variant={Number(page) ? 'outlined' : 'plain'}
+            variant={Number(page) ? "outlined" : "plain"}
             color={
               Number(page) && Number(page) - 1 === offset
-                ? 'primary'
-                : 'neutral'
+                ? "primary"
+                : "neutral"
             }
             onClick={() => {
               const nb = Number(page);

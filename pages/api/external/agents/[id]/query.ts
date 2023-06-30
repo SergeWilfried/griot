@@ -1,23 +1,23 @@
-import { MessageFrom, SubscriptionPlan, Usage } from '@prisma/client';
-import Cors from 'cors';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { MessageFrom, SubscriptionPlan, Usage } from "@prisma/client";
+import Cors from "cors";
+import { NextApiRequest, NextApiResponse } from "next";
 
-import { ChatRequest } from '@app/types/dtos';
-import { AppNextApiRequest } from '@app/types/index';
-import accountConfig from '@app/utils/account-config';
-import AgentManager from '@app/utils/agent';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import ConversationManager from '@app/utils/conversation';
-import { createApiHandler, respond } from '@app/utils/createa-api-handler';
-import guardAgentQueryUsage from '@app/utils/guard-agent-query-usage';
-import prisma from '@app/utils/prisma-client';
-import runMiddleware from '@app/utils/run-middleware';
-import { validate } from '@app/utils/validate';
+import { ChatRequest } from "@app/types/dtos";
+import { AppNextApiRequest } from "@app/types/index";
+import accountConfig from "@app/utils/account-config";
+import AgentManager from "@app/utils/agent";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import ConversationManager from "@app/utils/conversation";
+import { createApiHandler, respond } from "@app/utils/createa-api-handler";
+import guardAgentQueryUsage from "@app/utils/guard-agent-query-usage";
+import prisma from "@app/utils/prisma-client";
+import runMiddleware from "@app/utils/run-middleware";
+import { validate } from "@app/utils/validate";
 
 const handler = createApiHandler();
 
 const cors = Cors({
-  methods: ['POST', 'HEAD'],
+  methods: ["POST", "HEAD"],
 });
 
 export const queryAgent = async (
@@ -29,7 +29,7 @@ export const queryAgent = async (
 
   // get Bearer token from header
   const authHeader = req.headers.authorization;
-  const apiKey = authHeader && authHeader.split(' ')?.[1];
+  const apiKey = authHeader && authHeader.split(" ")?.[1];
 
   if (!agentId) {
     throw new ApiError(ApiErrorType.INVALID_REQUEST);
@@ -46,7 +46,7 @@ export const queryAgent = async (
           apiKeys: true,
           subscriptions: {
             where: {
-              status: 'active',
+              status: "active",
             },
           },
         },
@@ -59,14 +59,14 @@ export const queryAgent = async (
       conversations: {
         where: {
           agentId: agentId,
-          visitorId: data.visitorId || 'UNKNOWN',
+          visitorId: data.visitorId || "UNKNOWN",
         },
         take: 1,
         include: {
           messages: {
             take: -4,
             orderBy: {
-              createdAt: 'asc',
+              createdAt: "asc",
             },
           },
         },
@@ -78,7 +78,7 @@ export const queryAgent = async (
     throw new ApiError(ApiErrorType.INVALID_REQUEST);
   }
 
-  console.log('HEADERS', req.headers);
+  console.log("HEADERS", req.headers);
 
   // try {
   //   origin = new URL(req.headers['origin'] as string).host;
@@ -108,14 +108,14 @@ export const queryAgent = async (
 
   if (data.streaming) {
     res.writeHead(200, {
-      'Content-Type': 'text/event-stream',
-      'Cache-Control': 'no-cache, no-transform',
-      Connection: 'keep-alive',
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
     });
   }
 
   const streamData = (data: string) => {
-    const input = data === '[DONE]' ? data : encodeURIComponent(data);
+    const input = data === "[DONE]" ? data : encodeURIComponent(data);
     res.write(`data: ${input}\n\n`);
   };
 
@@ -165,7 +165,7 @@ export const queryAgent = async (
   conversationManager.save();
 
   if (data.streaming) {
-    streamData('[DONE]');
+    streamData("[DONE]");
   } else {
     return {
       answer,

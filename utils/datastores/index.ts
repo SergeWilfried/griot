@@ -1,13 +1,13 @@
-import { Datastore, DatastoreType } from '@prisma/client';
-import { blake3, createBLAKE3 } from 'hash-wasm';
+import { Datastore, DatastoreType } from "@prisma/client";
+import { blake3, createBLAKE3 } from "hash-wasm";
 
-import { Chunk, SearchRequestSchema } from '@app/types';
-import type { Document } from '@app/utils/datastores/base';
+import { Chunk, SearchRequestSchema } from "@app/types";
+import type { Document } from "@app/utils/datastores/base";
 
-import uuidv4 from '../uuid';
+import uuidv4 from "../uuid";
 
-import { ClientManager } from './base';
-import { QdrantManager } from './qdrant';
+import { ClientManager } from "./base";
+import { QdrantManager } from "./qdrant";
 export class DatastoreManager {
   datastore: Datastore;
   manager: ClientManager<Datastore>;
@@ -56,7 +56,7 @@ export class DatastoreManager {
       hasher.update(tag);
     }
 
-    return hasher.digest('hex');
+    return hasher.digest("hex");
   }
 
   async handleSplitDocument(document: Document) {
@@ -90,6 +90,6 @@ export class DatastoreManager {
   }
 
   async importSplitters() {
-    return await import('langchain/text_splitter');
+    return await import("langchain/text_splitter");
   }
 }

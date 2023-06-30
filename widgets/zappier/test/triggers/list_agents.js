@@ -1,14 +1,14 @@
-require('should');
+require("should");
 
-const zapier = require('zapier-platform-core');
+const zapier = require("zapier-platform-core");
 
-const App = require('../../index');
+const App = require("../../index");
 const appTester = zapier.createAppTester(App);
 
-describe('Trigger - list_agents', () => {
+describe("Trigger - list_agents", () => {
   zapier.tools.env.inject();
 
-  it('should get an array', async () => {
+  it("should get an array", async () => {
     const bundle = {
       authData: {
         api_key: process.env.API_KEY,
@@ -24,7 +24,7 @@ describe('Trigger - list_agents', () => {
     };
 
     const results = await appTester(
-      App.triggers['list_agents'].operation.perform,
+      App.triggers["list_agents"].operation.perform,
       bundle
     );
     results.should.be.an.Array();

@@ -1,16 +1,16 @@
-import { ConversationChannel, MessageFrom, Usage } from '@prisma/client';
-import cuid from 'cuid';
-import { NextApiResponse } from 'next';
+import { ConversationChannel, MessageFrom, Usage } from "@prisma/client";
+import cuid from "cuid";
+import { NextApiResponse } from "next";
 
-import { AppNextApiRequest, ChatRequest } from '@app/types';
-import accountConfig from '@app/utils/account-config';
-import AgentManager from '@app/utils/agent';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import chat from '@app/utils/chat';
-import ConversationManager from '@app/utils/conversation';
-import { createAuthApiHandler, respond } from '@app/utils/createa-api-handler';
-import guardAgentQueryUsage from '@app/utils/guard-agent-query-usage';
-import prisma from '@app/utils/prisma-client';
+import { AppNextApiRequest, ChatRequest } from "@app/types";
+import accountConfig from "@app/utils/account-config";
+import AgentManager from "@app/utils/agent";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import chat from "@app/utils/chat";
+import ConversationManager from "@app/utils/conversation";
+import { createAuthApiHandler, respond } from "@app/utils/createa-api-handler";
+import guardAgentQueryUsage from "@app/utils/guard-agent-query-usage";
+import prisma from "@app/utils/prisma-client";
 
 const handler = createAuthApiHandler();
 
@@ -76,7 +76,7 @@ export const XPBNPQuery = async (
       messagesBNP: {
         take: -4,
         orderBy: {
-          createdAt: 'asc',
+          createdAt: "asc",
         },
       },
     },
@@ -90,14 +90,14 @@ export const XPBNPQuery = async (
 
   if (data.streaming) {
     res.writeHead(200, {
-      'Content-Type': 'text/event-stream',
-      'Cache-Control': 'no-cache, no-transform',
-      Connection: 'keep-alive',
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
     });
   }
 
   const streamData = (data: string) => {
-    const input = data === '[DONE]' ? data : encodeURIComponent(data);
+    const input = data === "[DONE]" ? data : encodeURIComponent(data);
     res.write(`data: ${input}\n\n`);
   };
 
@@ -137,7 +137,7 @@ export const XPBNPQuery = async (
   const { answer } = await chat({
     prompt:
       "As a customer support agent, please provide a helpful and professional response to the user's question or issue.",
-    promptType: 'customer_support',
+    promptType: "customer_support",
     datastore: datastore as any,
     query: data.query,
     topK: 5,
@@ -175,7 +175,7 @@ export const XPBNPQuery = async (
   //   conversationManager.save();
 
   if (data.streaming) {
-    streamData('[DONE]');
+    streamData("[DONE]");
   } else {
     return {
       answer,

@@ -3,29 +3,29 @@ import {
   DatasourceType,
   SubscriptionPlan,
   Usage,
-} from '@prisma/client';
-import Cors from 'cors';
-import mime from 'mime-types';
-import multer from 'multer';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { z } from 'zod';
+} from "@prisma/client";
+import Cors from "cors";
+import mime from "mime-types";
+import multer from "multer";
+import { NextApiRequest, NextApiResponse } from "next";
+import { z } from "zod";
 
 import {
   AcceptedDatasourceMimeTypes,
   AppNextApiRequest,
-} from '@app/types/index';
-import accountConfig from '@app/utils/account-config';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import { s3 } from '@app/utils/aws';
-import { createApiHandler, respond } from '@app/utils/createa-api-handler';
-import generateFunId from '@app/utils/generate-fun-id';
-import guardDataProcessingUsage from '@app/utils/guard-data-processing-usage';
-import prisma from '@app/utils/prisma-client';
-import runMiddleware from '@app/utils/run-middleware';
-import triggerTaskLoadDatasource from '@app/utils/trigger-task-load-datasource';
+} from "@app/types/index";
+import accountConfig from "@app/utils/account-config";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import { s3 } from "@app/utils/aws";
+import { createApiHandler, respond } from "@app/utils/createa-api-handler";
+import generateFunId from "@app/utils/generate-fun-id";
+import guardDataProcessingUsage from "@app/utils/guard-data-processing-usage";
+import prisma from "@app/utils/prisma-client";
+import runMiddleware from "@app/utils/run-middleware";
+import triggerTaskLoadDatasource from "@app/utils/trigger-task-load-datasource";
 
 const cors = Cors({
-  methods: ['POST', 'HEAD'],
+  methods: ["POST", "HEAD"],
 });
 
 const handler = createApiHandler();
@@ -33,7 +33,7 @@ const handler = createApiHandler();
 const FileSchema = z.object({
   mimetype: z.enum([
     ...AcceptedDatasourceMimeTypes,
-    'application/octet-stream',
+    "application/octet-stream",
   ]),
   fieldname: z.string(),
   originalname: z.string(),
@@ -48,21 +48,21 @@ export const upload = async (req: AppNextApiRequest, res: NextApiResponse) => {
   const custom_id = (req as any)?.body?.custom_id as string;
 
   // Patch for mimetype 'application/octet-stream' as some http clients don't send the correct mimetype (e.g curl with json file)
-  if (file?.mimetype === 'application/octet-stream') {
+  if (file?.mimetype === "application/octet-stream") {
     let type = mime.contentType(file.originalname);
 
     if (type) {
-      type = type.split(';')?.[0];
+      type = type.split(";")?.[0];
       file.mimetype = type as any;
     } else {
-      file.mimetype = 'octet' as any;
+      file.mimetype = "octet" as any;
     }
   }
 
   try {
     await FileSchema.parseAsync(file);
   } catch (err) {
-    console.log('Error File Upload', err);
+    console.log("Error File Upload", err);
     throw new ApiError(ApiErrorType.INVALID_REQUEST);
   }
 
@@ -70,7 +70,7 @@ export const upload = async (req: AppNextApiRequest, res: NextApiResponse) => {
 
   // get Bearer token from header
   const authHeader = req.headers.authorization;
-  const token = authHeader && authHeader?.split(' ')?.[1];
+  const token = authHeader && authHeader?.split(" ")?.[1];
 
   if (!token) {
     throw new ApiError(ApiErrorType.UNAUTHORIZED);
@@ -92,7 +92,7 @@ export const upload = async (req: AppNextApiRequest, res: NextApiResponse) => {
           usage: true,
           subscriptions: {
             where: {
-              status: 'active',
+              status: "active",
             },
           },
         },
@@ -150,14 +150,14 @@ export const upload = async (req: AppNextApiRequest, res: NextApiResponse) => {
 
   // Add to S3
   const fileExt = mime.extension(file.mimetype);
-  const s3FileName = `${datasource.id}${fileExt ? `.${fileExt}` : ''}`;
+  const s3FileName = `${datasource.id}${fileExt ? `.${fileExt}` : ""}`;
 
   const params = {
     Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME!,
     Key: `datastores/${datastore.id}/${datasource.id}/${s3FileName}`,
     Body: file.buffer,
     ContentType: file.mimetype,
-    ACL: 'public-read',
+    ACL: "public-read",
   };
 
   await s3.putObject(params).promise();
@@ -174,7 +174,7 @@ export const upload = async (req: AppNextApiRequest, res: NextApiResponse) => {
   return datasource;
 };
 
-handler.use(multer().single('file')).post(respond(upload));
+handler.use(multer().single("file")).post(respond(upload));
 
 export const config = {
   api: {

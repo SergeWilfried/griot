@@ -1,13 +1,12 @@
 version: "3"
 
 services:
-
   maildev:
-# Can be access in browser at localhost:1080.
-# Signin mail can be show at this adress.
-# Server is accessible at localhost:1025, using app.env default config.
+    # Can be access in browser at localhost:1080.
+    # Signin mail can be show at this adress.
+    # Server is accessible at localhost:1025, using app.env default config.
     image: maildev/maildev
-    ports: 
+    ports:
       - "1080:1080"
       - "${MAILDEV_PORT}:1025"
   base-api:
@@ -78,15 +77,15 @@ services:
 
   # Use minio to mock s3
   minio:
-    image: 'minio/minio:latest'
+    image: "minio/minio:latest"
     ports:
-      - '9000:9000'
-      - '9090:9090'
+      - "9000:9000"
+      - "9090:9090"
     environment:
-      MINIO_ROOT_USER: 'root'
-      MINIO_ROOT_PASSWORD: 'password'
+      MINIO_ROOT_USER: "root"
+      MINIO_ROOT_PASSWORD: "password"
     volumes:
-      - 'minio:/data/minio'
+      - "minio:/data/minio"
     command: minio server /data/minio --console-address ":9090"
 
 volumes:

@@ -1,7 +1,7 @@
-import { OAuth2Client } from 'google-auth-library';
-import { drive_v3, google } from 'googleapis';
+import { OAuth2Client } from "google-auth-library";
+import { drive_v3, google } from "googleapis";
 
-import { AcceptedDatasourceMimeTypes } from '@app/types/dtos';
+import { AcceptedDatasourceMimeTypes } from "@app/types/dtos";
 
 const getAuth = () =>
   new google.auth.OAuth2(
@@ -27,7 +27,7 @@ export class GoogleDriveManager {
       refresh_token: props.accessToken,
     });
 
-    this.drive = google.drive({ version: 'v3', auth: this.auth });
+    this.drive = google.drive({ version: "v3", auth: this.auth });
   }
 
   static async fromCode(code: string) {
@@ -47,7 +47,7 @@ export class GoogleDriveManager {
       refresh_token: this.refreshToken,
     });
 
-    this.drive = google.drive({ version: 'v3', auth: this.auth });
+    this.drive = google.drive({ version: "v3", auth: this.auth });
 
     return this.auth;
   }
@@ -66,7 +66,7 @@ export class GoogleDriveManager {
     return this.drive.drives.list({
       // pageSize: pageSize || 100,
       // pageToken,
-      fields: fields || 'nextPageToken, drives(id, name)',
+      fields: fields || "nextPageToken, drives(id, name)",
     });
   }
 
@@ -76,23 +76,23 @@ export class GoogleDriveManager {
     const fileList = [] as drive_v3.Schema$File[];
 
     const mimeTypeFilter = [
-      'application/vnd.google-apps.folder',
+      "application/vnd.google-apps.folder",
       ...AcceptedDatasourceMimeTypes,
     ]
       .map((each) => `mimeType='${each}'`)
-      .join(' or ');
+      .join(" or ");
 
     const processFiles = async (folderId: string, pageToken?: string) => {
       const response = await this.drive.files.list({
         q: `'${folderId}' in parents and (${mimeTypeFilter})`,
-        fields: 'files(id, name, mimeType, modifiedTime)',
+        fields: "files(id, name, mimeType, modifiedTime)",
       });
 
       const files = response?.data?.files || [];
 
       for (const file of files) {
         if (
-          file.mimeType === 'application/vnd.google-apps.folder' &&
+          file.mimeType === "application/vnd.google-apps.folder" &&
           file?.id
         ) {
           await processFiles(file?.id);
@@ -129,23 +129,23 @@ export class GoogleDriveManager {
     await this.refreshAuth();
 
     const mimeTypeFilter = [
-      'application/vnd.google-apps.folder',
+      "application/vnd.google-apps.folder",
       ...AcceptedDatasourceMimeTypes,
     ]
       .map((each) => `mimeType='${each}'`)
-      .join(' or ');
+      .join(" or ");
 
     return this.drive.files.list({
       pageSize: pageSize || 100,
       pageToken,
-      orderBy: 'name asc',
+      orderBy: "name asc",
       q: `${folderId ? `'${folderId}'` : `'root'`} in parents${
-        search ? ` and name contains '${search}'` : ''
+        search ? ` and name contains '${search}'` : ""
       } and (${mimeTypeFilter})`,
       // q: "mimeType='application/vnd.google-apps.folder'",
       fields:
         fields ||
-        'nextPageToken, files(id, name, mimeType, modifiedTime, size)',
+        "nextPageToken, files(id, name, mimeType, modifiedTime, size)",
     });
   }
 }

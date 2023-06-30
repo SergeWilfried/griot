@@ -1,11 +1,11 @@
-import { ServiceProviderType } from '@prisma/client';
-import { google } from 'googleapis';
-import { NextApiResponse } from 'next';
+import { ServiceProviderType } from "@prisma/client";
+import { google } from "googleapis";
+import { NextApiResponse } from "next";
 
-import { AppNextApiRequest } from '@app/types/index';
-import { createAuthApiHandler, respond } from '@app/utils/createa-api-handler';
-import { GoogleDriveManager } from '@app/utils/google-drive-manager';
-import prisma from '@app/utils/prisma-client';
+import { AppNextApiRequest } from "@app/types/index";
+import { createAuthApiHandler, respond } from "@app/utils/createa-api-handler";
+import { GoogleDriveManager } from "@app/utils/google-drive-manager";
+import prisma from "@app/utils/prisma-client";
 
 const handler = createAuthApiHandler();
 
@@ -16,7 +16,7 @@ export const auth = async (req: AppNextApiRequest, res: NextApiResponse) => {
   const driveManager = await GoogleDriveManager.fromCode(code);
 
   const userInfo = await driveManager.drive.about.get({
-    fields: 'user',
+    fields: "user",
   });
 
   await prisma.serviceProvider.create({
@@ -33,7 +33,7 @@ export const auth = async (req: AppNextApiRequest, res: NextApiResponse) => {
     },
   });
 
-  return res.redirect('/close-window');
+  return res.redirect("/close-window");
 };
 
 handler.get(auth);

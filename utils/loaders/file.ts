@@ -1,38 +1,38 @@
-import mime from 'mime-types';
+import mime from "mime-types";
 
-import { s3 } from '@app/utils/aws';
-import { Document } from '@app/utils/datastores/base';
+import { s3 } from "@app/utils/aws";
+import { Document } from "@app/utils/datastores/base";
 
-import excelToText from '../excel-to-text';
-import pdfToText from '../pdf-to-text';
-import pptxToText from '../pptx-to-text';
-import wordToText from '../word-to-text';
+import excelToText from "../excel-to-text";
+import pdfToText from "../pdf-to-text";
+import pptxToText from "../pptx-to-text";
+import wordToText from "../word-to-text";
 
-import { DatasourceLoaderBase } from './base';
+import { DatasourceLoaderBase } from "./base";
 
 export const fileBufferToString = async (props: {
   buffer: any;
   mimeType: string;
 }) => {
-  let text = '';
+  let text = "";
 
   switch (props.mimeType) {
-    case 'text/csv':
-    case 'text/plain':
-    case 'application/json':
-    case 'text/markdown':
-      text = new TextDecoder('utf-8').decode(props.buffer);
+    case "text/csv":
+    case "text/plain":
+    case "application/json":
+    case "text/markdown":
+      text = new TextDecoder("utf-8").decode(props.buffer);
       break;
-    case 'application/pdf':
+    case "application/pdf":
       text = await pdfToText(props.buffer);
       break;
-    case 'application/vnd.openxmlformats-officedocument.presentationml.presentation':
+    case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
       text = await pptxToText(props.buffer);
       break;
-    case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+    case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
       text = await wordToText(props.buffer);
       break;
-    case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+    case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
       text = await excelToText(props.buffer);
       break;
     default:

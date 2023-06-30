@@ -2,24 +2,24 @@ import {
   BoltIcon,
   CloudArrowUpIcon,
   LinkIcon,
-} from '@heroicons/react/20/solid';
+} from "@heroicons/react/20/solid";
 
 const features = [
   {
-    name: 'Load data from any source',
+    name: "Load data from any source",
     description: `Easily upload documents you'd like to chat with.`,
     icon: CloudArrowUpIcon,
   },
   {
-    name: 'Instant answers',
+    name: "Instant answers",
     description:
-      'Ask questions, extract information, and summarize documents with AI.',
+      "Ask questions, extract information, and summarize documents with AI.",
     icon: BoltIcon,
   },
   {
-    name: 'Sources included',
+    name: "Sources included",
     description:
-      'Every response is backed by sources extracted from the uploaded document.',
+      "Every response is backed by sources extracted from the uploaded document.",
     icon: LinkIcon,
   },
 ];
@@ -54,7 +54,7 @@ export default function Example() {
                         aria-hidden="true"
                       />
                       {feature.name}
-                    </dt>{' '}
+                    </dt>{" "}
                     <br />
                     <dd className="inline">{feature.description}</dd>
                   </div>

@@ -1,12 +1,12 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import AddIcon from '@mui/icons-material/Add';
-import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
-import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import AutoGraphRoundedIcon from '@mui/icons-material/AutoGraphRounded';
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import LinkRoundedIcon from '@mui/icons-material/LinkRounded';
-import SettingsIcon from '@mui/icons-material/Settings';
+import { zodResolver } from "@hookform/resolvers/zod";
+import AddIcon from "@mui/icons-material/Add";
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import AutoGraphRoundedIcon from "@mui/icons-material/AutoGraphRounded";
+import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import LinkRoundedIcon from "@mui/icons-material/LinkRounded";
+import SettingsIcon from "@mui/icons-material/Settings";
 import {
   ColorPaletteProp,
   FormLabel,
@@ -15,67 +15,67 @@ import {
   Option,
   Select,
   Sheet,
-} from '@mui/joy';
-import Box from '@mui/joy/Box';
-import Breadcrumbs from '@mui/joy/Breadcrumbs';
-import Button from '@mui/joy/Button';
-import Chip from '@mui/joy/Chip';
-import Divider from '@mui/joy/Divider';
-import FormControl from '@mui/joy/FormControl';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import Radio from '@mui/joy/Radio';
-import RadioGroup from '@mui/joy/RadioGroup';
-import Tab from '@mui/joy/Tab';
-import TabList from '@mui/joy/TabList';
-import Tabs from '@mui/joy/Tabs';
-import Textarea from '@mui/joy/Textarea';
-import Typography from '@mui/joy/Typography';
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
-import { ConversationChannel, Prisma } from '@prisma/client';
-import axios from 'axios';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { GetServerSidePropsContext } from 'next/types';
-import { useSession } from 'next-auth/react';
-import { ReactElement } from 'react';
-import * as React from 'react';
-import { useForm } from 'react-hook-form';
-import useSWR from 'swr';
-import { z } from 'zod';
+} from "@mui/joy";
+import Box from "@mui/joy/Box";
+import Breadcrumbs from "@mui/joy/Breadcrumbs";
+import Button from "@mui/joy/Button";
+import Chip from "@mui/joy/Chip";
+import Divider from "@mui/joy/Divider";
+import FormControl from "@mui/joy/FormControl";
+import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import Radio from "@mui/joy/Radio";
+import RadioGroup from "@mui/joy/RadioGroup";
+import Tab from "@mui/joy/Tab";
+import TabList from "@mui/joy/TabList";
+import Tabs from "@mui/joy/Tabs";
+import Textarea from "@mui/joy/Textarea";
+import Typography from "@mui/joy/Typography";
+import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import { ConversationChannel, Prisma } from "@prisma/client";
+import axios from "axios";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { GetServerSidePropsContext } from "next/types";
+import { useSession } from "next-auth/react";
+import { ReactElement } from "react";
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import useSWR from "swr";
+import { z } from "zod";
 
-import ChatBoxBNP from '@app/components/ChatBoxBNP';
-import CreateDatastoreModal from '@app/components/CreateDatastoreModal';
-import Layout from '@app/components/Layout';
-import UsageLimitModal from '@app/components/UsageLimitModal';
-import useAgentChat from '@app/hooks/useAgentChat';
-import useGetDatastoreQuery from '@app/hooks/useGetDatastoreQuery';
-import useStateReducer from '@app/hooks/useStateReducer';
-import { getDatastores } from '@app/pages/api/datastores';
-import { getDatastore } from '@app/pages/api/datastores/[id]';
-import { RouteNames } from '@app/types';
-import { XPBNPLabels } from '@app/utils/config';
-import guardDataProcessingUsage from '@app/utils/guard-data-processing-usage';
-import { fetcher } from '@app/utils/swr-fetcher';
-import { withAuth } from '@app/utils/withAuth';
-import xpData from '@app/utils/xp-bnp-data.json';
+import ChatBoxBNP from "@app/components/ChatBoxBNP";
+import CreateDatastoreModal from "@app/components/CreateDatastoreModal";
+import Layout from "@app/components/Layout";
+import UsageLimitModal from "@app/components/UsageLimitModal";
+import useAgentChat from "@app/hooks/useAgentChat";
+import useGetDatastoreQuery from "@app/hooks/useGetDatastoreQuery";
+import useStateReducer from "@app/hooks/useStateReducer";
+import { getDatastores } from "@app/pages/api/datastores";
+import { getDatastore } from "@app/pages/api/datastores/[id]";
+import { RouteNames } from "@app/types";
+import { XPBNPLabels } from "@app/utils/config";
+import guardDataProcessingUsage from "@app/utils/guard-data-processing-usage";
+import { fetcher } from "@app/utils/swr-fetcher";
+import { withAuth } from "@app/utils/withAuth";
+import xpData from "@app/utils/xp-bnp-data.json";
 
 const CreateDatasourceModal = dynamic(
-  () => import('@app/components/CreateDatasourceModal'),
+  () => import("@app/components/CreateDatasourceModal"),
   {
     ssr: false,
   }
 );
 
 const DatastoreSettings = dynamic(
-  () => import('@app/components/DatastoreSettings'),
+  () => import("@app/components/DatastoreSettings"),
   {
     ssr: false,
   }
 );
 
-const Datasources = dynamic(() => import('@app/components/Datasources'), {
+const Datasources = dynamic(() => import("@app/components/Datasources"), {
   ssr: false,
 });
 
@@ -106,21 +106,21 @@ const EvalModal = (props: {
   });
 
   const onSubmit = async (values: z.infer<typeof EvalSchema>) => {
-    console.log('values', values);
+    console.log("values", values);
 
     const payload = {
       ...values,
       datasourceName: props.datasourceName,
       datastoreName: props.datastoreName,
       result: props.result,
-      name: localStorage.getItem('userName'),
+      name: localStorage.getItem("userName"),
       useCase: props.useCase,
       feature: props.feature,
       promptType: props.promptType,
       prompt: props.prompt,
     };
 
-    console.log('payload', payload);
+    console.log("payload", payload);
     setState({
       isLoading: true,
     });
@@ -129,7 +129,7 @@ const EvalModal = (props: {
 
     await axios.delete(`/api/xp/bnp/history`, {
       data: {
-        userName: localStorage.getItem('userName'),
+        userName: localStorage.getItem("userName"),
       },
     });
 
@@ -143,33 +143,33 @@ const EvalModal = (props: {
     window.location.reload();
   };
 
-  console.log('methods', methods.formState.errors);
+  console.log("methods", methods.formState.errors);
 
   return (
     <Modal
       onClose={props.handleClose}
       open={props.isOpen!}
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       <Sheet
         variant="outlined"
         sx={{
           width: 600,
-          maxWidth: '100%',
-          borderRadius: 'md',
+          maxWidth: "100%",
+          borderRadius: "md",
           p: 3,
-          boxShadow: 'lg',
+          boxShadow: "lg",
         }}
       >
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <Stack gap={2}>
             <FormControl>
               <FormLabel>
-                {`${(xpData as any)[props.feature]?.score_1 || 'Score 1'}`}
+                {`${(xpData as any)[props.feature]?.score_1 || "Score 1"}`}
                 (0-5)
               </FormLabel>
               <Input
-                {...methods.register('score_1')}
+                {...methods.register("score_1")}
                 type="number"
                 slotProps={{
                   input: {
@@ -181,11 +181,11 @@ const EvalModal = (props: {
             </FormControl>
             <FormControl>
               <FormLabel>
-                {`${(xpData as any)[props.feature]?.score_2 || 'Score 2'}`}
+                {`${(xpData as any)[props.feature]?.score_2 || "Score 2"}`}
                 (0-5)
               </FormLabel>
               <Input
-                {...methods.register('score_2')}
+                {...methods.register("score_2")}
                 type="number"
                 slotProps={{
                   input: {
@@ -197,11 +197,11 @@ const EvalModal = (props: {
             </FormControl>
             <FormControl>
               <FormLabel>
-                {`${(xpData as any)[props.feature]?.score_3 || 'Score 3'}`}
+                {`${(xpData as any)[props.feature]?.score_3 || "Score 3"}`}
                 (0-5)
               </FormLabel>
               <Input
-                {...methods.register('score_3')}
+                {...methods.register("score_3")}
                 type="number"
                 slotProps={{
                   input: {
@@ -214,7 +214,7 @@ const EvalModal = (props: {
             <FormControl>
               <FormLabel>Commentaire</FormLabel>
               <Textarea
-                {...methods.register('comment')}
+                {...methods.register("comment")}
                 minRows={4}
                 maxRows={10}
               />
@@ -225,7 +225,7 @@ const EvalModal = (props: {
             <Button
               type="submit"
               color="primary"
-              sx={{ ml: 'auto' }}
+              sx={{ ml: "auto" }}
               loading={state.isLoading}
             >
               Valider
@@ -240,10 +240,10 @@ const EvalModal = (props: {
 const prompts = {
   writing: {
     libre: [],
-    auto: ['Ecrit un poème comme molière sur chaindesk'],
+    auto: ["Ecrit un poème comme molière sur chaindesk"],
     assisté: [
-      'Rédige un résumé de ... lignes sans aucun exemple du document ...',
-      'Rédige un résumé de ... du document ... Avec à la fin une réflexion sur un des sujets abordés',
+      "Rédige un résumé de ... lignes sans aucun exemple du document ...",
+      "Rédige un résumé de ... du document ... Avec à la fin une réflexion sur un des sujets abordés",
     ],
   },
   qa: {
@@ -253,30 +253,30 @@ const prompts = {
   },
   summary: {
     libre: [],
-    auto: ['Fait un résumé'],
+    auto: ["Fait un résumé"],
     assisté: [
-      'Rédige un résumé de ... lignes sans aucun exemple du document ...',
-      'Rédige un résumé de ... du document ... Avec à la fin une réflexion sur un des sujets abordés',
+      "Rédige un résumé de ... lignes sans aucun exemple du document ...",
+      "Rédige un résumé de ... du document ... Avec à la fin une réflexion sur un des sujets abordés",
     ],
   },
 };
 
 const SearchBNP = (props: {
   datastoreId?: string;
-  feature: 'writing' | 'qa' | 'summary';
+  feature: "writing" | "qa" | "summary";
 }) => {
   const router = useRouter();
   const [state, setState] = useStateReducer({
     isEvalModalOpen: false,
-    promptType: undefined as 'libre' | 'auto' | 'assisté' | undefined,
-    prompt: '',
+    promptType: undefined as "libre" | "auto" | "assisté" | undefined,
+    prompt: "",
     currentDatasourceId: undefined as string | undefined,
-    userName: '',
+    userName: "",
   });
 
   let queryURL = `/api/xp/bnp/search`;
 
-  if (props.feature === 'summary' || props.feature === 'writing') {
+  if (props.feature === "summary" || props.feature === "writing") {
     queryURL = `/api/xp/bnp/summary`;
   }
 
@@ -304,17 +304,17 @@ const SearchBNP = (props: {
 
   React.useEffect(() => {
     setState({
-      userName: localStorage.getItem('userName') || '',
+      userName: localStorage.getItem("userName") || "",
     });
   }, []);
 
   let showChatBox = false;
 
   switch (props.feature) {
-    case 'qa':
+    case "qa":
       showChatBox = true;
       break;
-    case 'writing': {
+    case "writing": {
       if (!props.datastoreId) {
         showChatBox = true;
       } else if (props.datastoreId && state.currentDatasourceId) {
@@ -322,7 +322,7 @@ const SearchBNP = (props: {
       }
       break;
     }
-    case 'summary':
+    case "summary":
       if (state.currentDatasourceId) {
         showChatBox = true;
       }
@@ -347,15 +347,15 @@ const SearchBNP = (props: {
   return (
     <>
       <Stack>
-        <Stack direction={'row'} gap={2} sx={{ mb: 2 }}>
+        <Stack direction={"row"} gap={2} sx={{ mb: 2 }}>
           {state.promptType && (
             <Chip sx={{}} variant="outlined" color="neutral">
               Type de prompt: <strong>{state.promptType}</strong>
             </Chip>
           )}
 
-          {(props.feature === 'summary' ||
-            (props.feature === 'writing' && props?.datastoreId)) && (
+          {(props.feature === "summary" ||
+            (props.feature === "writing" && props?.datastoreId)) && (
             <Select
               placeholder="Selectionner un Document"
               onChange={(_, value) => {
@@ -384,9 +384,9 @@ const SearchBNP = (props: {
             </Select>
           )}
 
-          <Stack direction="row" gap={2} sx={{ ml: 'auto' }}>
+          <Stack direction="row" gap={2} sx={{ ml: "auto" }}>
             <Button
-              sx={{ mr: 'auto' }}
+              sx={{ mr: "auto" }}
               color="warning"
               variant="outlined"
               onClick={async () => {
@@ -403,7 +403,7 @@ const SearchBNP = (props: {
             </Button>
             {history.length > 0 && (
               <Button
-                sx={{ ml: 'auto' }}
+                sx={{ ml: "auto" }}
                 onClick={() => {
                   setState({ isEvalModalOpen: true });
                 }}
@@ -416,8 +416,8 @@ const SearchBNP = (props: {
 
         <Box
           sx={{
-            height: 'calc(100vh - 200px)',
-            maxHeight: '680px',
+            height: "calc(100vh - 200px)",
+            maxHeight: "680px",
           }}
         >
           {showChatBox && (
@@ -445,21 +445,21 @@ const SearchBNP = (props: {
         handleClose={() => setState({ isEvalModalOpen: false })}
         result={history
           ?.map((each) => `${each.from}: ${each.message}`)
-          .join('\n')}
+          .join("\n")}
       />
 
       <Modal
         onClose={() =>
           setState({
             promptType: undefined,
-            prompt: '',
+            prompt: "",
           })
         }
         open={!state.promptType}
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           py: 2,
         }}
       >
@@ -467,19 +467,19 @@ const SearchBNP = (props: {
           variant="outlined"
           sx={{
             width: 600,
-            maxWidth: '100%',
-            height: '100%',
-            overflowY: 'scroll',
+            maxWidth: "100%",
+            height: "100%",
+            overflowY: "scroll",
 
-            borderRadius: 'md',
+            borderRadius: "md",
             p: 3,
-            boxShadow: 'lg',
+            boxShadow: "lg",
           }}
         >
           <Button
             color="warning"
             startDecorator={<ArrowBackRoundedIcon />}
-            onClick={() => router.push('/xp/bnp')}
+            onClick={() => router.push("/xp/bnp")}
           >
             Nouvel Usage
           </Button>
@@ -495,13 +495,13 @@ const SearchBNP = (props: {
               name="radio-buttons-group"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 const value = e.target.value;
-                const type = value?.split('_')?.[0];
-                const index = value?.split('_')?.[1];
+                const type = value?.split("_")?.[0];
+                const index = value?.split("_")?.[1];
 
                 const prompt =
-                  (xpData as any)?.[props.feature]?.['prompts']?.[type]?.[
+                  (xpData as any)?.[props.feature]?.["prompts"]?.[type]?.[
                     index || 0
-                  ]?.value || '';
+                  ]?.value || "";
                 // (prompts as any)?.[props.feature]?.[type]?.[index || 0] || '';
 
                 setState({
@@ -511,18 +511,18 @@ const SearchBNP = (props: {
               }}
             >
               <Stack gap={2}>
-                {['summary'].includes(props.feature) && (
+                {["summary"].includes(props.feature) && (
                   <>
                     <Radio value="auto" label="Auto" size="lg" />
                     <Divider></Divider>
                   </>
                 )}
 
-                {['writing', 'summary'].includes(props.feature) && (
+                {["writing", "summary"].includes(props.feature) && (
                   <>
                     <Typography>Assisté</Typography>
                     <Stack gap={1}>
-                      {xpData[props.feature]['prompts']['assisté'].map(
+                      {xpData[props.feature]["prompts"]["assisté"].map(
                         (each, index) => (
                           <Radio
                             key={index}
@@ -538,7 +538,7 @@ const SearchBNP = (props: {
                   </>
                 )}
 
-                {['qa', 'writing', 'summary'].includes(props.feature) && (
+                {["qa", "writing", "summary"].includes(props.feature) && (
                   <Radio value="libre" label="Libre" size="lg" />
                 )}
               </Stack>
@@ -554,9 +554,9 @@ export default function XPBNPFeature() {
   const router = useRouter();
   const useCase = router.query.usecase as string;
   const datastoreId = (
-    router.query.datastoreId !== 'none' ? router.query.datastoreId : undefined
+    router.query.datastoreId !== "none" ? router.query.datastoreId : undefined
   ) as string | undefined;
-  const feature = router.query.feature as 'qa' | 'writing' | 'summary';
+  const feature = router.query.feature as "qa" | "writing" | "summary";
 
   const { data: session, status } = useSession();
   const [state, setState] = useStateReducer({
@@ -588,11 +588,11 @@ export default function XPBNPFeature() {
           md: 3,
         },
         flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         minWidth: 0,
         // height: '100dvh',
-        width: '100%',
+        width: "100%",
         gap: 1,
       })}
     >
@@ -610,12 +610,12 @@ export default function XPBNPFeature() {
             <Typography color="primary">{useCase}</Typography>
           </Link>
           <Typography>
-            {getDatastoreQuery?.data?.name || datastoreId || 'Sans Datastore'}
+            {getDatastoreQuery?.data?.name || datastoreId || "Sans Datastore"}
           </Typography>
         </Breadcrumbs>
 
         <Card
-          sx={{ p: 4, maxWidth: 'lg', minHeight: '500px', overflow: 'visible' }}
+          sx={{ p: 4, maxWidth: "lg", minHeight: "500px", overflow: "visible" }}
           variant="outlined"
         >
           {feature && <SearchBNP feature={feature} datastoreId={datastoreId} />}

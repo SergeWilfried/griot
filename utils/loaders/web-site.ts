@@ -2,18 +2,18 @@ import {
   DatasourceStatus,
   DatasourceType,
   SubscriptionPlan,
-} from '@prisma/client';
+} from "@prisma/client";
 
-import type { Document } from '@app/utils/datastores/base';
-import prisma from '@app/utils/prisma-client';
+import type { Document } from "@app/utils/datastores/base";
+import prisma from "@app/utils/prisma-client";
 
-import accountConfig from '../account-config';
-import cuid from '../cuid';
-import findDomainPages, { getSitemapPages } from '../find-domain-pages';
-import findSitemap from '../find-sitemap';
-import triggerTaskLoadDatasource from '../trigger-task-load-datasource';
+import accountConfig from "../account-config";
+import cuid from "../cuid";
+import findDomainPages, { getSitemapPages } from "../find-domain-pages";
+import findSitemap from "../find-sitemap";
+import triggerTaskLoadDatasource from "../trigger-task-load-datasource";
 
-import { DatasourceLoaderBase } from './base';
+import { DatasourceLoaderBase } from "./base";
 
 export class WebSiteLoader extends DatasourceLoaderBase {
   isGroup = true;

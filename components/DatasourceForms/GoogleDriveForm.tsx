@@ -1,38 +1,38 @@
-import AddIcon from '@mui/icons-material/Add';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeftRounded';
-import ChevronRightIcon from '@mui/icons-material/ChevronRightRounded';
-import Button from '@mui/joy/Button';
-import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
-import { DatasourceType, Prisma, ServiceProviderType } from '@prisma/client';
-import axios from 'axios';
-import React from 'react';
-import { useFormContext } from 'react-hook-form';
-import { z } from 'zod';
+import AddIcon from "@mui/icons-material/Add";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeftRounded";
+import ChevronRightIcon from "@mui/icons-material/ChevronRightRounded";
+import Button from "@mui/joy/Button";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import { DatasourceType, Prisma, ServiceProviderType } from "@prisma/client";
+import axios from "axios";
+import React from "react";
+import { useFormContext } from "react-hook-form";
+import { z } from "zod";
 
-import { UpsertDatasourceSchema } from '@app/types/models';
+import { UpsertDatasourceSchema } from "@app/types/models";
 
-import Base from './Base';
-import type { DatasourceFormProps } from './types';
+import Base from "./Base";
+import type { DatasourceFormProps } from "./types";
 
 type Props = DatasourceFormProps & {};
 
-import Autocomplete from '@mui/joy/Autocomplete';
-import AutocompleteOption from '@mui/joy/AutocompleteOption';
-import CircularProgress from '@mui/joy/CircularProgress';
-import FormHelperText from '@mui/joy/FormHelperText';
-import IconButton from '@mui/joy/IconButton';
-import ListItemContent from '@mui/joy/ListItemContent';
-import Option from '@mui/joy/Option';
-import Select from '@mui/joy/Select';
-import Stack from '@mui/joy/Stack';
-import useSWR from 'swr';
+import Autocomplete from "@mui/joy/Autocomplete";
+import AutocompleteOption from "@mui/joy/AutocompleteOption";
+import CircularProgress from "@mui/joy/CircularProgress";
+import FormHelperText from "@mui/joy/FormHelperText";
+import IconButton from "@mui/joy/IconButton";
+import ListItemContent from "@mui/joy/ListItemContent";
+import Option from "@mui/joy/Option";
+import Select from "@mui/joy/Select";
+import Stack from "@mui/joy/Stack";
+import useSWR from "swr";
 
-import useStateReducer from '@app/hooks/useStateReducer';
-import type { getServiceProviders } from '@app/pages/api/accounts/service-providers';
-import getDrives from '@app/pages/api/integrations/google-drive/get-drives';
-import { listFolder } from '@app/pages/api/integrations/google-drive/list-folder';
-import { fetcher } from '@app/utils/swr-fetcher';
+import useStateReducer from "@app/hooks/useStateReducer";
+import type { getServiceProviders } from "@app/pages/api/accounts/service-providers";
+import getDrives from "@app/pages/api/integrations/google-drive/get-drives";
+import { listFolder } from "@app/pages/api/integrations/google-drive/list-folder";
+import { fetcher } from "@app/utils/swr-fetcher";
 
 export const GoogleDriveSourceSchema = UpsertDatasourceSchema.extend({
   config: z.object({
@@ -48,8 +48,8 @@ function Nested() {
     useFormContext<z.infer<typeof GoogleDriveSourceSchema>>();
 
   const [state, setState] = useStateReducer({
-    currentProviderId: '',
-    currentFolderId: '',
+    currentProviderId: "",
+    currentFolderId: "",
     folderCrumbs: [] as string[],
   });
 
@@ -83,11 +83,11 @@ function Nested() {
     e.preventDefault();
     e.stopPropagation();
 
-    const res = await axios.get('/api/integrations/google-drive/get-auth-url');
+    const res = await axios.get("/api/integrations/google-drive/get-auth-url");
 
     const url = res.data?.authUrl;
 
-    window.open(url, '_blank', 'width=800,height=800');
+    window.open(url, "_blank", "width=800,height=800");
   };
 
   return (
@@ -99,13 +99,13 @@ function Nested() {
 
           <Stack gap={1}>
             <Select
-              {...register('config.serviceProviderId')}
+              {...register("config.serviceProviderId")}
               onChange={(_, value) => {
                 setState({
                   currentProviderId: value as string,
                 });
 
-                setValue('config.serviceProviderId', value as string);
+                setValue("config.serviceProviderId", value as string);
               }}
             >
               {getProvidersQuery.data?.map((provider) => (
@@ -117,8 +117,8 @@ function Nested() {
             <Button
               startDecorator={<AddIcon />}
               onClick={handleSignIn}
-              variant={'plain'}
-              sx={{ mr: 'auto' }}
+              variant={"plain"}
+              sx={{ mr: "auto" }}
             >
               Google Drive: Add Account
             </Button>
@@ -130,9 +130,9 @@ function Nested() {
             {state.currentProviderId && (
               <Stack
                 gap={1}
-                direction={'row'}
-                alignItems={'center'}
-                width={'100%'}
+                direction={"row"}
+                alignItems={"center"}
+                width={"100%"}
               >
                 {state.currentFolderId && (
                   <IconButton
@@ -142,7 +142,7 @@ function Nested() {
                       e.preventDefault();
 
                       const arr = [...state.folderCrumbs];
-                      const lastFolderId = arr.pop() || '';
+                      const lastFolderId = arr.pop() || "";
 
                       setState({
                         currentFolderId: lastFolderId,
@@ -161,7 +161,7 @@ function Nested() {
                 <Autocomplete
                   // {...register('config.objectId')}
                   sx={{
-                    width: '100%',
+                    width: "100%",
                   }}
                   loading={listFolderQuery?.isLoading}
                   placeholder="Select Folder or Single File"
@@ -185,21 +185,21 @@ function Nested() {
                     listFolderQuery?.isLoading ? (
                       <CircularProgress
                         size="sm"
-                        sx={{ bgcolor: 'background.surface' }}
+                        sx={{ bgcolor: "background.surface" }}
                       />
                     ) : null
                   }
                   onChange={(_, value) => {
-                    setValue('name', value?.label! || '');
-                    setValue('config.source', value?.label! || '');
-                    setValue('config.objectId', value?.id! || '');
-                    setValue('config.type', value?.mimeType! || '');
+                    setValue("name", value?.label! || "");
+                    setValue("config.source", value?.label! || "");
+                    setValue("config.objectId", value?.id! || "");
+                    setValue("config.type", value?.mimeType! || "");
                     if (
-                      value?.mimeType === 'application/vnd.google-apps.folder'
+                      value?.mimeType === "application/vnd.google-apps.folder"
                     ) {
-                      setValue('type', DatasourceType.google_drive_folder);
+                      setValue("type", DatasourceType.google_drive_folder);
                     } else {
-                      setValue('type', DatasourceType.google_drive_file);
+                      setValue("type", DatasourceType.google_drive_file);
                     }
                   }}
                   renderOption={(props, option) => (
@@ -208,7 +208,7 @@ function Nested() {
                         <ListItemContent>
                           <Stack direction="row" gap={2} alignItems="center">
                             {option.mimeType ===
-                              'application/vnd.google-apps.folder' && (
+                              "application/vnd.google-apps.folder" && (
                               <IconButton
                                 size="sm"
                                 color="neutral"

@@ -1,40 +1,40 @@
-import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import Alert from '@mui/joy/Alert';
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
-import Divider from '@mui/joy/Divider';
-import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
-import Input from '@mui/joy/Input';
-import Option from '@mui/joy/Option';
-import Select from '@mui/joy/Select';
-import Stack from '@mui/joy/Stack';
-import Typography from '@mui/joy/Typography';
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import Alert from "@mui/joy/Alert";
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import Card from "@mui/joy/Card";
+import Divider from "@mui/joy/Divider";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import Input from "@mui/joy/Input";
+import Option from "@mui/joy/Option";
+import Select from "@mui/joy/Select";
+import Stack from "@mui/joy/Stack";
+import Typography from "@mui/joy/Typography";
 import {
   Agent,
   ExternalIntegration,
   IntegrationType,
   Subscription,
-} from '@prisma/client';
-import axios from 'axios';
-import { blake3 } from 'hash-wasm';
-import { GetServerSidePropsContext } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { getServerSession, Session } from 'next-auth';
-import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
-import superjson from 'superjson';
+} from "@prisma/client";
+import axios from "axios";
+import { blake3 } from "hash-wasm";
+import { GetServerSidePropsContext } from "next";
+import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { getServerSession, Session } from "next-auth";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import superjson from "superjson";
 
-import Logo from '@app/components/Logo';
-import useStateReducer from '@app/hooks/useStateReducer';
-import { authOptions } from '@app/pages/api/auth/[...nextauth]';
-import createIntegrationId from '@app/utils/create-integration-id';
-import { getConnectedWebsites } from '@app/utils/crisp';
-import prisma from '@app/utils/prisma-client';
-import { withAuth } from '@app/utils/withAuth';
+import Logo from "@app/components/Logo";
+import useStateReducer from "@app/hooks/useStateReducer";
+import { authOptions } from "@app/pages/api/auth/[...nextauth]";
+import createIntegrationId from "@app/utils/create-integration-id";
+import { getConnectedWebsites } from "@app/utils/crisp";
+import prisma from "@app/utils/prisma-client";
+import { withAuth } from "@app/utils/withAuth";
 
 export default function CrispConfig(props: { agent: Agent }) {
   const session = useSession();
@@ -43,8 +43,8 @@ export default function CrispConfig(props: { agent: Agent }) {
   const [state, setState] = useStateReducer({
     showSuccessAlert: false,
     isLoading: false,
-    apiKey: '',
-    error: '',
+    apiKey: "",
+    error: "",
     currentAgent: props?.agent as Agent | undefined,
     agents: [] as Agent[],
   });
@@ -55,8 +55,8 @@ export default function CrispConfig(props: { agent: Agent }) {
     (async () => {
       {
         if (user) {
-          const apiKeys = await axios.get('/api/accounts/api-keys');
-          const { data } = await axios.get('/api/agents');
+          const apiKeys = await axios.get("/api/accounts/api-keys");
+          const { data } = await axios.get("/api/agents");
 
           const apiKey = apiKeys.data[0]?.key;
 
@@ -74,7 +74,7 @@ export default function CrispConfig(props: { agent: Agent }) {
     try {
       setState({
         isLoading: true,
-        error: '',
+        error: "",
       });
 
       var _urlParams = new URLSearchParams(window.location.search);
@@ -83,9 +83,9 @@ export default function CrispConfig(props: { agent: Agent }) {
         window.location.origin +
           `/api/integrations/${router.query.name}/config-update`,
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
             agentId: state.currentAgent?.id,
@@ -101,7 +101,7 @@ export default function CrispConfig(props: { agent: Agent }) {
         if (router.query.callback) {
           const url = new URL(router.query.callback! as string);
 
-          url.searchParams.append('agentId', state.currentAgent?.id!);
+          url.searchParams.append("agentId", state.currentAgent?.id!);
 
           router.push(url.toString());
         }
@@ -179,20 +179,20 @@ export default function CrispConfig(props: { agent: Agent }) {
                   size="md"
                   onClick={() => handleFetchAgents(inputValue)}
                 >
-                  Continue
+                  Continuer
                 </Button>
               )} */}
               {state.currentAgent && (
                 <>
                   <Divider sx={{ my: 4 }} />
 
-                  <Stack direction={'row'} spacing={1} ml="auto">
+                  <Stack direction={"row"} spacing={1} ml="auto">
                     <Button
                       loading={state.isLoading}
                       size="md"
                       onClick={sendConfig}
                     >
-                      Save Settings
+                      Sauvegarder les paramètres
                     </Button>
                   </Stack>
                 </>
@@ -214,7 +214,7 @@ export const getServerSideProps = withAuth(
 
     const redirect = {
       redirect: {
-        destination: '/',
+        destination: "/",
         permanent: false,
       },
     };

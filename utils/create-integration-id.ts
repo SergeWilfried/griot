@@ -1,4 +1,4 @@
-import { blake3 } from 'hash-wasm';
+import { blake3 } from "hash-wasm";
 
 const createIntegrationId = async (props: {
   siteurl: string;

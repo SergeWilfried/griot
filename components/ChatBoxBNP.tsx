@@ -1,19 +1,19 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import SendRoundedIcon from '@mui/icons-material/SendRounded';
-import { Textarea } from '@mui/joy';
-import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
-import CircularProgress from '@mui/joy/CircularProgress';
-import IconButton from '@mui/joy/IconButton';
-import Input from '@mui/joy/Input';
-import Stack from '@mui/joy/Stack';
-import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import { z } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import SendRoundedIcon from "@mui/icons-material/SendRounded";
+import { Textarea } from "@mui/joy";
+import Button from "@mui/joy/Button";
+import Card from "@mui/joy/Card";
+import CircularProgress from "@mui/joy/CircularProgress";
+import IconButton from "@mui/joy/IconButton";
+import Input from "@mui/joy/Input";
+import Stack from "@mui/joy/Stack";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { z } from "zod";
 
-type Message = { from: 'human' | 'agent'; message: string; createdAt?: Date };
+type Message = { from: "human" | "agent"; message: string; createdAt?: Date };
 
 type Props = {
   messages: Message[];
@@ -23,7 +23,7 @@ type Props = {
   readOnly?: boolean;
   prompt?: string;
   multiline?: boolean;
-  promptType?: 'auto' | 'assisté' | 'libre';
+  promptType?: "auto" | "assisté" | "libre";
 };
 
 const Schema = z.object({ query: z.string().min(1) });
@@ -71,17 +71,17 @@ function ChatBox({
   React.useEffect(() => {
     setTimeout(() => {
       setFirstMsg(
-        initialMessage ? { from: 'agent', message: initialMessage } : undefined
+        initialMessage ? { from: "agent", message: initialMessage } : undefined
       );
     }, 0);
   }, [initialMessage]);
 
   useEffect(() => {
     if (prompt) {
-      console.log('prompt', prompt);
-      methods.setValue('query', prompt);
+      console.log("prompt", prompt);
+      methods.setValue("query", prompt);
 
-      if (promptType === 'auto') {
+      if (promptType === "auto") {
         submit(methods.getValues());
       }
     }
@@ -89,32 +89,32 @@ function ChatBox({
 
   return (
     <Stack
-      direction={'column'}
+      direction={"column"}
       gap={2}
       sx={{
-        display: 'flex',
+        display: "flex",
         flex: 1,
-        flexBasis: '100%',
-        maxWidth: '700px',
-        width: '100%',
-        height: '100%',
-        maxHeight: '100%',
-        minHeight: '100%',
-        mx: 'auto',
+        flexBasis: "100%",
+        maxWidth: "700px",
+        width: "100%",
+        height: "100%",
+        maxHeight: "100%",
+        minHeight: "100%",
+        mx: "auto",
       }}
     >
       <Stack
         ref={scrollableRef}
-        direction={'column'}
+        direction={"column"}
         gap={2}
         sx={{
-          boxSizing: 'border-box',
-          maxWidth: '100%',
-          width: '100%',
-          mx: 'auto',
+          boxSizing: "border-box",
+          maxWidth: "100%",
+          width: "100%",
+          mx: "auto",
           flex: 1,
-          maxHeight: '100%',
-          overflowY: 'auto',
+          maxHeight: "100%",
+          overflowY: "auto",
           pb: 8,
           pt: 2,
         }}
@@ -122,13 +122,13 @@ function ChatBox({
         {firstMsg && (
           <Card
             size="sm"
-            variant={'outlined'}
-            color={'primary'}
+            variant={"outlined"}
+            color={"primary"}
             className="message-agent"
             sx={{
-              mr: 'auto',
-              ml: 'none',
-              whiteSpace: 'pre-wrap',
+              mr: "auto",
+              ml: "none",
+              whiteSpace: "pre-wrap",
             }}
           >
             {firstMsg?.message}
@@ -139,53 +139,53 @@ function ChatBox({
           <Stack
             key={index}
             sx={{
-              mr: each.from === 'agent' ? 'auto' : 'none',
-              ml: each.from === 'human' ? 'auto' : 'none',
+              mr: each.from === "agent" ? "auto" : "none",
+              ml: each.from === "human" ? "auto" : "none",
             }}
           >
             <Card
               size="sm"
-              variant={'outlined'}
+              variant={"outlined"}
               className={
-                each.from === 'agent' ? 'message-agent' : 'message-human'
+                each.from === "agent" ? "message-agent" : "message-human"
               }
-              color={each.from === 'agent' ? 'primary' : 'neutral'}
+              color={each.from === "agent" ? "primary" : "neutral"}
               sx={(theme) => ({
                 py: 0,
                 px: 2,
-                'ol,ul,p': {
+                "ol,ul,p": {
                   // color: theme.palette.text.secondary,
                 },
-                'ol, ul': {
+                "ol, ul": {
                   my: 0,
                   pl: 2,
                 },
                 ol: {
-                  listStyle: 'numeric',
+                  listStyle: "numeric",
                 },
                 // 'ol > li > p': {
                 //   fontWeight: 'bold',
                 // },
                 ul: {
-                  listStyle: 'disc',
+                  listStyle: "disc",
                   mb: 2,
                 },
                 li: {
                   my: 1,
                 },
-                'li::marker, ol::marker': {
+                "li::marker, ol::marker": {
                   // color: theme.palette.text.tertiary,
                 },
                 a: {
                   // color: theme.palette.text.primary,
-                  textDecoration: 'underline',
+                  textDecoration: "underline",
                 },
-                [' p ']: {
+                [" p "]: {
                   py: 1,
                 },
               })}
             >
-              <ReactMarkdown remarkPlugins={[remarkGfm]} linkTarget={'_blank'}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} linkTarget={"_blank"}>
                 {each.message}
               </ReactMarkdown>
             </Card>
@@ -197,7 +197,7 @@ function ChatBox({
             variant="soft"
             color="neutral"
             size="sm"
-            sx={{ mx: 'auto', my: 2 }}
+            sx={{ mx: "auto", my: 2 }}
           />
         )}
       </Stack>
@@ -207,17 +207,17 @@ function ChatBox({
       {!readOnly && (
         <form
           style={{
-            maxWidth: '100%',
-            width: '100%',
-            position: 'relative',
-            display: 'flex',
+            maxWidth: "100%",
+            width: "100%",
+            position: "relative",
+            display: "flex",
 
-            marginTop: 'auto',
-            overflow: 'visible',
-            background: 'none',
-            justifyContent: 'center',
-            marginLeft: 'auto',
-            marginRight: 'auto',
+            marginTop: "auto",
+            overflow: "visible",
+            background: "none",
+            justifyContent: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
             // paddingLeft: 'inherit',
             // paddingRight: 'inherit',
           }}
@@ -232,12 +232,12 @@ function ChatBox({
               direction="row"
               gap={1}
               sx={{
-                position: 'absolute',
+                position: "absolute",
                 zIndex: 1,
-                transform: 'translateY(-100%)',
-                flexWrap: 'wrap',
+                transform: "translateY(-100%)",
+                flexWrap: "wrap",
                 mt: -1,
-                left: '0',
+                left: "0",
               }}
             >
               {messageTemplates?.map((each, idx) => (
@@ -253,32 +253,32 @@ function ChatBox({
             </Stack>
           )}
 
-          {(promptType === 'assisté' || promptType === 'libre') &&
+          {(promptType === "assisté" || promptType === "libre") &&
             (multiline ? (
               <Stack
-                direction={'row'}
-                sx={{ width: '100%', alignItems: 'flex-start' }}
+                direction={"row"}
+                sx={{ width: "100%", alignItems: "flex-start" }}
                 gap={1}
               >
                 <Textarea
-                  sx={{ width: '100%' }}
+                  sx={{ width: "100%" }}
                   // disabled={!state.currentDatastoreId || state.loading}
                   minRows={1}
                   variant="outlined"
-                  {...methods.register('query')}
+                  {...methods.register("query")}
                 />
 
                 <IconButton
                   type="submit"
                   disabled={isLoading}
-                  sx={{ ml: 'auto' }}
+                  sx={{ ml: "auto" }}
                 >
                   <SendRoundedIcon />
                 </IconButton>
               </Stack>
             ) : (
               <Input
-                sx={{ width: '100%' }}
+                sx={{ width: "100%" }}
                 // disabled={!state.currentDatastoreId || state.loading}
                 variant="outlined"
                 endDecorator={
@@ -286,7 +286,7 @@ function ChatBox({
                     <SendRoundedIcon />
                   </IconButton>
                 }
-                {...methods.register('query')}
+                {...methods.register("query")}
               />
             ))}
         </form>

@@ -1,6 +1,6 @@
-import { AppDatasource as Datasource, Prisma } from '@prisma/client';
+import { AppDatasource as Datasource, Prisma } from "@prisma/client";
 
-import { Document } from '@app/utils/datastores/base';
+import { Document } from "@app/utils/datastores/base";
 
 const datasourceExtended = Prisma.validator<Prisma.AppDatasourceArgs>()({
   include: {
@@ -11,7 +11,7 @@ const datasourceExtended = Prisma.validator<Prisma.AppDatasourceArgs>()({
         usage: true,
         subscriptions: {
           where: {
-            status: 'active',
+            status: "active",
           },
         },
       },
@@ -32,7 +32,7 @@ export abstract class DatasourceLoaderBase {
   }
 
   async importLoaders() {
-    return await import('langchain/document_loaders');
+    return await import("langchain/document_loaders");
   }
 
   abstract getSize(param?: any): Promise<number>;

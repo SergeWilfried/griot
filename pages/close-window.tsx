@@ -1,9 +1,9 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from "react";
 
-import Layout from '@app/components/Layout';
+import Layout from "@app/components/Layout";
 export default function CloseWindow() {
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       window.close();
     }
   }, []);

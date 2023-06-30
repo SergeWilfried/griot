@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export function NavLink({ href, children, target }) {
   return (
@@ -9,5 +9,5 @@ export function NavLink({ href, children, target }) {
     >
       {children}
     </Link>
-  )
+  );
 }

@@ -1,7 +1,6 @@
 version: "3"
 
 services:
-
   maildev:
     extends:
       file: docker-compose.yml

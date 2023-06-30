@@ -1,34 +1,34 @@
-import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import ThreePRoundedIcon from '@mui/icons-material/ThreePRounded';
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
-import Chip from '@mui/joy/Chip';
-import CircularProgress from '@mui/joy/CircularProgress';
-import colors from '@mui/joy/colors';
-import Divider from '@mui/joy/Divider';
-import IconButton from '@mui/joy/IconButton';
-import Input from '@mui/joy/Input';
-import { extendTheme, useColorScheme } from '@mui/joy/styles';
-import Typography from '@mui/joy/Typography';
-import Stack from '@mui/material/Stack';
-import type { Agent } from '@prisma/client';
-import React, { useEffect, useMemo, useRef } from 'react';
-import { Transition } from 'react-transition-group';
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
+import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import ThreePRoundedIcon from "@mui/icons-material/ThreePRounded";
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import Card from "@mui/joy/Card";
+import Chip from "@mui/joy/Chip";
+import CircularProgress from "@mui/joy/CircularProgress";
+import colors from "@mui/joy/colors";
+import Divider from "@mui/joy/Divider";
+import IconButton from "@mui/joy/IconButton";
+import Input from "@mui/joy/Input";
+import { extendTheme, useColorScheme } from "@mui/joy/styles";
+import Typography from "@mui/joy/Typography";
+import Stack from "@mui/material/Stack";
+import type { Agent } from "@prisma/client";
+import React, { useEffect, useMemo, useRef } from "react";
+import { Transition } from "react-transition-group";
 
-import ChatBox from '@app/components/ChatBox';
-import useAgentChat from '@app/hooks/useAgentChat';
-import useStateReducer from '@app/hooks/useStateReducer';
-import useVisitorId from '@app/hooks/useVisitorId';
-import { AgentInterfaceConfig } from '@app/types/models';
-import pickColorBasedOnBgColor from '@app/utils/pick-color-based-on-bgcolor';
+import ChatBox from "@app/components/ChatBox";
+import useAgentChat from "@app/hooks/useAgentChat";
+import useStateReducer from "@app/hooks/useStateReducer";
+import useVisitorId from "@app/hooks/useVisitorId";
+import { AgentInterfaceConfig } from "@app/types/models";
+import pickColorBasedOnBgColor from "@app/utils/pick-color-based-on-bgcolor";
 
 export const theme = extendTheme({
-  cssVarPrefix: 'databerry-chat-bubble',
+  cssVarPrefix: "databerry-chat-bubble",
   colorSchemes: {
     dark: {
       palette: {
@@ -45,8 +45,8 @@ export const theme = extendTheme({
 
 const defaultChatBubbleConfig: AgentInterfaceConfig = {
   // displayName: 'Agent Smith',
-  theme: 'light',
-  primaryColor: '#000000',
+  theme: "light",
+  primaryColor: "#000000",
   // initialMessage: 'Hi, how can I help you?',
   // position: 'right',
   // messageTemplates: ["What's the pricing?"],
@@ -68,14 +68,14 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
     showHelp: true,
     showCaptureForm: false,
     isCaptureLoading: false,
-    visitorEmail: '',
+    visitorEmail: "",
   });
 
   // const [show];
 
   const { history, handleChatSubmit } = useAgentChat({
     queryAgentURL: `${API_URL}/api/external/agents/${props.agentId}/query`,
-    channel: 'website',
+    channel: "website",
     // channel: ConversationChannel.website // not working with bundler parcel,
     // queryHistoryURL: visitorId
     //   ? `${API_URL}/api/external/agents/${props.agentId}/history/${visitorId}`
@@ -84,9 +84,9 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
 
   const textColor = useMemo(() => {
     return pickColorBasedOnBgColor(
-      state.config.primaryColor || '#ffffff',
-      '#ffffff',
-      '#000000'
+      state.config.primaryColor || "#ffffff",
+      "#ffffff",
+      "#000000"
     );
   }, [state.config.primaryColor]);
 
@@ -136,7 +136,7 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
 
   useEffect(() => {
     if (localStorage) {
-      const visitorEmail = localStorage.getItem('visitorEmail');
+      const visitorEmail = localStorage.getItem("visitorEmail");
 
       if (visitorEmail) {
         setState({
@@ -174,7 +174,7 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
               size="sm"
               color="success"
               variant="soft"
-              sx={{ mr: 'auto' }}
+              sx={{ mr: "auto" }}
               endDecorator={<CheckRoundedIcon />}
             >
               help requested
@@ -187,7 +187,7 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
               variant="plain"
               color="neutral"
               startDecorator={<ThreePRoundedIcon />}
-              sx={{ mr: 'auto' }}
+              sx={{ mr: "auto" }}
               onClick={() => setState({ showCaptureForm: true })}
             >
               Help
@@ -211,9 +211,9 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
                   await fetch(
                     `${API_URL}/api/external/agents/${props.agentId}/capture`,
                     {
-                      method: 'POST',
+                      method: "POST",
                       headers: {
-                        'Content-Type': 'application/json',
+                        "Content-Type": "application/json",
                       },
                       body: JSON.stringify({
                         visitorEmail: email,
@@ -228,11 +228,11 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
                     visitorEmail: email,
                   });
 
-                  localStorage.setItem('visitorEmail', email);
+                  localStorage.setItem("visitorEmail", email);
                 }
               }}
             >
-              <Stack direction="row" gap={0.5} sx={{ width: '100%' }}>
+              <Stack direction="row" gap={0.5} sx={{ width: "100%" }}>
                 <IconButton
                   size="sm"
                   variant="plain"
@@ -246,7 +246,7 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
                 </IconButton>
 
                 <Input
-                  sx={{ width: '100%' }}
+                  sx={{ width: "100%" }}
                   size="sm"
                   name="email"
                   type="email"
@@ -302,7 +302,7 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
           <Stack
             ref={initMessageRef}
             sx={{
-              position: 'fixed',
+              position: "fixed",
               bottom: 100,
 
               transition: `opacity 300ms ease-in-out`,
@@ -310,24 +310,24 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
               zIndex: 9999999998,
               ...(transitionStyles as any)[s],
 
-              ...(state.config.position === 'left'
+              ...(state.config.position === "left"
                 ? {
-                    left: '20px',
+                    left: "20px",
                   }
                 : {}),
-              ...(state.config.position === 'right'
+              ...(state.config.position === "right"
                 ? {
-                    right: '20px',
+                    right: "20px",
                   }
                 : {}),
             }}
           >
             <Card
               sx={{
-                width: '100%',
+                width: "100%",
                 maxWidth: 1000,
-                display: 'flex',
-                boxShadow: 'md',
+                display: "flex",
+                boxShadow: "md",
               }}
             >
               <Typography>{state.config?.initialMessage}</Typography>
@@ -339,20 +339,20 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
       <Box
         sx={{
           // bgcolor: 'red',
-          overflow: 'visible',
-          position: 'fixed',
-          height: '60px',
-          bottom: '20px',
+          overflow: "visible",
+          position: "fixed",
+          height: "60px",
+          bottom: "20px",
           zIndex: 9999999999,
 
-          ...(state.config.position === 'left'
+          ...(state.config.position === "left"
             ? {
-                left: '20px',
+                left: "20px",
               }
             : {}),
-          ...(state.config.position === 'right'
+          ...(state.config.position === "right"
             ? {
-                right: '20px',
+                right: "20px",
               }
             : {}),
         }}
@@ -370,53 +370,53 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
               variant="outlined"
               sx={(theme) => ({
                 zIndex: 9999,
-                position: 'absolute',
-                bottom: '80px',
-                display: 'flex',
-                flexDirection: 'column',
-                boxSizing: 'border-box',
-                boxShadow: 'md',
+                position: "absolute",
+                bottom: "80px",
+                display: "flex",
+                flexDirection: "column",
+                boxSizing: "border-box",
+                boxShadow: "md",
 
                 transition: `opacity 150ms ease-in-out`,
                 opacity: 0,
                 ...(transitionStyles as any)[s],
 
-                ...(state.config.position === 'right'
+                ...(state.config.position === "right"
                   ? {
                       transform: `translateX(${-400 + 50}px)`,
                     }
                   : {}),
 
-                width: '400px',
-                [theme.breakpoints.down('sm')]: {
-                  width: '100vw',
-                  maxWidth: '100vw',
+                width: "400px",
+                [theme.breakpoints.down("sm")]: {
+                  width: "100vw",
+                  maxWidth: "100vw",
 
-                  bottom: '-20px',
+                  bottom: "-20px",
 
-                  ...(state.config.position === 'left'
+                  ...(state.config.position === "left"
                     ? {
-                        left: '-20px',
+                        left: "-20px",
                       }
                     : {}),
-                  ...(state.config.position === 'right'
+                  ...(state.config.position === "right"
                     ? {
                         transform: `translateX(0px)`,
-                        right: '-20px',
+                        right: "-20px",
                       }
                     : {}),
                 },
               })}
             >
-              <Box sx={{ width: '100%', mt: -2, py: 1 }}>
-                <Stack direction="row" alignItems={'center'}>
+              <Box sx={{ width: "100%", mt: -2, py: 1 }}>
+                <Stack direction="row" alignItems={"center"}>
                   {state.config?.displayName && (
                     <Typography>{state.config?.displayName}</Typography>
                   )}
 
                   <IconButton
                     variant="plain"
-                    sx={{ ml: 'auto' }}
+                    sx={{ ml: "auto" }}
                     size="sm"
                     onClick={() => setState({ isOpen: false })}
                   >
@@ -429,25 +429,25 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
                 sx={(theme) => ({
                   // flex: 1,
                   // display: 'flex',
-                  width: '100%',
-                  position: 'relative',
+                  width: "100%",
+                  position: "relative",
 
-                  height: 'calc(100vh - 200px)',
-                  maxHeight: '680px',
+                  height: "calc(100vh - 200px)",
+                  maxHeight: "680px",
 
-                  [theme.breakpoints.down('sm')]: {
-                    height: '80vh',
-                    maxHeight: '80vh',
-                    maxWidth: '100vw',
+                  [theme.breakpoints.down("sm")]: {
+                    height: "80vh",
+                    maxHeight: "80vh",
+                    maxWidth: "100vw",
                   },
 
-                  '& .message-agent': {
+                  "& .message-agent": {
                     backgroundColor: state.config.primaryColor,
                     // borderColor: state.config.primaryColor,
                     color: pickColorBasedOnBgColor(
-                      state.config?.primaryColor! || '#ffffff',
-                      '#ffffff',
-                      '#000000'
+                      state.config?.primaryColor! || "#ffffff",
+                      "#ffffff",
+                      "#000000"
                     ),
                   },
                 })}
@@ -478,16 +478,16 @@ function App(props: { agentId: string; initConfig?: AgentInterfaceConfig }) {
           }
           sx={(theme) => ({
             backgroundColor: state.config.primaryColor,
-            width: '60px',
-            height: '60px',
-            borderRadius: '100%',
+            width: "60px",
+            height: "60px",
+            borderRadius: "100%",
             color: textColor,
-            transition: 'all 100ms ease-in-out',
+            transition: "all 100ms ease-in-out",
 
-            '&:hover': {
+            "&:hover": {
               backgroundColor: state.config.primaryColor,
-              filter: 'brightness(0.9)',
-              transform: 'scale(1.05)',
+              filter: "brightness(0.9)",
+              transform: "scale(1.05)",
             },
           })}
         >

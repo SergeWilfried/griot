@@ -1,15 +1,15 @@
-import Cors from 'cors';
-import { NextApiRequest, NextApiResponse } from 'next';
-import nodemailer from 'nodemailer';
-import { z } from 'zod';
+import Cors from "cors";
+import { NextApiRequest, NextApiResponse } from "next";
+import nodemailer from "nodemailer";
+import { z } from "zod";
 
-import { ChatRequest } from '@app/types/dtos';
-import { AppNextApiRequest } from '@app/types/index';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import { createApiHandler, respond } from '@app/utils/createa-api-handler';
-import prisma from '@app/utils/prisma-client';
-import runMiddleware from '@app/utils/run-middleware';
-import { validate } from '@app/utils/validate';
+import { ChatRequest } from "@app/types/dtos";
+import { AppNextApiRequest } from "@app/types/index";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import { createApiHandler, respond } from "@app/utils/createa-api-handler";
+import prisma from "@app/utils/prisma-client";
+import runMiddleware from "@app/utils/run-middleware";
+import { validate } from "@app/utils/validate";
 
 const transporter = nodemailer.createTransport(process.env.EMAIL_SERVER, {
   from: process.env.EMAIL_FROM,
@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport(process.env.EMAIL_SERVER, {
 const handler = createApiHandler();
 
 const cors = Cors({
-  methods: ['POST', 'HEAD'],
+  methods: ["POST", "HEAD"],
 });
 
 const CaptureRequestSchema = z.object({
@@ -43,7 +43,7 @@ export const capture = async (req: AppNextApiRequest, res: NextApiResponse) => {
           apiKeys: true,
           subscriptions: {
             where: {
-              status: 'active',
+              status: "active",
             },
           },
         },
@@ -51,14 +51,14 @@ export const capture = async (req: AppNextApiRequest, res: NextApiResponse) => {
       conversations: {
         where: {
           agentId: agentId,
-          visitorId: data.visitorId || 'UNKNOWN',
+          visitorId: data.visitorId || "UNKNOWN",
         },
         take: 1,
         include: {
           messages: {
             take: -20,
             orderBy: {
-              createdAt: 'asc',
+              createdAt: "asc",
             },
           },
         },
@@ -156,7 +156,7 @@ export const capture = async (req: AppNextApiRequest, res: NextApiResponse) => {
       </tr>
       `
         )
-        .join('\n')}
+        .join("\n")}
 
     </table>
 
@@ -170,7 +170,7 @@ export const capture = async (req: AppNextApiRequest, res: NextApiResponse) => {
 
   await transporter.sendMail({
     to: onwerEmail,
-    subject: 'Visitor requested assistance - ⛓️ Griot',
+    subject: "Visitor requested assistance - ⛓️ Griot",
     html,
   });
 

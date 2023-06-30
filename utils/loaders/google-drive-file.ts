@@ -1,10 +1,10 @@
-import { AcceptedDatasourceMimeTypes } from '@app/types/dtos';
-import { Document } from '@app/utils/datastores/base';
+import { AcceptedDatasourceMimeTypes } from "@app/types/dtos";
+import { Document } from "@app/utils/datastores/base";
 
-import { GoogleDriveManager } from '../google-drive-manager';
+import { GoogleDriveManager } from "../google-drive-manager";
 
-import { DatasourceLoaderBase } from './base';
-import { fileBufferToString } from './file';
+import { DatasourceLoaderBase } from "./base";
+import { fileBufferToString } from "./file";
 
 export class GoogleDriveFileLoader extends DatasourceLoaderBase {
   async getSize(text: string) {
@@ -26,16 +26,16 @@ export class GoogleDriveFileLoader extends DatasourceLoaderBase {
     const result = await driveManager.drive.files.get(
       {
         fileId: fileId,
-        alt: 'media',
+        alt: "media",
       },
-      { responseType: 'stream' }
+      { responseType: "stream" }
     );
 
     const p = new Promise(async (resolve, reject) => {
       try {
         let data = [] as any;
-        result.data.on('data', (chunk) => data.push(chunk));
-        result.data.on('end', () => {
+        result.data.on("data", (chunk) => data.push(chunk));
+        result.data.on("end", () => {
           let fileData = Buffer.concat(data);
           // Do something with fileData
 
@@ -49,8 +49,8 @@ export class GoogleDriveFileLoader extends DatasourceLoaderBase {
 
     const fileContents = await p;
 
-    let text = '';
-    const mimeType = result?.headers?.['content-type'];
+    let text = "";
+    const mimeType = result?.headers?.["content-type"];
 
     if (AcceptedDatasourceMimeTypes.includes(mimeType!)) {
       text = await fileBufferToString({

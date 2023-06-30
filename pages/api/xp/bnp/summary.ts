@@ -1,19 +1,19 @@
-import { get_encoding } from '@dqbd/tiktoken';
-import { ConversationChannel, MessageFrom, Usage } from '@prisma/client';
-import cuid from 'cuid';
-import { TokenTextSplitter } from 'langchain/text_splitter';
-import { NextApiResponse } from 'next';
+import { get_encoding } from "@dqbd/tiktoken";
+import { ConversationChannel, MessageFrom, Usage } from "@prisma/client";
+import cuid from "cuid";
+import { TokenTextSplitter } from "langchain/text_splitter";
+import { NextApiResponse } from "next";
 
-import { AppNextApiRequest, ChatRequest } from '@app/types';
-import accountConfig from '@app/utils/account-config';
-import AgentManager from '@app/utils/agent';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import { s3 } from '@app/utils/aws';
-import chat from '@app/utils/chat';
-import ConversationManager from '@app/utils/conversation';
-import { createAuthApiHandler, respond } from '@app/utils/createa-api-handler';
-import guardAgentQueryUsage from '@app/utils/guard-agent-query-usage';
-import prisma from '@app/utils/prisma-client';
+import { AppNextApiRequest, ChatRequest } from "@app/types";
+import accountConfig from "@app/utils/account-config";
+import AgentManager from "@app/utils/agent";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import { s3 } from "@app/utils/aws";
+import chat from "@app/utils/chat";
+import ConversationManager from "@app/utils/conversation";
+import { createAuthApiHandler, respond } from "@app/utils/createa-api-handler";
+import guardAgentQueryUsage from "@app/utils/guard-agent-query-usage";
+import prisma from "@app/utils/prisma-client";
 
 const handler = createAuthApiHandler();
 
@@ -35,7 +35,7 @@ export const XPBNPQuery = async (
 
   const receivedDate = new Date();
 
-  let content = '';
+  let content = "";
   let nbTokens = 0;
 
   if (data.datasourceId || data.datastoreId) {
@@ -71,10 +71,10 @@ export const XPBNPQuery = async (
       })
       .promise();
 
-    content = JSON.parse(s3Response.Body?.toString('utf-8') || '{}')
+    content = JSON.parse(s3Response.Body?.toString("utf-8") || "{}")
       ?.text as string;
 
-    const encoding = get_encoding('cl100k_base');
+    const encoding = get_encoding("cl100k_base");
     nbTokens = encoding.encode(content).length;
     encoding.free();
 
@@ -88,30 +88,30 @@ export const XPBNPQuery = async (
       content = chunks[0];
     }
 
-    console.log('nbTokens ------>', nbTokens);
+    console.log("nbTokens ------>", nbTokens);
   }
 
   if (data.streaming) {
     res.writeHead(200, {
-      'Content-Type': 'text/event-stream',
-      'Cache-Control': 'no-cache, no-transform',
-      Connection: 'keep-alive',
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
     });
   }
 
   const streamData = (data: string) => {
-    const input = data === '[DONE]' ? data : encodeURIComponent(data);
+    const input = data === "[DONE]" ? data : encodeURIComponent(data);
     res.write(`data: ${input}\n\n`);
   };
 
   const { answer } = await chat({
-    promptType: 'raw',
-    prompt: `${data.query || 'Fait résumé de ce document: '} ${content || ''}`,
+    promptType: "raw",
+    prompt: `${data.query || "Fait résumé de ce document: "} ${content || ""}`,
     // datastore: datastore as any,
     temperature: 0,
     query: data.query,
     stream: data.streaming ? streamData : undefined,
-    modelName: nbTokens > 3200 ? 'gpt-3.5-turbo-16k' : undefined,
+    modelName: nbTokens > 3200 ? "gpt-3.5-turbo-16k" : undefined,
   });
 
   await prisma.messageBNP.createMany({
@@ -138,7 +138,7 @@ export const XPBNPQuery = async (
   //   conversationManager.save();
 
   if (data.streaming) {
-    streamData('[DONE]');
+    streamData("[DONE]");
   } else {
     return {
       answer,

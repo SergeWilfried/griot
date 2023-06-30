@@ -1,16 +1,16 @@
-import { Popover, Transition } from '@headlessui/react';
-import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import Button from '@mui/joy/Button';
-import clsx from 'clsx';
-import Link from 'next/link';
-import { Fragment } from 'react';
+import { Popover, Transition } from "@headlessui/react";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import Button from "@mui/joy/Button";
+import clsx from "clsx";
+import Link from "next/link";
+import { Fragment } from "react";
 
 // import { Button } from '@app/components/landing-page/Button'
-import { Container } from '@app/components/landing-page/Container';
-import { Logo } from '@app/components/landing-page/Logo';
-import Menu from '@app/components/landing-page/Menu';
-import { NavLink } from '@app/components/landing-page/NavLink';
-import { RouteNames } from '@app/types';
+import { Container } from "@app/components/landing-page/Container";
+import { Logo } from "@app/components/landing-page/Logo";
+import Menu from "@app/components/landing-page/Menu";
+import { NavLink } from "@app/components/landing-page/NavLink";
+import { RouteNames } from "@app/types";
 
 function MobileNavLink({ href, children }) {
   return (
@@ -32,15 +32,15 @@ function MobileNavIcon({ open }) {
       <path
         d="M0 1H14M0 7H14M0 13H14"
         className={clsx(
-          'origin-center transition',
-          open && 'scale-90 opacity-0'
+          "origin-center transition",
+          open && "scale-90 opacity-0"
         )}
       />
       <path
         d="M2 2L12 12M12 2L2 12"
         className={clsx(
-          'origin-center transition',
-          !open && 'scale-90 opacity-0'
+          "origin-center transition",
+          !open && "scale-90 opacity-0"
         )}
       />
     </svg>
@@ -82,13 +82,19 @@ function MobileNavigation() {
             className="absolute inset-x-0 flex flex-col p-4 mt-4 text-lg tracking-tight origin-top bg-white shadow-xl top-full rounded-2xl text-slate-900 ring-1 ring-slate-900/5"
           >
             <MobileNavLink href="/pricing">Pricing</MobileNavLink>
-            <MobileNavLink href="https://github.com/gmpetrov/chaindesk" target={'_blank'}>
+            <MobileNavLink
+              href="https://github.com/gmpetrov/chaindesk"
+              target={"_blank"}
+            >
               GitHub
             </MobileNavLink>
-            <MobileNavLink href="https://docs.mongriot.com/" target={'_blank'}>
+            <MobileNavLink href="https://docs.mongriot.com/" target={"_blank"}>
               Docs
             </MobileNavLink>
-            <MobileNavLink href="https://databerry.getrewardful.com/" target={'_blank'}>
+            <MobileNavLink
+              href="https://databerry.getrewardful.com/"
+              target={"_blank"}
+            >
               Affiliates
             </MobileNavLink>
             {/* <MobileNavLink href="#testimonials">Testimonials</MobileNavLink> */}
@@ -127,16 +133,22 @@ export function Header() {
                 </Button>
               </Link> */}
 
-<Menu />
+              <Menu />
 
               <NavLink href="/pricing">Pricing</NavLink>
-              <NavLink href="https://github.com/gmpetrov/chaindesk" target={'_blank'}>
+              <NavLink
+                href="https://github.com/gmpetrov/chaindesk"
+                target={"_blank"}
+              >
                 GitHub
               </NavLink>
-              <NavLink href="https://docs.mongriot.com/" target={'_blank'}>
+              <NavLink href="https://docs.mongriot.com/" target={"_blank"}>
                 Docs
               </NavLink>
-              <NavLink href="https://databerry.getrewardful.com/" target={"_blank"}>
+              <NavLink
+                href="https://databerry.getrewardful.com/"
+                target={"_blank"}
+              >
                 Affiliates
               </NavLink>
               {/* <NavLink href="#testimonials">Testimonials</NavLink> */}

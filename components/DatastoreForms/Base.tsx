@@ -1,23 +1,23 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import Alert from '@mui/joy/Alert';
-import Button from '@mui/joy/Button';
-import Checkbox from '@mui/joy/Checkbox';
-import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
-import Typography from '@mui/joy/Typography';
-import { DatastoreType, Prisma } from '@prisma/client';
-import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import useSWRMutation from 'swr/mutation';
-import { z } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import Alert from "@mui/joy/Alert";
+import Button from "@mui/joy/Button";
+import Checkbox from "@mui/joy/Checkbox";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import Typography from "@mui/joy/Typography";
+import { DatastoreType, Prisma } from "@prisma/client";
+import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import useSWRMutation from "swr/mutation";
+import { z } from "zod";
 
-import Input from '@app/components/Input';
-import { createDatastore } from '@app/pages/api/datastores';
-import { QdrantSchema as Schema } from '@app/types/models';
-import { postFetcher } from '@app/utils/swr-fetcher';
+import Input from "@app/components/Input";
+import { createDatastore } from "@app/pages/api/datastores";
+import { QdrantSchema as Schema } from "@app/types/models";
+import { postFetcher } from "@app/utils/swr-fetcher";
 
-import { DatastoreFormProps } from './types';
+import { DatastoreFormProps } from "./types";
 
 export const UpsertDatastoreSchema = z.object({
   id: z.string().trim().optional(),
@@ -63,9 +63,9 @@ export default function BaseForm(props: Props) {
       const datastore = await toast.promise(
         upsertDatastoreMutation.trigger(values as any),
         {
-          loading: 'Updating...',
-          success: 'Updated!',
-          error: 'Something went wrong',
+          loading: "Mise à jour en cours...",
+          success: "Mise à jour reussie!",
+          error: "Une erreur est survenue",
         }
       );
 
@@ -73,7 +73,7 @@ export default function BaseForm(props: Props) {
         props?.onSubmitSuccess?.(datastore);
       }
     } catch (err) {
-      console.log('error', err);
+      console.log("error", err);
     }
   };
 
@@ -85,7 +85,7 @@ export default function BaseForm(props: Props) {
 
   const networkError = upsertDatastoreMutation.error?.message;
 
-  console.log('validation errors', errors);
+  console.log("validation errors", errors);
 
   return (
     <FormProvider {...methods}>
@@ -96,10 +96,10 @@ export default function BaseForm(props: Props) {
         {networkError && <Alert color="danger">{networkError}</Alert>}
 
         <Input
-          label="Datastore Name"
-          helperText="e.g.: Nuclear Fusion latest research papers"
+          label="Nom du document"
+          helperText="e.g.: Fiscalité des entreprises en Cote D'Ivoire"
           control={control as any}
-          {...register('name')}
+          {...register("name")}
         />
 
         {/* <Input
@@ -115,15 +115,15 @@ export default function BaseForm(props: Props) {
           <FormControl className="flex flex-row space-x-4">
             <Checkbox
               defaultChecked={!!props?.defaultValues?.isPublic}
-              {...register('isPublic')}
+              {...register("isPublic")}
             />
             <div className="flex flex-col">
-              <FormLabel>Public</FormLabel>
+              <FormLabel>Publique</FormLabel>
               <Typography level="body3">
-                When activated, your datastore will be available by anyone on
-                the internet.{' '}
-                <Typography fontWeight={'bold'} color="primary">
-                  Required for a public ChatGPT plugin.
+                Une fois activé, votre document sera accessible par
+                n&apos;importe qui sur Internet..{" "}
+                <Typography fontWeight={"bold"} color="primary">
+                  Nécessaire pour un plugin ChatGPT public.
                 </Typography>
               </Typography>
             </div>
@@ -154,7 +154,7 @@ export default function BaseForm(props: Props) {
             loading={upsertDatastoreMutation.isMutating}
             {...props.submitButtonProps}
           >
-            {props.submitButtonText || 'Submit'}
+            {props.submitButtonText || "Submit"}
           </Button>
         )}
       </form>

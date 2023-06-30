@@ -1,7 +1,7 @@
-import Modal from '@mui/joy/Modal';
-import React from 'react';
+import Modal from "@mui/joy/Modal";
+import React from "react";
 
-import UsageLimitCard from './UsageLimitCard';
+import UsageLimitCard from "./UsageLimitCard";
 
 type Props = {
   title?: string;
@@ -15,7 +15,7 @@ function UsageLimitModal({ isOpen, title, description, handleClose }: Props) {
     <Modal
       open={isOpen}
       onClose={handleClose}
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       <div>
         <UsageLimitCard title={title} description={description} />

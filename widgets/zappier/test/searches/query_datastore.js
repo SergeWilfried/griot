@@ -1,14 +1,14 @@
-require('should');
+require("should");
 
-const zapier = require('zapier-platform-core');
+const zapier = require("zapier-platform-core");
 
-const App = require('../../index');
+const App = require("../../index");
 const appTester = zapier.createAppTester(App);
 
-describe('Search - query_datastore', () => {
+describe("Search - query_datastore", () => {
   zapier.tools.env.inject();
 
-  it('should get an array', async () => {
+  it("should get an array", async () => {
     const bundle = {
       authData: {
         api_key: process.env.API_KEY,
@@ -20,12 +20,12 @@ describe('Search - query_datastore', () => {
 
       inputData: {
         datastore_id: process.env.TEST_DATASTORE_ID,
-        query: 'Hello',
+        query: "Hello",
       },
     };
 
     const results = await appTester(
-      App.searches['query_datastore'].operation.perform,
+      App.searches["query_datastore"].operation.perform,
       bundle
     );
     results.should.be.an.Array();

@@ -1,16 +1,16 @@
 import {
   EventStreamContentType,
   fetchEventSource,
-} from '@microsoft/fetch-event-source';
-import type { ConversationChannel, Prisma } from '@prisma/client';
-import useSWR from 'swr';
+} from "@microsoft/fetch-event-source";
+import type { ConversationChannel, Prisma } from "@prisma/client";
+import useSWR from "swr";
 
-import { getHistory } from '@app/pages/api/agents/[id]/history/[sessionId]';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import { fetcher } from '@app/utils/swr-fetcher';
+import { getHistory } from "@app/pages/api/agents/[id]/history/[sessionId]";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import { fetcher } from "@app/utils/swr-fetcher";
 
-import useStateReducer from './useStateReducer';
-import useVisitorId from './useVisitorId';
+import useStateReducer from "./useStateReducer";
+import useVisitorId from "./useVisitorId";
 
 type Props = {
   queryAgentURL: string;
@@ -27,7 +27,7 @@ const useAgentChat = ({
   queryBody,
 }: Props) => {
   const [state, setState] = useStateReducer({
-    history: [] as { from: 'human' | 'agent'; message: string; id?: string }[],
+    history: [] as { from: "human" | "agent"; message: string; id?: string }[],
   });
 
   const { visitorId } = useVisitorId();
@@ -62,27 +62,27 @@ const useAgentChat = ({
       return;
     }
 
-    const history = [...state.history, { from: 'human', message }];
+    const history = [...state.history, { from: "human", message }];
     const nextIndex = history.length;
 
     setState({
       history: history as any,
     });
 
-    let answer = '';
-    let error = '';
+    let answer = "";
+    let error = "";
 
     try {
       const ctrl = new AbortController();
-      let buffer = '';
+      let buffer = "";
 
       class RetriableError extends Error {}
       class FatalError extends Error {}
 
       await fetchEventSource(queryAgentURL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           // Accept: 'text/event-stream',
         },
         body: JSON.stringify({
@@ -97,7 +97,7 @@ const useAgentChat = ({
         async onopen(response) {
           if (
             response.ok &&
-            response.headers.get('content-type') === EventStreamContentType
+            response.headers.get("content-type") === EventStreamContentType
           ) {
             return; // everything's good
           } else if (
@@ -119,12 +119,12 @@ const useAgentChat = ({
           throw new RetriableError();
         },
         onerror(err) {
-          console.log('on error', err, Object.keys(err));
+          console.log("on error", err, Object.keys(err));
           if (err instanceof FatalError) {
             ctrl.abort();
             throw err; // rethrow to stop the operation
           } else if (err instanceof ApiError) {
-            console.log('ApiError', ApiError);
+            console.log("ApiError", ApiError);
             throw err;
           } else {
             // do nothing to automatically retry. You can also
@@ -133,17 +133,17 @@ const useAgentChat = ({
         },
 
         onmessage: (event) => {
-          if (event.data === '[DONE]') {
+          if (event.data === "[DONE]") {
             ctrl.abort();
-          } else if (event.data?.startsWith('[ERROR]')) {
+          } else if (event.data?.startsWith("[ERROR]")) {
             ctrl.abort();
 
             setState({
               history: [
                 ...history,
                 {
-                  from: 'agent',
-                  message: event.data.replace('[ERROR]', ''),
+                  from: "agent",
+                  message: event.data.replace("[ERROR]", ""),
                 } as any,
               ],
             });
@@ -156,7 +156,7 @@ const useAgentChat = ({
             if (h?.[nextIndex]) {
               h[nextIndex].message = `${buffer}`;
             } else {
-              h.push({ from: 'agent', message: buffer });
+              h.push({ from: "agent", message: buffer });
             }
 
             setState({
@@ -166,14 +166,14 @@ const useAgentChat = ({
         },
       });
     } catch (err) {
-      console.log('err', err);
+      console.log("err", err);
       if (err instanceof ApiError) {
         if (err?.message) {
           error = err?.message;
 
           if (error === ApiErrorType.USAGE_LIMIT) {
             answer =
-              'Usage limit reached. Please upgrade your plan to get higher usage.';
+              "Usage limit reached. Please upgrade your plan to get higher usage.";
           } else {
             answer = `Error: ${error}`;
           }
@@ -184,7 +184,7 @@ const useAgentChat = ({
         setState({
           history: [
             ...history,
-            { from: 'agent', message: answer as string },
+            { from: "agent", message: answer as string },
           ] as any,
         });
       }

@@ -4,19 +4,19 @@ import {
   Prisma,
   SubscriptionPlan,
   Usage,
-} from '@prisma/client';
+} from "@prisma/client";
 
-import { TaskLoadDatasourceRequestSchema } from '@app/types/dtos';
-import { s3 } from '@app/utils/aws';
-import { DatastoreManager } from '@app/utils/datastores';
-import type { Document } from '@app/utils/datastores/base';
-import { DatasourceLoader } from '@app/utils/loaders';
-import logger from '@app/utils/logger';
-import prisma from '@app/utils/prisma-client';
+import { TaskLoadDatasourceRequestSchema } from "@app/types/dtos";
+import { s3 } from "@app/utils/aws";
+import { DatastoreManager } from "@app/utils/datastores";
+import type { Document } from "@app/utils/datastores/base";
+import { DatasourceLoader } from "@app/utils/loaders";
+import logger from "@app/utils/logger";
+import prisma from "@app/utils/prisma-client";
 
-import { ApiError, ApiErrorType } from './api-error';
-import guardDataProcessingUsage from './guard-data-processing-usage';
-import triggerTaskLoadDatasource from './trigger-task-load-datasource';
+import { ApiError, ApiErrorType } from "./api-error";
+import guardDataProcessingUsage from "./guard-data-processing-usage";
+import triggerTaskLoadDatasource from "./trigger-task-load-datasource";
 
 export type DatasourceExtended = Prisma.AppDatasourceGetPayload<
   typeof updateDatasourceArgs
@@ -31,7 +31,7 @@ const updateDatasourceArgs = Prisma.validator<Prisma.AppDatasourceArgs>()({
         usage: true,
         subscriptions: {
           where: {
-            status: 'active',
+            status: "active",
           },
         },
       },
@@ -53,7 +53,7 @@ const taskLoadDatasource = async (data: TaskLoadDatasourceRequestSchema) => {
   });
 
   if (!datasource) {
-    throw new Error('Not found');
+    throw new Error("Not found");
   }
 
   const currentPlan =
@@ -99,7 +99,7 @@ const taskLoadDatasource = async (data: TaskLoadDatasourceRequestSchema) => {
     if (err instanceof ApiError) {
       if (err.name === ApiErrorType.WEBPAGE_IS_SITEMAP) {
         console.log(
-          'ApiErrorType.WEBPAGE_IS_SITEMAP',
+          "ApiErrorType.WEBPAGE_IS_SITEMAP",
           ApiErrorType.WEBPAGE_IS_SITEMAP
         );
 
@@ -135,7 +135,7 @@ const taskLoadDatasource = async (data: TaskLoadDatasourceRequestSchema) => {
   const hash = await DatastoreManager.hash(document);
 
   if (hash === datasource.hash) {
-    logger.info('No need to update, file has not changed');
+    logger.info("No need to update, file has not changed");
     await prisma.appDatasource.update({
       where: {
         id: datasource.id,
@@ -193,9 +193,9 @@ const taskLoadDatasource = async (data: TaskLoadDatasourceRequestSchema) => {
         text: document.pageContent,
       })
     ),
-    CacheControl: 'no-cache',
-    ContentType: 'application/json',
-    ACL: 'public-read',
+    CacheControl: "no-cache",
+    ContentType: "application/json",
+    ACL: "public-read",
   };
 
   await s3.putObject(params).promise();

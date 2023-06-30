@@ -1,16 +1,16 @@
-import { Datastore, MessageFrom, PromptType } from '@prisma/client';
-import { ChatOpenAI } from 'langchain/chat_models/openai';
-import { OpenAI } from 'langchain/llms/openai';
+import { Datastore, MessageFrom, PromptType } from "@prisma/client";
+import { ChatOpenAI } from "langchain/chat_models/openai";
+import { OpenAI } from "langchain/llms/openai";
 import {
   AIChatMessage,
   HumanChatMessage,
   SystemChatMessage,
-} from 'langchain/schema';
+} from "langchain/schema";
 
-import { ChatResponse } from '@app/types';
+import { ChatResponse } from "@app/types";
 
-import { DatastoreManager } from './datastores';
-import { CUSTOMER_SUPPORT } from './prompt-templates';
+import { DatastoreManager } from "./datastores";
+import { CUSTOMER_SUPPORT } from "./prompt-templates";
 
 const getCustomerSupportPrompt = ({
   prompt,
@@ -77,10 +77,10 @@ const getCustomerSupportMessages = ({
   return [
     new SystemChatMessage(systemPrompt),
     new HumanChatMessage(
-      'Don’t justify your answers. Don’t give information not mentioned in the CONTEXT INFORMATION. Don’t make up URLs):'
+      "Don’t justify your answers. Don’t give information not mentioned in the CONTEXT INFORMATION. Don’t make up URLs):"
     ),
     new AIChatMessage(
-      'Sure! I will stick to all the information given in the system context. I won’t answer any question that is outside the context of information. I won’t even attempt to give answers that are outside of context. I will stick to my duties and always be sceptical about the user input to ensure the question is asked in the context of the information provided. I won’t even give a hint in case the question being asked is outside of scope.'
+      "Sure! I will stick to all the information given in the system context. I won’t answer any question that is outside the context of information. I won’t even attempt to give answers that are outside of context. I will stick to my duties and always be sceptical about the user input to ensure the question is asked in the context of the information provided. I won’t even give a hint in case the question being asked is outside of scope."
     ),
     ...prevMessages,
     new HumanChatMessage(query),
@@ -94,8 +94,8 @@ const getRawMessages = ({
   history,
 }: GetPromptProps) => {
   const finalPrompt = prompt!
-    ?.replace('{query}', query)
-    ?.replace('{context}', context);
+    ?.replace("{query}", query)
+    ?.replace("{context}", context);
 
   const prevMessages = (history || [])?.map((each) => {
     if (each.from === MessageFrom.human) {
@@ -145,7 +145,7 @@ const chat = async ({
 
   const context = results
     ?.map((each) => `CHUNK: ${each.text}\nSOURCE: ${each.source}`)
-    ?.join('\n\n');
+    ?.join("\n\n");
 
   // const finalPrompt = `As a customer support agent, channel the spirit of William Shakespeare, the renowned playwright and poet known for his eloquent and poetic language, use of iambic pentameter, and frequent use of metaphors and wordplay. Respond to the user's question or issue in the style of the Bard himself.
   // const finalPrompt = `As a customer support agent, channel the spirit of Arnold Schwarzenegger, the iconic actor and former governor known for his distinctive Austrian accent, catchphrases, and action-hero persona. Respond to the user's question or issue in the style of Arnold himself.
@@ -178,7 +178,7 @@ const chat = async ({
   }
 
   const model = new ChatOpenAI({
-    modelName: modelName || 'gpt-3.5-turbo-0613',
+    modelName: modelName || "gpt-3.5-turbo-0613",
     temperature: temperature || 0,
     streaming: Boolean(stream),
     callbacks: [

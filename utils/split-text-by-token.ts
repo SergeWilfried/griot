@@ -1,4 +1,4 @@
-import { TokenTextSplitter } from 'langchain/text_splitter';
+import { TokenTextSplitter } from "langchain/text_splitter";
 
 const splitTextByToken = async ({
   text,

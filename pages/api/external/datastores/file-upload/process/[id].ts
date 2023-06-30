@@ -4,22 +4,22 @@ import {
   DatastoreVisibility,
   SubscriptionPlan,
   Usage,
-} from '@prisma/client';
-import Cors from 'cors';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { z } from 'zod';
+} from "@prisma/client";
+import Cors from "cors";
+import { NextApiRequest, NextApiResponse } from "next";
+import { z } from "zod";
 
-import { AppNextApiRequest } from '@app/types/index';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import { createApiHandler, respond } from '@app/utils/createa-api-handler';
-import guardDataProcessingUsage from '@app/utils/guard-data-processing-usage';
-import prisma from '@app/utils/prisma-client';
-import runMiddleware from '@app/utils/run-middleware';
-import triggerTaskLoadDatasource from '@app/utils/trigger-task-load-datasource';
-import validate from '@app/utils/validate';
+import { AppNextApiRequest } from "@app/types/index";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import { createApiHandler, respond } from "@app/utils/createa-api-handler";
+import guardDataProcessingUsage from "@app/utils/guard-data-processing-usage";
+import prisma from "@app/utils/prisma-client";
+import runMiddleware from "@app/utils/run-middleware";
+import triggerTaskLoadDatasource from "@app/utils/trigger-task-load-datasource";
+import validate from "@app/utils/validate";
 
 const cors = Cors({
-  methods: ['POST', 'HEAD'],
+  methods: ["POST", "HEAD"],
 });
 
 const handler = createApiHandler();
@@ -39,7 +39,7 @@ export const processUpload = async (
 
   // get Bearer token from header
   const authHeader = req.headers.authorization;
-  const token = authHeader && authHeader.split(' ')?.[1];
+  const token = authHeader && authHeader.split(" ")?.[1];
 
   if (!datastoreId) {
     throw new ApiError(ApiErrorType.INVALID_REQUEST);
@@ -57,7 +57,7 @@ export const processUpload = async (
           apiKeys: true,
           subscriptions: {
             where: {
-              status: 'active',
+              status: "active",
             },
           },
         },

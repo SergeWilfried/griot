@@ -1,21 +1,21 @@
-import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
-import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
-import RocketLaunchRounded from '@mui/icons-material/RocketLaunchRounded';
-import Star from '@mui/icons-material/Star';
-import Alert from '@mui/joy/Alert';
-import Avatar from '@mui/joy/Avatar';
-import AvatarGroup from '@mui/joy/AvatarGroup';
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import Stack from '@mui/joy/Stack';
-import Typography from '@mui/joy/Typography';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
+import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
+import RocketLaunchRounded from "@mui/icons-material/RocketLaunchRounded";
+import Star from "@mui/icons-material/Star";
+import Alert from "@mui/joy/Alert";
+import Avatar from "@mui/joy/Avatar";
+import AvatarGroup from "@mui/joy/AvatarGroup";
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import Stack from "@mui/joy/Stack";
+import Typography from "@mui/joy/Typography";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-import { Container } from '@app/components/landing-page/Container';
-import { RouteNames } from '@app/types';
+import { Container } from "@app/components/landing-page/Container";
+import { RouteNames } from "@app/types";
 
 export function HeroChatGPTPlugin() {
   return (
@@ -26,8 +26,6 @@ export function HeroChatGPTPlugin() {
         alt=""
       />
       <div className="relative z-10">
-
-
         <Link href={RouteNames.CHAT_SITE}>
           {/* <Button sx={{borderRadius: 100, boxShadow: 'md', mb: 4}} size="sm" endDecorator={<ArrowForwardRoundedIcon />} variant='soft' color="success">✨ New: ChatGPT Bot trained on your website</Button> */}
 
@@ -86,10 +84,8 @@ export function HeroChatGPTPlugin() {
         </Alert> */}
 
         <div className="flex flex-col space-y-8 text-center sm:space-y-0 sm:flex-row sm:space-x-8 sm:text-left">
-
-          <Stack sx={{ width: '100%' }}>
-
-          {/* <div className="mb-12 font-bold inline-flex flex-wrap items-center gap-2 rounded-md border border-neutral-800/50 bg-neutral-900/60 py-[5px] pr-5 pl-2 text-xs leading-[0] text-neutral-300 backdrop-blur transition-all duration-300 hover:bg-neutral-900/80 sm:rounded-full mx-auto sm:mx-0 sm:mr-auto">
+          <Stack sx={{ width: "100%" }}>
+            {/* <div className="mb-12 font-bold inline-flex flex-wrap items-center gap-2 rounded-md border border-neutral-800/50 bg-neutral-900/60 py-[5px] pr-5 pl-2 text-xs leading-[0] text-neutral-300 backdrop-blur transition-all duration-300 hover:bg-neutral-900/80 sm:rounded-full mx-auto sm:mx-0 sm:mr-auto">
           <span className="flex items-center justify-center px-2 py-3 font-extrabold uppercase bg-indigo-500 rounded-full">
             <span>New</span>
           </span>
@@ -119,7 +115,6 @@ export function HeroChatGPTPlugin() {
             </svg>
           </Link>
         </div> */}
-
 
             <h2 className="mb-4 text-2xl font-bold text-violet-300">
               Build Your Own
@@ -152,10 +147,10 @@ export function HeroChatGPTPlugin() {
             {/* <h2 className='max-w-2xl mx-auto mt-4 text-3xl font-bold tracking-tight text-white whitespace-pre-wrap font-display sm:text-5xl'>No-code required!</h2> */}
 
             <p className="max-w-md mx-auto mt-6 text-lg tracking-tight text-gray-200 sm:mx-0 sm:max-w-lg">
-              With our{' '}
+              With our{" "}
               <strong className="text-violet-300">no-code platform</strong>, you
-              can create a{' '}
-              <strong className="text-violet-300">custom AI chatbot</strong>{' '}
+              can create a{" "}
+              <strong className="text-violet-300">custom AI chatbot</strong>{" "}
               trained on your data in seconds. Streamline customer support,
               onboard new team members, and more!
               {/* <ul className='mx-auto text-left list-disc'>
@@ -167,12 +162,12 @@ export function HeroChatGPTPlugin() {
             <Box
               className="justify-center sm:justify-start"
               sx={(theme) => ({
-                display: 'flex',
-                flexWrap: 'wrap',
+                display: "flex",
+                flexWrap: "wrap",
                 gap: 2,
                 mt: 4,
                 // textAlign: 'left',
-                '& > *': {
+                "& > *": {
                   flexShrink: 0,
                 },
               })}
@@ -194,11 +189,11 @@ export function HeroChatGPTPlugin() {
                     // }
                   >
                     <React.Fragment>
-                      <Star sx={{ color: 'warning.300' }} />
-                      <Star sx={{ color: 'warning.300' }} />
-                      <Star sx={{ color: 'warning.300' }} />
-                      <Star sx={{ color: 'warning.300' }} />
-                      <Star sx={{ color: 'warning.300' }} />
+                      <Star sx={{ color: "warning.300" }} />
+                      <Star sx={{ color: "warning.300" }} />
+                      <Star sx={{ color: "warning.300" }} />
+                      <Star sx={{ color: "warning.300" }} />
+                      <Star sx={{ color: "warning.300" }} />
                     </React.Fragment>
                   </Typography>
                 </Stack>
@@ -211,14 +206,14 @@ export function HeroChatGPTPlugin() {
 
             <Stack
               direction={{
-                xs: 'column',
-                sm: 'row',
+                xs: "column",
+                sm: "row",
               }}
               gap={2}
               mt={6}
               className="justify-center sm:justify-start"
             >
-              <Link target="_blank" href={'https://mongriot.com/signin'}>
+              <Link target="_blank" href={"https://mongriot.com/signin"}>
                 <Button
                   variant="solid"
                   size="lg"
@@ -228,7 +223,7 @@ export function HeroChatGPTPlugin() {
               </Link>
               <Link
                 target="_blank"
-                href={'https://calendly.com/SergeWilfried/15min'}
+                href={"https://calendly.com/SergeWilfried/15min"}
               >
                 <Button
                   variant="outlined"
@@ -243,18 +238,22 @@ export function HeroChatGPTPlugin() {
           </Stack>
 
           <div className="w-full sm:w-2/3">
-            <Image src="/landing-page/inputs.png" width="500" height="150" className='w-full' />
-            <div className='w-full h-[500px] overflow-hidden rounded-3xl bg-white'>
-
-            <iframe
-              src="https://app.mongriot.com/agents/clgtujkqh022j0u0zw3ut8vk3/iframe"
-              width="100%"
-              height="100%"
-              frameBorder="0"
+            <Image
+              src="/landing-page/inputs.png"
+              width="500"
+              height="150"
+              className="w-full"
+            />
+            <div className="w-full h-[500px] overflow-hidden rounded-3xl bg-white">
+              <iframe
+                src="https://app.mongriot.com/agents/clgtujkqh022j0u0zw3ut8vk3/iframe"
+                width="100%"
+                height="100%"
+                frameBorder="0"
               ></iframe>
-              </div>
+            </div>
 
-              {/* <Image src="/landing-page/outputs.png" width="500" height="150" className='w-full' /> */}
+            {/* <Image src="/landing-page/outputs.png" width="500" height="150" className='w-full' /> */}
           </div>
         </div>
 

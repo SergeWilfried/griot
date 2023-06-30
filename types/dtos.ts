@@ -3,15 +3,15 @@ import {
   ConversationChannel,
   PromptType,
   ToolType,
-} from '@prisma/client';
-import { z } from 'zod';
+} from "@prisma/client";
+import { z } from "zod";
 
 import {
   AgentInterfaceConfig,
   DatastoreSchema,
   DocumentMetadataSchema,
   DocumentSchema,
-} from './models';
+} from "./models";
 
 export const CreateDatastoreRequestSchema = DatastoreSchema.extend({
   id: z.string().trim().cuid().optional(),
@@ -113,7 +113,7 @@ export const ChatRequest = z.object({
   query: z.string(),
   streaming: z.boolean().optional().default(false),
   visitorId: z.string().optional(),
-  channel: z.nativeEnum(ConversationChannel).default('dashboard'),
+  channel: z.nativeEnum(ConversationChannel).default("dashboard"),
 });
 
 export type ChatRequest = z.infer<typeof ChatRequest>;
@@ -131,8 +131,8 @@ export const UpsertAgentSchema = z.object({
   prompt: z.string().trim().optional().nullable(),
   temperature: z.number().default(0.0),
   iconUrl: z.string().trim().optional().nullable(),
-  promptType: z.nativeEnum(PromptType).default('customer_support'),
-  visibility: z.nativeEnum(AgentVisibility).default('private'),
+  promptType: z.nativeEnum(PromptType).default("customer_support"),
+  visibility: z.nativeEnum(AgentVisibility).default("private"),
   interfaceConfig: AgentInterfaceConfig.optional().nullable(),
   tools: z
     .array(
@@ -150,14 +150,14 @@ export const UpsertAgentSchema = z.object({
 export type UpsertAgentSchema = z.infer<typeof UpsertAgentSchema>;
 
 export const AcceptedDatasourceMimeTypes = [
-  'text/csv',
-  'text/plain',
-  'text/markdown',
-  'application/pdf',
-  'application/json',
-  'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  "text/csv",
+  "text/plain",
+  "text/markdown",
+  "application/pdf",
+  "application/json",
+  "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 ] as const;
 
 export const GenerateUploadLinkRequest = z.object({

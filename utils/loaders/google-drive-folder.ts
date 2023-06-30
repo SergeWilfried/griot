@@ -2,20 +2,20 @@ import {
   DatasourceStatus,
   DatasourceType,
   SubscriptionPlan,
-} from '@prisma/client';
+} from "@prisma/client";
 
-import { AcceptedDatasourceMimeTypes } from '@app/types/dtos';
-import { Document } from '@app/utils/datastores/base';
-import prisma from '@app/utils/prisma-client';
+import { AcceptedDatasourceMimeTypes } from "@app/types/dtos";
+import { Document } from "@app/utils/datastores/base";
+import prisma from "@app/utils/prisma-client";
 
-import accountConfig from '../account-config';
-import cuid from '../cuid';
-import generateFunId from '../generate-fun-id';
-import { GoogleDriveManager } from '../google-drive-manager';
-import triggerTaskLoadDatasource from '../trigger-task-load-datasource';
+import accountConfig from "../account-config";
+import cuid from "../cuid";
+import generateFunId from "../generate-fun-id";
+import { GoogleDriveManager } from "../google-drive-manager";
+import triggerTaskLoadDatasource from "../trigger-task-load-datasource";
 
-import { DatasourceLoaderBase } from './base';
-import { fileBufferToString } from './file';
+import { DatasourceLoaderBase } from "./base";
+import { fileBufferToString } from "./file";
 
 export class GoogleDriveFolderLoader extends DatasourceLoaderBase {
   isGroup = true;

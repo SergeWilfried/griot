@@ -1,26 +1,26 @@
 // Not Usede ATM. But keeping it for reference in case we implement file uploading later
 
-import { NextApiResponse } from 'next';
-import { z } from 'zod';
+import { NextApiResponse } from "next";
+import { z } from "zod";
 
-import { AppNextApiRequest, GenerateUploadLinkRequest } from '@app/types';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import { s3 } from '@app/utils/aws';
-import { createAuthApiHandler, respond } from '@app/utils/createa-api-handler';
-import prisma from '@app/utils/prisma-client';
-import validate from '@app/utils/validate';
+import { AppNextApiRequest, GenerateUploadLinkRequest } from "@app/types";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import { s3 } from "@app/utils/aws";
+import { createAuthApiHandler, respond } from "@app/utils/createa-api-handler";
+import prisma from "@app/utils/prisma-client";
+import validate from "@app/utils/validate";
 
 const handler = createAuthApiHandler();
 
 const GenerateUploadLinkRequestSchema = GenerateUploadLinkRequest.extend({
   type: z.enum([
-    'image/png',
-    'image/jpeg',
-    'image/gif',
-    'image/avif',
-    'image/apng',
-    'image/svg+xml',
-    'image/webp',
+    "image/png",
+    "image/jpeg",
+    "image/gif",
+    "image/avif",
+    "image/apng",
+    "image/svg+xml",
+    "image/webp",
   ]),
 });
 
@@ -46,11 +46,11 @@ export const generateUploadLink = async (
     Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME,
     Key: `agents/${agent.id}/${data.fileName}`,
     Expires: 900,
-    ACL: 'public-read',
+    ACL: "public-read",
     ContentType: data.type,
   };
 
-  return s3.getSignedUrlPromise('putObject', param);
+  return s3.getSignedUrlPromise("putObject", param);
 };
 
 handler.post(

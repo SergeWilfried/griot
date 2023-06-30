@@ -1,19 +1,19 @@
-import Box from '@mui/joy/Box';
-import { useColorScheme } from '@mui/joy/styles';
-import { Agent, ConversationChannel } from '@prisma/client';
-import { useRouter } from 'next/router';
-import React, { useEffect, useMemo } from 'react';
+import Box from "@mui/joy/Box";
+import { useColorScheme } from "@mui/joy/styles";
+import { Agent, ConversationChannel } from "@prisma/client";
+import { useRouter } from "next/router";
+import React, { useEffect, useMemo } from "react";
 
-import ChatBox from '@app/components/ChatBox';
-import useAgentChat from '@app/hooks/useAgentChat';
-import useVisitorId from '@app/hooks/useVisitorId';
-import { AgentInterfaceConfig } from '@app/types/models';
-import pickColorBasedOnBgColor from '@app/utils/pick-color-based-on-bgcolor';
+import ChatBox from "@app/components/ChatBox";
+import useAgentChat from "@app/hooks/useAgentChat";
+import useVisitorId from "@app/hooks/useVisitorId";
+import { AgentInterfaceConfig } from "@app/types/models";
+import pickColorBasedOnBgColor from "@app/utils/pick-color-based-on-bgcolor";
 
 const defaultChatBubbleConfig: AgentInterfaceConfig = {
   // displayName: 'Agent Smith',
-  theme: 'light',
-  primaryColor: '#000000',
+  theme: "light",
+  primaryColor: "#000000",
   isBgTransparent: false,
   // initialMessage: 'Hi, how can I help you?',
   // position: 'right',
@@ -43,9 +43,9 @@ function ChatBoxFrame(props: { initConfig?: AgentInterfaceConfig }) {
 
   const textColor = useMemo(() => {
     return pickColorBasedOnBgColor(
-      config.primaryColor || '#ffffff',
-      '#ffffff',
-      '#000000'
+      config.primaryColor || "#ffffff",
+      "#ffffff",
+      "#000000"
     );
   }, [config.primaryColor]);
 
@@ -91,16 +91,16 @@ function ChatBoxFrame(props: { initConfig?: AgentInterfaceConfig }) {
     <Box
       sx={(theme) => ({
         p: 2,
-        position: 'relative',
-        width: '100vw',
-        height: '100vh',
-        maxHeight: '100%',
-        boxSizing: 'border-box',
+        position: "relative",
+        width: "100vw",
+        height: "100vh",
+        maxHeight: "100%",
+        boxSizing: "border-box",
         backgroundColor: config?.isBgTransparent
-          ? 'transparent'
+          ? "transparent"
           : theme.palette.background.default,
 
-        '& .message-agent': {
+        "& .message-agent": {
           backgroundColor: config.primaryColor,
           // borderColor: config.primaryColor,
           color: textColor,

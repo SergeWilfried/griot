@@ -1,16 +1,16 @@
-import { ConversationChannel, MessageFrom, Usage } from '@prisma/client';
-import cuid from 'cuid';
-import { NextApiResponse } from 'next';
+import { ConversationChannel, MessageFrom, Usage } from "@prisma/client";
+import cuid from "cuid";
+import { NextApiResponse } from "next";
 
-import { AppNextApiRequest, ChatRequest } from '@app/types';
-import accountConfig from '@app/utils/account-config';
-import AgentManager from '@app/utils/agent';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import chat from '@app/utils/chat';
-import ConversationManager from '@app/utils/conversation';
-import { createAuthApiHandler, respond } from '@app/utils/createa-api-handler';
-import guardAgentQueryUsage from '@app/utils/guard-agent-query-usage';
-import prisma from '@app/utils/prisma-client';
+import { AppNextApiRequest, ChatRequest } from "@app/types";
+import accountConfig from "@app/utils/account-config";
+import AgentManager from "@app/utils/agent";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import chat from "@app/utils/chat";
+import ConversationManager from "@app/utils/conversation";
+import { createAuthApiHandler, respond } from "@app/utils/createa-api-handler";
+import guardAgentQueryUsage from "@app/utils/guard-agent-query-usage";
+import prisma from "@app/utils/prisma-client";
 
 const handler = createAuthApiHandler();
 
@@ -39,7 +39,7 @@ export const chatAgentRequest = async (
               messages: {
                 take: -4,
                 orderBy: {
-                  createdAt: 'asc',
+                  createdAt: "asc",
                 },
               },
             },
@@ -69,14 +69,14 @@ export const chatAgentRequest = async (
 
   if (data.streaming) {
     res.writeHead(200, {
-      'Content-Type': 'text/event-stream',
-      'Cache-Control': 'no-cache, no-transform',
-      Connection: 'keep-alive',
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive",
     });
   }
 
   const streamData = (data: string) => {
-    const input = data === '[DONE]' ? data : encodeURIComponent(data);
+    const input = data === "[DONE]" ? data : encodeURIComponent(data);
     res.write(`data: ${input}\n\n`);
   };
 
@@ -121,7 +121,7 @@ export const chatAgentRequest = async (
   conversationManager.save();
 
   if (data.streaming) {
-    streamData('[DONE]');
+    streamData("[DONE]");
   } else {
     return {
       answer,

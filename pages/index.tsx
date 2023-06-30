@@ -1,30 +1,30 @@
-import { useColorScheme } from '@mui/joy/styles';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { useColorScheme } from "@mui/joy/styles";
+import Head from "next/head";
+import { useRouter } from "next/router";
 // import { SecondaryFeatures } from '@app/landing-page/components/SecondaryFeatures';
 // import { Testimonials } from '@app/landing-page/components/Testimonials';
-import Script from 'next/script';
-import { useEffect } from 'react';
+import Script from "next/script";
+import { useEffect } from "react";
 
-import CompanyLogos from '@app/components/landing-page/CompanyLogos';
+import CompanyLogos from "@app/components/landing-page/CompanyLogos";
 // import { CallToAction } from '@app/landing-page/components/CallToAction';
 // import { Faqs } from '@app/landing-page/components/Faqs';
-import { Footer } from '@app/components/landing-page/Footer';
-import { Header } from '@app/components/landing-page/Header';
-import { Hero } from '@app/components/landing-page/Hero';
-import { HeroChatGPTPlugin } from '@app/components/landing-page/HeroChatGPTPlugin';
+import { Footer } from "@app/components/landing-page/Footer";
+import { Header } from "@app/components/landing-page/Header";
+import { Hero } from "@app/components/landing-page/Hero";
+import { HeroChatGPTPlugin } from "@app/components/landing-page/HeroChatGPTPlugin";
 // import { Pricing } from '@app/landing-page/components/Pricing';
-import { PrimaryFeatures } from '@app/components/landing-page/PrimaryFeatures';
+import { PrimaryFeatures } from "@app/components/landing-page/PrimaryFeatures";
 
-import ChatBotBenefits from './ChatBotBenefits';
-import Cta from './Cta';
-import FAQ from './FAQ';
-import FeaturesForChatGPTPlugin from './FeaturesForChatGPTPlugin';
-import FeaturesForChatWithData from './FeaturesForChatWithData';
-import FeaturesForCustomerSupport from './FeaturesForCustomerSupport';
-import FeaturesForDevs from './FeaturesForDevs';
-import FeaturesForInfluencers from './FeaturesForInfluencers';
-import FeaturesForSlack from './FeaturesForSlack';
+import ChatBotBenefits from "./ChatBotBenefits";
+import Cta from "./Cta";
+import FAQ from "./FAQ";
+import FeaturesForChatGPTPlugin from "./FeaturesForChatGPTPlugin";
+import FeaturesForChatWithData from "./FeaturesForChatWithData";
+import FeaturesForCustomerSupport from "./FeaturesForCustomerSupport";
+import FeaturesForDevs from "./FeaturesForDevs";
+import FeaturesForInfluencers from "./FeaturesForInfluencers";
+import FeaturesForSlack from "./FeaturesForSlack";
 
 export default function Home() {
   const router = useRouter();
@@ -36,23 +36,21 @@ export default function Home() {
       window.location.href = router.basePath + newPath;
     };
 
-    router.events.on('routeChangeStart', handleRouteChange);
+    router.events.on("routeChangeStart", handleRouteChange);
 
     return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
+      router.events.off("routeChangeStart", handleRouteChange);
     };
   }, [router]);
 
   useEffect(() => {
-    setMode('dark');
+    setMode("dark");
   }, []);
 
   return (
     <>
       <Head>
-        <title>
-          Griot - Build ChatGPT Agents trained on your custom data
-        </title>
+        <title>Griot - Build ChatGPT Agents trained on your custom data</title>
 
         <meta
           name="title"

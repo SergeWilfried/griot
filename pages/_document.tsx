@@ -1,12 +1,12 @@
-import { getInitColorSchemeScript } from '@mui/joy/styles';
+import { getInitColorSchemeScript } from "@mui/joy/styles";
 import Document, {
   DocumentContext,
   Head,
   Html,
   Main,
   NextScript,
-} from 'next/document';
-import Script from 'next/script';
+} from "next/document";
+import Script from "next/script";
 
 class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

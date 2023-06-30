@@ -1,9 +1,9 @@
-import { Popover, Transition } from '@headlessui/react';
+import { Popover, Transition } from "@headlessui/react";
 import {
   ChevronDownIcon,
   PhoneIcon,
   PlayCircleIcon,
-} from '@heroicons/react/20/solid';
+} from "@heroicons/react/20/solid";
 import {
   ArrowPathIcon,
   ChartPieIcon,
@@ -13,15 +13,15 @@ import {
   FingerPrintIcon,
   ServerIcon,
   SquaresPlusIcon,
-} from '@heroicons/react/24/outline';
-import { Fragment } from 'react';
+} from "@heroicons/react/24/outline";
+import { Fragment } from "react";
 
 const solutions = [
   {
-    name: 'ChatGPT Plugin',
+    name: "ChatGPT Plugin",
     description:
-      'Build your own ChatGPT Plugin to connect custom data to your ChatGPT',
-    href: '/#chatgpt-plugin',
+      "Build your own ChatGPT Plugin to connect custom data to your ChatGPT",
+    href: "/#chatgpt-plugin",
     icon: (props: any) => (
       <img
         {...props}
@@ -31,17 +31,17 @@ const solutions = [
     ),
   },
   {
-    name: 'Embed Agent on your website',
+    name: "Embed Agent on your website",
     description:
-      'Automate customer support with a ChatGPT Bot trained on your data',
-    href: '/#for-customer-support',
+      "Automate customer support with a ChatGPT Bot trained on your data",
+    href: "/#for-customer-support",
     icon: ChatBubbleLeftEllipsisIcon,
   },
   {
-    name: 'Crisp Plugin',
+    name: "Crisp Plugin",
     description:
-      'Connect your agent to Crisp. Summarize conversations and more!',
-    href: 'https://www.mongriot.com/products/crisp-plugin',
+      "Connect your agent to Crisp. Summarize conversations and more!",
+    href: "https://www.mongriot.com/products/crisp-plugin",
     icon: (props: any) => (
       <img
         {...props}
@@ -51,9 +51,9 @@ const solutions = [
     ),
   },
   {
-    name: 'Slack',
-    description: 'Deploy an Agent trained on your data to Slack',
-    href: 'https://www.mongriot.com/products/slack-bot',
+    name: "Slack",
+    description: "Deploy an Agent trained on your data to Slack",
+    href: "https://www.mongriot.com/products/slack-bot",
     icon: (props: any) => (
       <img
         {...props}
@@ -63,27 +63,27 @@ const solutions = [
     ),
   },
   {
-    name: 'Datberry API',
-    description: 'Document Retrieval as a service',
-    href: 'https://docs.mongriot.com/introduction',
+    name: "Datberry API",
+    description: "Document Retrieval as a service",
+    href: "https://docs.mongriot.com/introduction",
     icon: ServerIcon,
   },
   {
-    name: 'On Premise',
-    description: 'Install Griot on your own infrastructure',
-    href: 'https://github.com/gmpetrov/chaindesk',
+    name: "On Premise",
+    description: "Install Griot on your own infrastructure",
+    href: "https://github.com/gmpetrov/chaindesk",
     icon: CpuChipIcon,
   },
 ];
 const callsToAction = [
   {
-    name: 'Watch demo',
-    href: 'https://www.youtube.com/watch?v=LPISZdaiDBM',
+    name: "Watch demo",
+    href: "https://www.youtube.com/watch?v=LPISZdaiDBM",
     icon: PlayCircleIcon,
   },
   {
-    name: 'Book a Call',
-    href: 'https://calendly.com/SergeWilfried/15min',
+    name: "Book a Call",
+    href: "https://calendly.com/SergeWilfried/15min",
     icon: PhoneIcon,
   },
 ];

@@ -93,7 +93,9 @@ pnpm worker:datasource-loader
 <!-- #### With docker compose -->
 
 <!-- First `cd .dev/databerry` then populate the config files `app.env` and `docker.env` as needed, then run the compose command: -->
+
 ### Run locally (Docker)
+
 ```shell
 cp .dev/databerry/app.env.example .dev/databerry/app.env
 # Add your own OPENAI_API_KEY
@@ -114,6 +116,7 @@ pnpm docker:compose:app up
 ```
 
 You can fully rebuild dockers with :
+
 ```shell
 pnpm docker:compose up --build
 ```

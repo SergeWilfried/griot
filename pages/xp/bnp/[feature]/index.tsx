@@ -1,10 +1,10 @@
-import AddIcon from '@mui/icons-material/Add';
-import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import AutoGraphRoundedIcon from '@mui/icons-material/AutoGraphRounded';
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import LinkRoundedIcon from '@mui/icons-material/LinkRounded';
-import SettingsIcon from '@mui/icons-material/Settings';
+import AddIcon from "@mui/icons-material/Add";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import AutoGraphRoundedIcon from "@mui/icons-material/AutoGraphRounded";
+import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import LinkRoundedIcon from "@mui/icons-material/LinkRounded";
+import SettingsIcon from "@mui/icons-material/Settings";
 import {
   ColorPaletteProp,
   FormControl,
@@ -12,62 +12,62 @@ import {
   Input,
   Option,
   Select,
-} from '@mui/joy';
-import Box from '@mui/joy/Box';
-import Breadcrumbs from '@mui/joy/Breadcrumbs';
-import Button from '@mui/joy/Button';
-import Chip from '@mui/joy/Chip';
-import Divider from '@mui/joy/Divider';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import Tab from '@mui/joy/Tab';
-import TabList from '@mui/joy/TabList';
-import Tabs from '@mui/joy/Tabs';
-import Typography from '@mui/joy/Typography';
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
-import { Prisma } from '@prisma/client';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { GetServerSidePropsContext } from 'next/types';
-import { useSession } from 'next-auth/react';
-import { ReactElement } from 'react';
-import * as React from 'react';
-import useSWR from 'swr';
+} from "@mui/joy";
+import Box from "@mui/joy/Box";
+import Breadcrumbs from "@mui/joy/Breadcrumbs";
+import Button from "@mui/joy/Button";
+import Chip from "@mui/joy/Chip";
+import Divider from "@mui/joy/Divider";
+import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import Tab from "@mui/joy/Tab";
+import TabList from "@mui/joy/TabList";
+import Tabs from "@mui/joy/Tabs";
+import Typography from "@mui/joy/Typography";
+import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import { Prisma } from "@prisma/client";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { GetServerSidePropsContext } from "next/types";
+import { useSession } from "next-auth/react";
+import { ReactElement } from "react";
+import * as React from "react";
+import useSWR from "swr";
 
-import CreateDatastoreModal from '@app/components/CreateDatastoreModal';
-import Layout from '@app/components/Layout';
-import UsageLimitModal from '@app/components/UsageLimitModal';
-import useGetDatastoreQuery from '@app/hooks/useGetDatastoreQuery';
-import useStateReducer from '@app/hooks/useStateReducer';
-import { getDatastores } from '@app/pages/api/datastores';
-import { RouteNames } from '@app/types';
-import { XPBNPLabels } from '@app/utils/config';
-import guardDataProcessingUsage from '@app/utils/guard-data-processing-usage';
-import { fetcher } from '@app/utils/swr-fetcher';
-import { withAuth } from '@app/utils/withAuth';
+import CreateDatastoreModal from "@app/components/CreateDatastoreModal";
+import Layout from "@app/components/Layout";
+import UsageLimitModal from "@app/components/UsageLimitModal";
+import useGetDatastoreQuery from "@app/hooks/useGetDatastoreQuery";
+import useStateReducer from "@app/hooks/useStateReducer";
+import { getDatastores } from "@app/pages/api/datastores";
+import { RouteNames } from "@app/types";
+import { XPBNPLabels } from "@app/utils/config";
+import guardDataProcessingUsage from "@app/utils/guard-data-processing-usage";
+import { fetcher } from "@app/utils/swr-fetcher";
+import { withAuth } from "@app/utils/withAuth";
 
 const CreateDatasourceModal = dynamic(
-  () => import('@app/components/CreateDatasourceModal'),
+  () => import("@app/components/CreateDatasourceModal"),
   {
     ssr: false,
   }
 );
 
 const DatastoreSettings = dynamic(
-  () => import('@app/components/DatastoreSettings'),
+  () => import("@app/components/DatastoreSettings"),
   {
     ssr: false,
   }
 );
 
-const Datasources = dynamic(() => import('@app/components/Datasources'), {
+const Datasources = dynamic(() => import("@app/components/Datasources"), {
   ssr: false,
 });
 
 export default function XPBNPFeature() {
   const router = useRouter();
-  const feature = router.query.feature as 'qa' | 'writing' | 'summary';
+  const feature = router.query.feature as "qa" | "writing" | "summary";
 
   const { data: session, status } = useSession();
   const [state, setState] = useStateReducer({
@@ -84,10 +84,10 @@ export default function XPBNPFeature() {
 
   const getDatastoresQuery = useSWR<
     Prisma.PromiseReturnType<typeof getDatastores>
-  >('/api/datastores', fetcher);
+  >("/api/datastores", fetcher);
 
   React.useEffect(() => {
-    const userName = localStorage.getItem('userName');
+    const userName = localStorage.getItem("userName");
     const useCases = localStorage.getItem(`${userName}_${feature}_useCases`);
 
     if (userName) {
@@ -95,12 +95,12 @@ export default function XPBNPFeature() {
     }
 
     try {
-      const arr = JSON.parse(useCases || '[]');
+      const arr = JSON.parse(useCases || "[]");
       setState({ useCases: arr });
     } catch {}
 
     if (!userName) {
-      router.push('/xp/bnp');
+      router.push("/xp/bnp");
     }
   }, []);
 
@@ -119,11 +119,11 @@ export default function XPBNPFeature() {
           md: 3,
         },
         flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         minWidth: 0,
         // height: '100dvh',
-        width: '100%',
+        width: "100%",
         gap: 1,
       })}
     >
@@ -136,7 +136,7 @@ export default function XPBNPFeature() {
         </Breadcrumbs>
 
         <Card
-          sx={{ p: 4, maxWidth: 'sm', overflow: 'visible' }}
+          sx={{ p: 4, maxWidth: "sm", overflow: "visible" }}
           variant="outlined"
         >
           {!state.hasSelectedUseCase && (
@@ -160,7 +160,7 @@ export default function XPBNPFeature() {
                 {state.currentUseCase && (
                   <Button
                     endDecorator={<ArrowForwardRoundedIcon />}
-                    sx={{ ml: 'auto' }}
+                    sx={{ ml: "auto" }}
                     onClick={() =>
                       router.push(`/xp/bnp/${feature}/${state.currentUseCase}`)
                     }
@@ -178,7 +178,7 @@ export default function XPBNPFeature() {
                   e.preventDefault();
 
                   const data = new FormData(e.target);
-                  const useCase = data.get('useCase') as string;
+                  const useCase = data.get("useCase") as string;
 
                   if (useCase) {
                     const arr = [...state.useCases, useCase];
@@ -195,7 +195,7 @@ export default function XPBNPFeature() {
                   <FormLabel>Use Case</FormLabel>
                   <Input name="useCase"></Input>
                 </FormControl>
-                <Button sx={{ ml: 'auto' }} type="submit" variant="outlined">
+                <Button sx={{ ml: "auto" }} type="submit" variant="outlined">
                   Créer
                 </Button>
               </form>

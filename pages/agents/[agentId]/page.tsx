@@ -1,25 +1,25 @@
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
-import { Box, Button, CircularProgress, Stack, Typography } from '@mui/joy';
-import colors from '@mui/joy/colors';
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import { Box, Button, CircularProgress, Stack, Typography } from "@mui/joy";
+import colors from "@mui/joy/colors";
 import {
   CssVarsProvider,
   extendTheme,
   StyledEngineProvider,
   ThemeProvider,
-} from '@mui/joy/styles';
-import Avatar from '@mui/material/Avatar';
-import { Agent, Prisma } from '@prisma/client';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React, { ReactElement, useMemo } from 'react';
-import useSWR from 'swr';
+} from "@mui/joy/styles";
+import Avatar from "@mui/material/Avatar";
+import { Agent, Prisma } from "@prisma/client";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import React, { ReactElement, useMemo } from "react";
+import useSWR from "swr";
 
-import useStateReducer from '@app/hooks/useStateReducer';
-import { getAgent } from '@app/pages/api/external/agents/[id]';
-import { AgentInterfaceConfig } from '@app/types/models';
-import pickColorBasedOnBgColor from '@app/utils/pick-color-based-on-bgcolor';
-import { fetcher } from '@app/utils/swr-fetcher';
+import useStateReducer from "@app/hooks/useStateReducer";
+import { getAgent } from "@app/pages/api/external/agents/[id]";
+import { AgentInterfaceConfig } from "@app/types/models";
+import pickColorBasedOnBgColor from "@app/utils/pick-color-based-on-bgcolor";
+import { fetcher } from "@app/utils/swr-fetcher";
 
 function App() {
   const router = useRouter();
@@ -35,15 +35,15 @@ function App() {
     fetcher
   );
 
-  console.log('getAgentConfigQuery', getAgentConfigQuery.data);
+  console.log("getAgentConfigQuery", getAgentConfigQuery.data);
   const agent = getAgentConfigQuery?.data;
   const interfaceConfig = agent?.interfaceConfig as AgentInterfaceConfig;
 
   const textColor = useMemo(() => {
     return pickColorBasedOnBgColor(
-      interfaceConfig?.primaryColor || '#ffffff',
-      '#ffffff',
-      '#000000'
+      interfaceConfig?.primaryColor || "#ffffff",
+      "#ffffff",
+      "#000000"
     );
   }, [interfaceConfig?.primaryColor]);
 
@@ -68,25 +68,25 @@ function App() {
     return (
       <Stack
         sx={{
-          width: '100vw',
-          height: '100vh',
-          justifyContent: 'center',
-          alignItems: 'center',
+          width: "100vw",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Stack gap={3} sx={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Stack gap={3} sx={{ justifyContent: "center", alignItems: "center" }}>
           <CircularProgress color="neutral" />
           <a
             href="https://mongriot.com"
             target="_blank"
             style={{
-              textDecoration: 'none',
+              textDecoration: "none",
             }}
           >
             <Box>
               <Typography level="body2">
-                Powered by{' '}
-                <Typography color="primary" fontWeight={'bold'}>
+                Powered by{" "}
+                <Typography color="primary" fontWeight={"bold"}>
                   Griot
                 </Typography>
               </Typography>
@@ -110,23 +110,23 @@ function App() {
 
       <Stack
         direction={{
-          xs: 'column',
-          sm: 'row',
+          xs: "column",
+          sm: "row",
         }}
-        sx={{ height: '100vh', width: '100vw' }}
+        sx={{ height: "100vh", width: "100vw" }}
       >
         <Stack
           sx={{
-            position: 'relative',
+            position: "relative",
             p: {
               xs: 2,
               sm: 4,
             },
-            maxWidth: '100%',
+            maxWidth: "100%",
             minWidth: 300,
-            backgroundColor: interfaceConfig?.primaryColor || '#000',
+            backgroundColor: interfaceConfig?.primaryColor || "#000",
             alignItems: {
-              sm: 'center',
+              sm: "center",
             },
           }}
         >
@@ -134,21 +134,21 @@ function App() {
             gap={2}
             sx={{
               justifyContent: {
-                sm: 'center',
+                sm: "center",
               },
-              alignItems: 'center',
+              alignItems: "center",
             }}
             direction={{
-              xs: 'row',
-              sm: 'column',
+              xs: "row",
+              sm: "column",
             }}
             zIndex={3}
           >
             <Avatar
               alt={agent?.name}
-              src={agent?.iconUrl || '/app-rounded-bg-white.png'}
+              src={agent?.iconUrl || "/app-rounded-bg-white.png"}
               sx={{
-                boxShadow: 'sm',
+                boxShadow: "sm",
                 width: {
                   xs: 34,
                   sm: 54,
@@ -161,7 +161,7 @@ function App() {
             />
             <Typography
               level="h5"
-              fontWeight={'bold'}
+              fontWeight={"bold"}
               sx={{
                 color: textColor,
                 // fontFamily: 'Pacifico',
@@ -174,17 +174,17 @@ function App() {
           <div
             id="bg-wrap"
             style={{
-              position: 'absolute',
+              position: "absolute",
               bottom: 0,
               left: 0,
               zIndex: 2,
-              width: '100%',
-              height: '100%',
-              overflow: 'visible',
+              width: "100%",
+              height: "100%",
+              overflow: "visible",
             }}
           >
             <svg
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: "100%", height: "100%" }}
               viewBox="0 0 100 100"
               preserveAspectRatio="xMidYMid slice"
             >
@@ -399,14 +399,14 @@ function App() {
         </Stack>
         <Stack
           sx={{
-            width: '100%',
-            height: '100%',
+            width: "100%",
+            height: "100%",
           }}
         >
           <iframe
             style={{
-              width: '100%',
-              height: '100%',
+              width: "100%",
+              height: "100%",
             }}
             src={`/agents/${agentId}/iframe`}
             frameBorder="0"

@@ -1,11 +1,11 @@
-import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
-import Button from '@mui/joy/Button'
-import Link from 'next/link'
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import Button from "@mui/joy/Button";
+import Link from "next/link";
 
-import { Container } from '@app/components/landing-page/Container'
-import { Logo } from '@app/components/landing-page/Logo'
-import { NavLink } from '@app/components/landing-page/NavLink'
-import { RouteNames } from '@app/types';
+import { Container } from "@app/components/landing-page/Container";
+import { Logo } from "@app/components/landing-page/Logo";
+import { NavLink } from "@app/components/landing-page/NavLink";
+import { RouteNames } from "@app/types";
 
 export function Footer() {
   return (
@@ -15,7 +15,7 @@ export function Footer() {
           <Logo className="w-auto h-10 mx-auto" />
           <nav className="mt-10 text-sm" aria-label="quick links">
             <div className="flex justify-center -my-1 gap-x-6">
-            {/* <Link href={RouteNames.CHAT_SITE}>
+              {/* <Link href={RouteNames.CHAT_SITE}>
                 <Button
                   href="/products/crisp-plugin"
                   size="sm"
@@ -28,9 +28,19 @@ export function Footer() {
                 </Button>
               </Link> */}
               <NavLink href="/pricing">Pricing</NavLink>
-              <NavLink href="https://github.com/gmpetrov/chaindesk" target={"_blank"}>GitHub</NavLink>
-              <NavLink href="https://docs.mongriot.com/" target={"_blank"}>Docs</NavLink>
-              <NavLink href="https://databerry.getrewardful.com/" target={"_blank"}>
+              <NavLink
+                href="https://github.com/gmpetrov/chaindesk"
+                target={"_blank"}
+              >
+                GitHub
+              </NavLink>
+              <NavLink href="https://docs.mongriot.com/" target={"_blank"}>
+                Docs
+              </NavLink>
+              <NavLink
+                href="https://databerry.getrewardful.com/"
+                target={"_blank"}
+              >
                 Affiliates
               </NavLink>
               <NavLink href="/privacy" target={"_blank"}>
@@ -77,5 +87,5 @@ export function Footer() {
         </div>
       </Container>
     </footer>
-  )
+  );
 }

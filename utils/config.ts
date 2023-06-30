@@ -5,8 +5,8 @@ const config = {
 };
 
 export const XPBNPLabels = {
-  qa: 'Question/Réponse sur documents',
-  writing: 'Rédaction',
+  qa: "Question/Réponse sur documents",
+  writing: "Rédaction",
   summary: "Résumé d'un document",
 };
 

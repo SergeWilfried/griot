@@ -1,11 +1,11 @@
-import { NextApiResponse } from 'next';
+import { NextApiResponse } from "next";
 
-import { AppNextApiRequest } from '@app/types/index';
-import accountConfig from '@app/utils/account-config';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import { createAuthApiHandler, respond } from '@app/utils/createa-api-handler';
-import { GoogleDriveManager } from '@app/utils/google-drive-manager';
-import prisma from '@app/utils/prisma-client';
+import { AppNextApiRequest } from "@app/types/index";
+import accountConfig from "@app/utils/account-config";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import { createAuthApiHandler, respond } from "@app/utils/createa-api-handler";
+import { GoogleDriveManager } from "@app/utils/google-drive-manager";
+import prisma from "@app/utils/prisma-client";
 
 const handler = createAuthApiHandler();
 
@@ -49,7 +49,7 @@ export const listFolder = async (
     files: results?.data.files?.filter(
       (each) =>
         Number(each.size || 0) <
-        accountConfig[session?.user?.currentPlan || 'level_0']?.limits
+        accountConfig[session?.user?.currentPlan || "level_0"]?.limits
           ?.maxFileSize
     ),
   };

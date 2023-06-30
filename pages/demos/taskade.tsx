@@ -1,14 +1,14 @@
-import { Box, Divider, Typography } from '@mui/joy';
-import { GetServerSidePropsContext } from 'next/types';
-import { ReactElement } from 'react';
-import * as React from 'react';
+import { Box, Divider, Typography } from "@mui/joy";
+import { GetServerSidePropsContext } from "next/types";
+import { ReactElement } from "react";
+import * as React from "react";
 
-import ChatBox from '@app/components/ChatBox';
-import Layout from '@app/components/Layout';
-import useAgentChat from '@app/hooks/useAgentChat';
+import ChatBox from "@app/components/ChatBox";
+import Layout from "@app/components/Layout";
+import useAgentChat from "@app/hooks/useAgentChat";
 
 export default function DatasourcesPage() {
-  const agentId = 'clh9ldhip0000e9ogeunjdqhd';
+  const agentId = "clh9ldhip0000e9ogeunjdqhd";
   const { history, handleChatSubmit } = useAgentChat({
     queryAgentURL: `https://app.mongriot.com/api/external/agents/${agentId}/query`,
   });
@@ -18,11 +18,11 @@ export default function DatasourcesPage() {
       component="main"
       className="MainContent"
       sx={(theme) => ({
-        position: 'relative',
-        width: '100%',
-        height: '100%',
-        maxHeight: '100%',
-        overflow: 'hidden',
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        maxHeight: "100%",
+        overflow: "hidden",
         px: {
           xs: 2,
           md: 6,
@@ -34,20 +34,20 @@ export default function DatasourcesPage() {
           md: 3,
         },
         flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         minWidth: 0,
         gap: 1,
       })}
     >
       <Box
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
           my: 1,
           gap: 1,
-          flexWrap: 'wrap',
+          flexWrap: "wrap",
         }}
       >
         <Typography level="h1" fontSize="xl4">
@@ -58,10 +58,10 @@ export default function DatasourcesPage() {
 
       <Box
         sx={{
-          position: 'relative',
-          width: '100%',
-          height: '100%',
-          maxHeight: '100%',
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          maxHeight: "100%",
         }}
       >
         <ChatBox messages={history} onSubmit={handleChatSubmit} />

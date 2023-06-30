@@ -1,18 +1,18 @@
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
-import colors from '@mui/joy/colors';
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import colors from "@mui/joy/colors";
 import {
   CssVarsProvider,
   extendTheme,
   StyledEngineProvider,
   ThemeProvider,
-} from '@mui/joy/styles';
-import React, { ReactElement } from 'react';
+} from "@mui/joy/styles";
+import React, { ReactElement } from "react";
 
-import ChatBoxFrame from '@app/components/ChatBoxFrame';
+import ChatBoxFrame from "@app/components/ChatBoxFrame";
 
 export const theme = extendTheme({
-  cssVarPrefix: 'chaindesk-chat-iframe',
+  cssVarPrefix: "chaindesk-chat-iframe",
   colorSchemes: {
     dark: {
       palette: {
@@ -28,7 +28,7 @@ export const theme = extendTheme({
 });
 
 const cache = createCache({
-  key: 'chaindesk-chat-iframe',
+  key: "chaindesk-chat-iframe",
   prepend: true,
   speedy: true,
 });

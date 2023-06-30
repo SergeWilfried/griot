@@ -1,14 +1,14 @@
-import { IntegrationType } from '@prisma/client';
-import { blake3 } from 'hash-wasm';
-import { NextApiResponse } from 'next';
-import { z } from 'zod';
+import { IntegrationType } from "@prisma/client";
+import { blake3 } from "hash-wasm";
+import { NextApiResponse } from "next";
+import { z } from "zod";
 
-import { AppNextApiRequest } from '@app/types/index';
-import { ApiError, ApiErrorType } from '@app/utils/api-error';
-import createIntegrationId from '@app/utils/create-integration-id';
-import { createAuthApiHandler, respond } from '@app/utils/createa-api-handler';
-import prisma from '@app/utils/prisma-client';
-import validate from '@app/utils/validate';
+import { AppNextApiRequest } from "@app/types/index";
+import { ApiError, ApiErrorType } from "@app/utils/api-error";
+import createIntegrationId from "@app/utils/create-integration-id";
+import { createAuthApiHandler, respond } from "@app/utils/createa-api-handler";
+import prisma from "@app/utils/prisma-client";
+import validate from "@app/utils/validate";
 
 const handler = createAuthApiHandler();
 
@@ -24,7 +24,7 @@ export const updateIntegrationConfig = async (
 ) => {
   const session = req.session;
   const data = req.body as z.infer<typeof schema>;
-  const name = req.query.name as 'wordpress' | 'shopify';
+  const name = req.query.name as "wordpress" | "shopify";
 
   const agent = await prisma.agent.findUnique({
     where: {

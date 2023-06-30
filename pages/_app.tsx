@@ -1,20 +1,20 @@
-import '@app/utils/env';
-import '@app/styles/globals.css';
-import '@app/styles/preflight.css';
-import '@app/styles/nprogress.css';
+import "@app/utils/env";
+import "@app/styles/globals.css";
+import "@app/styles/preflight.css";
+import "@app/styles/nprogress.css";
 
-import type { AppProps } from 'next/app';
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
-import { SessionProvider } from 'next-auth/react';
-import { useEffect } from 'react';
-import React from 'react';
-import { Toaster } from 'react-hot-toast';
+import type { AppProps } from "next/app";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { SessionProvider } from "next-auth/react";
+import { useEffect } from "react";
+import React from "react";
+import { Toaster } from "react-hot-toast";
 
-import DashboardThemeProvider from '@app/components/DashboardThemeProvider';
-import useUTMTracking from '@app/hooks/useUTMTracking';
-import { NextPageWithLayout, RouteNames } from '@app/types';
-import createEmotionCache from '@app/utils/create-emotion-cache';
+import DashboardThemeProvider from "@app/components/DashboardThemeProvider";
+import useUTMTracking from "@app/hooks/useUTMTracking";
+import { NextPageWithLayout, RouteNames } from "@app/types";
+import createEmotionCache from "@app/utils/create-emotion-cache";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -24,7 +24,7 @@ type AppPropsWithLayout = AppProps & {
 
 const TopProgressBar = dynamic(
   () => {
-    return import('@app/components/TopProgressBar');
+    return import("@app/components/TopProgressBar");
   },
   { ssr: false }
 );
@@ -41,17 +41,17 @@ export default function App({
 
   // Redirect to new domain on front side as DNS redirect breaks some features
   React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      if (window.location.host === 'app.mongriot.com') {
+    if (typeof window !== "undefined") {
+      if (window.location.host === "app.mongriot.com") {
         window.location.href = window.location.href.replace(
-          'app.mongriot.com',
-          'app.mongriot.com'
+          "app.mongriot.com",
+          "app.mongriot.com"
         );
       }
     }
   }, []);
 
-  if (router.pathname === '/agents/[agentId]/iframe') {
+  if (router.pathname === "/agents/[agentId]/iframe") {
     return getLayout(<Component {...pageProps} />);
   }
 

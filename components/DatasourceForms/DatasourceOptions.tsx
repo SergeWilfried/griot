@@ -1,12 +1,12 @@
-import Chip from '@mui/joy/Chip';
-import Sheet from '@mui/joy/Sheet';
-import Stack from '@mui/joy/Stack';
-import Typography from '@mui/joy/Typography';
-import { DatasourceType } from '@prisma/client';
-import { useSession } from 'next-auth/react';
-import React from 'react';
+import Chip from "@mui/joy/Chip";
+import Sheet from "@mui/joy/Sheet";
+import Stack from "@mui/joy/Stack";
+import Typography from "@mui/joy/Typography";
+import { DatasourceType } from "@prisma/client";
+import { useSession } from "next-auth/react";
+import React from "react";
 
-import UsageLimitModal from '../UsageLimitModal';
+import UsageLimitModal from "../UsageLimitModal";
 
 type Props = {
   onSelect: (type: DatasourceType) => any;
@@ -24,42 +24,42 @@ type DatsourceOption = {
 const options: DatsourceOption[] = [
   {
     type: DatasourceType.text,
-    label: 'Text',
-    description: 'Paste some text',
+    label: "Texte",
+    description: "Coller du texte",
     icon: undefined,
   },
   {
     type: DatasourceType.web_page,
-    label: 'Web Page',
-    description: 'Crawl text from a web page',
+    label: "Page Web",
+    description: `Extraire du texte d'une page web`,
     icon: undefined,
   },
   {
     type: DatasourceType.web_site,
-    label: 'Web Site',
-    description: 'Crawl all pages of a web site',
+    label: "Site Web",
+    description: `Parcourir toutes les pages dun site web`,
     icon: undefined,
     isPremium: true,
   },
   {
-    type: 'file' as any,
-    label: 'File',
-    description: 'It can be: PDF, CSV, JSON, Text, PowerPoint, Word, Excel',
+    type: "file" as any,
+    label: "Fichier",
+    description: "Supporte : PDF, CSV, JSON, Texte, PowerPoint, Word, Excel",
     disabled: false,
   },
   {
-    type: 'google_drive_folder' as any,
-    label: 'Google Drive',
-    description: 'Talk to your Google Drive files',
+    type: "google_drive_folder" as any,
+    label: "Google Drive",
+    description: "Parlez à vos fichiers Google Drive",
     isPremium: true,
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/1024px-Google_Drive_icon_%282020%29.svg.png?20221103153031',
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/1024px-Google_Drive_icon_%282020%29.svg.png?20221103153031",
     // disabled: true,
   },
   {
-    type: 'notion' as any,
-    label: 'Notion',
-    description: 'Download a Notion notebook',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg',
+    type: "notion" as any,
+    label: "Notion",
+    description: "Télécharger un carnet de Notion",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg",
     disabled: true,
   },
 ];
@@ -69,16 +69,16 @@ const DatasourceOptions = (props: Props) => {
   const [showUsageLimitModal, setShowUsageLimitModal] = React.useState(false);
   return (
     <div className="flex space-x-4">
-      <Stack className="space-y-4" direction={'row'} flexWrap={'wrap'}>
+      <Stack className="space-y-4" direction={"row"} flexWrap={"wrap"}>
         {options.map((each) => (
           <Sheet
             key={each.type}
             variant="outlined"
             sx={{
-              borderRadius: 'md',
+              borderRadius: "md",
               p: 1.5,
-              width: '100%',
-              ':hover': { cursor: 'pointer' },
+              width: "100%",
+              ":hover": { cursor: "pointer" },
             }}
             onClick={
               each.disabled || (each.isPremium && !session?.user?.isPremium)
@@ -89,7 +89,7 @@ const DatasourceOptions = (props: Props) => {
             <Stack gap={1}>
               <Stack gap={1} direction="row">
                 {each.icon && <img src={each.icon} className="h-4" alt="" />}
-                <Typography level="body1" fontWeight={'bold'}>
+                <Typography level="body1" fontWeight={"bold"}>
                   {each.label}
                 </Typography>
                 {each.isPremium && (
@@ -99,7 +99,7 @@ const DatasourceOptions = (props: Props) => {
                 )}
                 {each.disabled && (
                   <Chip variant="soft" color="neutral" size="sm">
-                    Coming Soon
+                    Bientôt disponible
                   </Chip>
                 )}
               </Stack>
@@ -112,8 +112,8 @@ const DatasourceOptions = (props: Props) => {
       <UsageLimitModal
         isOpen={showUsageLimitModal}
         handleClose={() => setShowUsageLimitModal(false)}
-        title="Premium Feature"
-        description="Upgrade your account to access this feature"
+        title="Fonctionnalité Premium"
+        description="Mettez votre compte à niveau pour accéder à cette fonctionnalité"
       />
     </div>
   );
