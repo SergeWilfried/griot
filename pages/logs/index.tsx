@@ -112,9 +112,9 @@ export default function LogsPage() {
             <InboxRoundedIcon />
           </Typography>
           <Stack>
-            <Typography level="body1">No Data</Typography>
+            <Typography level="body1">Aucune conversation</Typography>
             <Typography level="body2">
-              All conversations with your agents will be visible here
+              Toutes les conversations avec vos assistants seront visibles ici
             </Typography>
           </Stack>
         </Stack>

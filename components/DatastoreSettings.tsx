@@ -180,7 +180,7 @@ function PluginSettings({ datastore }: { datastore: Datastore }) {
                 startDecorator={<AutorenewIcon />}
                 loading={state.isUploadingPluginIcon}
               >
-                Replace
+                Remplacer
               </Button>
               {datastore?.pluginIconUrl && (
                 <Button

@@ -230,7 +230,8 @@ export default function DatasourcePage() {
           <FormControl sx={{ gap: 1 }}>
             <FormLabel>Supprimer Document</FormLabel>
             <Typography level="body3">
-              It will remove all its data from the datastore.
+              Cette action entrainera la suppression de tous vos documents
+
             </Typography>
             <Button
               color="danger"

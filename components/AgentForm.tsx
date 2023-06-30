@@ -308,7 +308,7 @@ export default function BaseForm(props: Props) {
                 startDecorator={<AutorenewIcon />}
                 loading={state.isUploadingAgentIcon}
               >
-                Replace
+                Remplacer
               </Button>
               {state?.iconUrl && state?.iconUrl !== defaultIconUrl && (
                 <Button
@@ -348,7 +348,7 @@ export default function BaseForm(props: Props) {
             {...register("description")}
           />
           <Typography level="body3" mt={1}>
-            {"Describe what your agent can do."}
+            {"Décrivez ce que votre assistant peut faire."}
           </Typography>
         </FormControl>
 
@@ -367,9 +367,10 @@ export default function BaseForm(props: Props) {
               }}
             />
             <div className="flex flex-col">
-              <FormLabel>Public</FormLabel>
+              <FormLabel>Publique</FormLabel>
               <Typography level="body3">
-                When activated, your agent will be available without an API Key.
+                Une fois activé, votre assistant sera accessible par
+                n&apos;importe qui sur Internet sans autorisation..
               </Typography>
             </div>
           </FormControl>
@@ -384,14 +385,14 @@ export default function BaseForm(props: Props) {
         </FormControl>
 
         <FormControl>
-          <FormLabel>Model Temperature</FormLabel>
+          <FormLabel>Température du modèle</FormLabel>
 
           <Alert color="info">
-            Temperature is a parameter of the model that governs the randomness
-            and thus the creativity of the responses. A temperature of 0 means
-            the responses will be very straightforward, almost deterministic
-            (meaning you almost always get the same response to a given prompt)
-            A temperature of 1 means the responses can vary wildly.
+          La température est un paramètre du modèle qui régit le caractère aléatoire
+            et donc la créativité des réponses. Une température de 0 implique que
+            les réponses seront très simples, presque déterministes
+            (c&apos;est-à-dire que vous obtiendrez presque toujours la même réponse à une question donnée).
+            Une température de 1 signifie que les réponses peuvent varier considérablement.
           </Alert>
 
           <Slider
@@ -440,7 +441,7 @@ export default function BaseForm(props: Props) {
 
         <FormControl>
           <FormLabel>
-            Datastore
+            Document
             {/* <Typography
               startDecorator={<StorageRoundedIcon fontSize="small" />}
             >
@@ -450,7 +451,7 @@ export default function BaseForm(props: Props) {
           {/* <FormLabel>Tools</FormLabel> */}
           <Typography level="body2" mb={2}>
             {/* Datastores or external integrations your Agent can access */}
-            The Datastore your Agent can access.
+            Le document auquel votre agent peut accéder.
           </Typography>
 
           {tools.length === 0 && (
@@ -461,7 +462,7 @@ export default function BaseForm(props: Props) {
               variant="soft"
               sx={{ mb: 2 }}
             >
-              Agent does not have access to custom data
+              L&apos;assistant n&apos;a pas accès à un document
             </Alert>
           )}
 
@@ -522,7 +523,7 @@ export default function BaseForm(props: Props) {
                 size="sm"
                 onClick={() => setIsCreateDatastoreModalOpen(true)}
               >
-                Create a Datastore
+                Créer un document
               </Button>
             </Stack>
           )}
@@ -665,7 +666,7 @@ export default function BaseForm(props: Props) {
           // disabled={!methods.formState.isValid}
           // startDecorator={<SaveRoundedIcon />}
         >
-          {"Save"}
+          {"Sauvegarder"}
         </Button>
       </form>
 
