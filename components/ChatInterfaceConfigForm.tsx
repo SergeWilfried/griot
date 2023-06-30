@@ -204,7 +204,8 @@ function ChatInterfaceConfigForm({ agentId }: Props) {
         </FormControl> */}
 
         <Button type="submit" loading={isLoading} sx={{ ml: "auto", mt: 2 }}>
-          Update
+        Mettre à jour
+
         </Button>
 
         <FormControl sx={{ mt: 2 }}>
@@ -236,7 +237,7 @@ function ChatInterfaceConfigForm({ agentId }: Props) {
         </FormControl>
 
         <Button type="submit" loading={isLoading} sx={{ ml: "auto", mt: 2 }}>
-          Update
+          Mettre à jour
         </Button>
 
         {getAgentQuery?.data?.id && (
@@ -354,7 +355,8 @@ function ChatInterfaceConfigForm({ agentId }: Props) {
           loading={isLoading}
           sx={{ ml: "auto", mt: 2, mb: 4 }}
         >
-          Update
+                    Mettre à jour
+
         </Button>
       </Box>
 

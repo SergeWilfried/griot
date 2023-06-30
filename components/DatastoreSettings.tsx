@@ -247,7 +247,8 @@ function PluginSettings({ datastore }: { datastore: Datastore }) {
           loading={state.isUpdatingPlugin}
           type="submit"
         >
-          Update
+                    Mettre à jour
+
         </Button>
 
         <Stack gap={1}>
@@ -365,7 +366,7 @@ function DatastoreSettings() {
               getDatastoreQuery?.data?.visibility ===
               DatastoreVisibility.public,
           } as any,
-          submitButtonText: "Update",
+          submitButtonText: "Mettre à jour",
           submitButtonProps: {
             // variant: 'contained',
             variant: "outlined",
@@ -439,14 +440,14 @@ function DatastoreSettings() {
                 </Link>
               }
             >
-              Learn more about the ChatGPT plugin installation
+              En savoir plus sur l&apos;installation du plugin ChatGPT
             </Alert>
 
             <UserFree>
               <Alert color="warning">
                 <a href="https://openai.com/waitlist/plugins" target="blank">
-                  ChatGPT developer access is required:{" "}
-                  <span className="underline">join the waitlist</span>
+                L&apos;accès développeur ChatGPT est requis :{" "}
+                  <span className="underline">s&apos;inscrire sur la liste d&apos;attente</span>
                 </a>
               </Alert>
 

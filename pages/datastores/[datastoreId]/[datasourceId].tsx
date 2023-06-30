@@ -215,7 +215,7 @@ export default function DatasourcePage() {
                 getDatasourceQuery.mutate();
               }}
               defaultValues={getDatasourceQuery?.data as any}
-              submitButtonText={"Update"}
+              submitButtonText={"Mettre à jour"}
               submitButtonProps={{
                 size: "md",
                 color: "primary",

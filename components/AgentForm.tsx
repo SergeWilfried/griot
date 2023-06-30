@@ -79,7 +79,7 @@ type Props = {
 const PROMPT_TEMPLATES = [
   {
     type: PromptType.customer_support,
-    label: "Customer Support",
+    label: "Service à la clientèle",
     image: "",
     description:
       "Default customer support agent template. Customer Support templates are wrapped in another prompt optimized for Q&A of documents.",
@@ -699,8 +699,8 @@ export default function BaseForm(props: Props) {
             overflowY: "auto",
           }}
         >
-          <Typography level="h6">Prompt Templates</Typography>
-          <Typography level="body2">Tailored to your business needs</Typography>
+          <Typography level="h6">Examples d&apos;Instructions</Typography>
+          <Typography level="body2">Adapté aux besoins de votre entreprise</Typography>
 
           <Divider sx={{ my: 2 }}></Divider>
           <Stack gap={1} direction="column">
@@ -733,7 +733,7 @@ export default function BaseForm(props: Props) {
                       setIsPromptTemplatesModalOpen(false);
                     }}
                   >
-                    Use Template
+                    Utiliser
                   </Button>
                 </Stack>
               </Card>
@@ -742,7 +742,7 @@ export default function BaseForm(props: Props) {
           <Divider sx={{ my: 4 }}></Divider>
 
           <Typography sx={{ mx: "auto", mb: 2 }} color="primary">
-            Just for fun 🎉
+            Juste pour le plaisir 🎉
           </Typography>
           <Stack gap={1}>
             {PROMPT_TEMPLATES_FUN.map((template, idx) => (
@@ -774,7 +774,7 @@ export default function BaseForm(props: Props) {
                       setIsPromptTemplatesModalOpen(false);
                     }}
                   >
-                    Use Template
+                    Utiliser
                   </Button>
                 </Stack>
               </Card>
