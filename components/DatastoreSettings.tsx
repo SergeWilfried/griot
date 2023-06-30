@@ -394,7 +394,7 @@ function DatastoreSettings() {
               </Link>
             }
           >
-            En savoir plus sur l'API Griot API
+            En savoir plus sur GriotAI API
           </Alert>
 
           <Alert
