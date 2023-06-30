@@ -333,7 +333,7 @@ export default function AccountPage() {
                 level="h6"
                 startDecorator={<CheckRoundedIcon color="success" />}
               >
-                <Typography>{`${currentPlan?.limits?.maxAgentsQueries} Agent responses / month`}</Typography>
+                <Typography>{`${currentPlan?.limits?.maxAgentsQueries} Reponses d&apos;Assistant / mois`}</Typography>
               </Typography>
               <Typography
                 level="h6"
@@ -341,7 +341,7 @@ export default function AccountPage() {
               >
                 <Typography>{`${
                   currentPlan?.limits?.maxFileSize / 1000000
-                }MB File upload limit`}</Typography>
+                }MB Taille maximale du document`}</Typography>
               </Typography>
               <Typography
                 level="h6"
@@ -349,7 +349,7 @@ export default function AccountPage() {
               >
                 <Typography>{`${
                   currentPlan?.limits?.maxDataProcessing / 1000000
-                }MB Data processing (embeddings) / month`}</Typography>
+                }MB Traitement de documents (interprétation) / month`}</Typography>
               </Typography>
             </Stack>
 
