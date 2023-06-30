@@ -33,7 +33,7 @@ const UsageLimitCard = ({ title, description }: Props) => {
       >
         <div>
           <Typography fontWeight="lg" mt={0.25}>
-            {title || "Usage limit reached"}
+            {title || "Limite d'utilisation atteinte"}
           </Typography>
           <Typography fontSize="sm" sx={{ opacity: 0.8 }}>
             {`${description || "Upgrade your plan to get higher usage"}`}
@@ -49,7 +49,7 @@ const UsageLimitCard = ({ title, description }: Props) => {
           color="success"
           variant="plain"
         >
-          Upgrade Plan
+          Mettre à jour
         </Button>
       </Link>
     </Card>

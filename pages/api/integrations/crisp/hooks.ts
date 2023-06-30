@@ -179,7 +179,7 @@ const handleQuery = async (
     //     type: 'text',
     //     from: 'operator',
     //     origin: 'chat',
-    //     content: 'Usage limit reached.',
+    //     content: 'Limite d'utilisation atteinte.',
     //     user: {
     //       type: 'participant',
     //       nickname: agent?.name || 'GriotAI',

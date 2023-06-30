@@ -318,7 +318,7 @@ export default function BaseForm(props: Props) {
                   size="sm"
                   startDecorator={<DeleteIcon />}
                 >
-                  Delete
+                  Supprimer
                 </Button>
               )}
               {/* {defaultValues?.pluginIconUrl && (
@@ -329,7 +329,7 @@ export default function BaseForm(props: Props) {
                   size="sm"
                   startDecorator={<DeleteIcon />}
                 >
-                  Delete
+                  Supprimer
                 </Button>
               )} */}
             </Stack>
@@ -494,7 +494,7 @@ export default function BaseForm(props: Props) {
             }}
           >
             {/* <Typography level="body2" sx={{ pl: 1 }}>
-              Agents:
+              Assistants:
             </Typography> */}
             {getDatastoresQuery.data?.map((datastore) => (
               <Option key={datastore.id} value={datastore.id}>

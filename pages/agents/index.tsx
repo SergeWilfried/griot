@@ -102,7 +102,7 @@ export default function AgentsPage() {
           <HomeRoundedIcon />
         </Link>
         <Typography fontSize="inherit" color="neutral">
-          Agents
+          Assistants
         </Typography>
       </Breadcrumbs>
 
@@ -121,7 +121,7 @@ export default function AgentsPage() {
         }}
       >
         <Typography level="h1" fontSize="xl4">
-          Agents
+          Assistants
         </Typography>
         {/* <Box sx={{ flex: 999999 }} /> */}
         <Box sx={{ display: "flex", gap: 1, "& > *": { flexGrow: 1 } }}>

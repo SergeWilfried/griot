@@ -240,7 +240,7 @@ export default function DatasourcePage() {
                 handleDeleteDatasource(getDatasourceQuery?.data?.id!)
               }
             >
-              Delete
+              Supprimer
             </Button>
           </FormControl>
         </Box>

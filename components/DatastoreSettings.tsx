@@ -190,7 +190,7 @@ function PluginSettings({ datastore }: { datastore: Datastore }) {
                   size="sm"
                   startDecorator={<DeleteIcon />}
                 >
-                  Delete
+                  Supprimer
                 </Button>
               )}
             </Stack>
@@ -452,7 +452,7 @@ function DatastoreSettings() {
 
               <UsageLimitCard
                 title="Fonctionnalité Premium"
-                description="Upgrade your plan to access this feature"
+                description="Mettez votre plan à niveau pour accéder à cette fonctionnalité"
               />
             </UserFree>
             <UserPremium>
@@ -467,7 +467,7 @@ function DatastoreSettings() {
       <Divider sx={{ my: 4 }} />
 
       <FormControl sx={{ gap: 1 }}>
-        <FormLabel>Delete Datastore</FormLabel>
+        <FormLabel>Supprimer Document</FormLabel>
         <Typography level="body3">
           Cette action entrainera la suppression de tous vos documents
         </Typography>
@@ -477,7 +477,7 @@ function DatastoreSettings() {
           startDecorator={<DeleteIcon />}
           onClick={handleDeleteDatastore}
         >
-          Delete
+          Supprimer
         </Button>
       </FormControl>
     </Box>

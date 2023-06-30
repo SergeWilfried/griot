@@ -194,7 +194,7 @@ export default function Layout(props: Props) {
             >
               <MenuItem>{session?.user?.email}</MenuItem>
               <Divider />
-              <MenuItem onClick={() => signOut()}>Logout</MenuItem>
+              <MenuItem onClick={() => signOut()}>Déconnexion</MenuItem>
             </Menu>
           </Box>
         </Header>

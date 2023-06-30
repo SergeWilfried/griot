@@ -178,7 +178,7 @@ export default function AgentPage() {
               color="neutral"
               className="hover:underline"
             >
-              Agents
+              Assistants
             </Typography>
           </Link>
 
@@ -504,7 +504,7 @@ export default function AgentPage() {
                 <Divider sx={{ my: 4 }} />
 
                 <FormControl sx={{ gap: 1 }}>
-                  <FormLabel>Delete Agent</FormLabel>
+                  <FormLabel>Supprimer Agent</FormLabel>
                   <Typography level="body3">
                     It will delete the agent permanently
                   </Typography>
@@ -515,7 +515,7 @@ export default function AgentPage() {
                     startDecorator={<DeleteIcon />}
                     onClick={handleDeleteAgent}
                   >
-                    Delete
+                    Supprimer
                   </Button>
                 </FormControl>
               </>

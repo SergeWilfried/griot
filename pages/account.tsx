@@ -270,7 +270,7 @@ export default function AccountPage() {
                 <Typography level="body1">Current Usage</Typography>
                 <Typography level="h6">
                   <Stack direction={"row"} spacing={1}>
-                    <Typography color="neutral">Agents Responses:</Typography>
+                    <Typography color="neutral">Assistants Responses:</Typography>
                     <Typography
                       color={
                         session?.user?.usage?.nbAgentQueries >=
@@ -321,7 +321,7 @@ export default function AccountPage() {
                 level="h6"
                 startDecorator={<CheckRoundedIcon color="success" />}
               >
-                <Typography>{`${currentPlan?.limits?.maxAgents} Agents`}</Typography>
+                <Typography>{`${currentPlan?.limits?.maxAgents} Assistants`}</Typography>
               </Typography>
               <Typography
                 level="h6"
@@ -464,7 +464,7 @@ export default function AccountPage() {
         {/* <Divider sx={{ my: 4 }} />
 
         <FormControl sx={{ gap: 1 }}>
-          <FormLabel>Delete Datastore</FormLabel>
+          <FormLabel>Supprimer Document</FormLabel>
           <Typography level="body3">
             Cette action entrainera la suppression de tous vos documents
           </Typography>
@@ -474,7 +474,7 @@ export default function AccountPage() {
             startDecorator={<DeleteIcon />}
             onClick={handleDeleteDatastore}
           >
-            Delete
+            Supprimer
           </Button>
         </FormControl> */}
       </Stack>

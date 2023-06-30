@@ -62,7 +62,7 @@ export default function Navigation() {
   const items = React.useMemo(() => {
     return [
       {
-        label: "Agents",
+        label: "Assistants",
         route: RouteNames.AGENTS,
         icon: <SmartToyRoundedIcon fontSize="small" />,
         active: router.route === RouteNames.AGENTS,
@@ -74,7 +74,7 @@ export default function Navigation() {
         active: router.route === RouteNames.DATASTORES,
       },
       {
-        label: "Logs",
+        label: "Historique",
         route: RouteNames.LOGS,
         icon: (
           <Badge

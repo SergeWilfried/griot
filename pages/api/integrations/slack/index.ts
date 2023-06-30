@@ -173,7 +173,7 @@ const handleMention = async (payload: MentionEvent) => {
     return await slackClient.chat.postMessage({
       channel: payload.event.channel,
       thread_ts: payload.event.thread_ts,
-      text: `<@${payload.event.user}> Usage limit reached. Please upgrade your plan to continue using the bot.`,
+      text: `<@${payload.event.user}> Limite d'utilisation atteinte. Please upgrade your plan to continue using the bot.`,
     });
   }
 

@@ -173,7 +173,7 @@ const useAgentChat = ({
 
           if (error === ApiErrorType.USAGE_LIMIT) {
             answer =
-              "Usage limit reached. Please upgrade your plan to get higher usage.";
+              "Limite d'utilisation atteinte. Please upgrade your plan to get higher usage.";
           } else {
             answer = `Error: ${error}`;
           }

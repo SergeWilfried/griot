@@ -199,7 +199,7 @@ export default function DatasourceTable({
             mb: 1,
           }}
         >
-          Delete Selection
+          Supprimer Selection
         </Button>
       )}
 
