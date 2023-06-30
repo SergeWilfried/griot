@@ -249,7 +249,7 @@ export default function AccountPage() {
         })}
       >
         <FormControl id="plan" sx={{ gap: 1 }}>
-          <FormLabel>Current Plan</FormLabel>
+          <FormLabel>Votre Souscription</FormLabel>
           {/* <Typography level="body3">
             Use the api key to access the Griot API
           </Typography> */}
@@ -267,7 +267,7 @@ export default function AccountPage() {
 
             <Stack width="100%" spacing={2} my={2}>
               <Stack spacing={1}>
-                <Typography level="body1">Current Usage</Typography>
+                <Typography level="body1">Usage Actuell</Typography>
                 <Typography level="h6">
                   <Stack direction={"row"} spacing={1}>
                     <Typography color="neutral">Assistants Responses:</Typography>
