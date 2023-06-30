@@ -44,9 +44,9 @@ export default function AgentTable({ items }: { items: Agent[] }) {
         >
           <thead>
             <tr>
-              <th style={{ width: 120, padding: 12 }}>Name</th>
+              <th style={{ width: 120, padding: 12 }}>Nom</th>
               <th style={{ width: 120, padding: 12 }}>Description</th>
-              <th style={{ width: 220, padding: 12 }}>Visibility</th>
+              <th style={{ width: 220, padding: 12 }}>Visibilité</th>
               {/* <th style={{ width: 120, padding: 12 }}>Subscription</th> */}
               <th style={{ width: 160, padding: 12 }}> </th>
             </tr>

@@ -336,7 +336,7 @@ export default function BaseForm(props: Props) {
           </Stack>
         </Stack>
         <Input
-          label="Name (optional)"
+          label="Nom (optionel)"
           control={control as any}
           {...register('name')}
         />

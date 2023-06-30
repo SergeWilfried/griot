@@ -121,7 +121,7 @@ export default function CreateDatastoreModal(props: Props) {
                   sx={{ mt: 1, mr: 1 }}
                   variant="plain"
                 >
-                  Back
+                  Retour
                 </Button>
               </div>
             </Box>
@@ -199,7 +199,7 @@ export default function CreateDatastoreModal(props: Props) {
                             onClick={handleBack}
                             sx={{ mt: 1, mr: 1 }}
                           >
-                            Back
+                            Retour
                           </Button>
                         </div>
                       </Box>

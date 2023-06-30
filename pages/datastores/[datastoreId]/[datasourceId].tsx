@@ -114,7 +114,7 @@ export default function DatasourcePage() {
               color="neutral"
               className="hover:underline"
             >
-              Datastores
+              Documents
             </Typography>
           </Link>
           <Link href={`${RouteNames.DATASTORES}/${router.query.datastoreId}`}>
@@ -137,7 +137,7 @@ export default function DatasourcePage() {
           fontSize="inherit"
           href="#some-link"
         >
-          Datastores
+          Documents
         </JoyLink> */}
           {/* <Typography fontSize="inherit" variant="soft" color="primary">
           Orders

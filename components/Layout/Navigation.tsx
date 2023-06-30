@@ -68,7 +68,7 @@ export default function Navigation() {
         active: router.route === RouteNames.AGENTS,
       },
       {
-        label: 'Datastores',
+        label: 'Documents',
         route: RouteNames.DATASTORES,
         icon: <StorageRoundedIcon fontSize="small" />,
         active: router.route === RouteNames.DATASTORES,

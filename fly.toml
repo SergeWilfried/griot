@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for griotai on 2023-06-02T13:11:46Z
+# fly.toml app configuration file generated for griotai on 2023-06-30T11:50:34Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -6,33 +6,19 @@
 app = "griotai"
 primary_region = "jnb"
 kill_signal = "SIGINT"
-kill_timeout = 5
+kill_timeout = "5s"
 
 [processes]
-web = "node server.js"
-# https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
-
-
-[build]
-  [build.args]
-    NEXT_PUBLIC_S3_BUCKET_NAME = "griotai"
-    NEXT_PUBLIC_DASHBOARD_URL = "https://mongriot.com"
-    NEXT_PUBLIC_SLACK_CLIENT_ID="15098575894.5085094124864"
-    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_live_51MsM5yIDmvRZDzsDzI5S7mTun6KE8Q1jVZf0yBRsvQldW4fGyWve1dpwVDt1yDV9DUQOK5fB1kSqScnThDfckrEd008M2OEgFp"
-    NEXT_PUBLIC_STRIPE_PAYMENT_LINK_LEVEL_1="https://buy.stripe.com/4gw6pyfHVcvy7Qc6oo"
-    NEXT_PUBLIC_STRIPE_PRICING_TABLE_ID="prctbl_1N7aipHQFS2NgY7DZR1Bzwzn"
-    NEXT_PUBLIC_CRISP_PLUGIN_ID="a52b874e-489f-40f1-a00a-1b1f4bdad545"
+  web = "node server.js"
 
 [http_service]
-  processes = ["web"]
   internal_port = 3000
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 1
+  processes = ["web"]
   [http_service.concurrency]
     type = "connections"
     hard_limit = 550
     soft_limit = 500
-
-

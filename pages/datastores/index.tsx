@@ -106,7 +106,7 @@ export default function DatasourcesPage() {
           <HomeRoundedIcon />
         </Link>
         <Typography fontSize="inherit" color="neutral">
-          Datastores
+          Documents
         </Typography>
         {/* <JoyLink
           underline="hover"
@@ -114,7 +114,7 @@ export default function DatasourcesPage() {
           fontSize="inherit"
           href="#some-link"
         >
-          Datastores
+          Documents
         </JoyLink> */}
         {/* <Typography fontSize="inherit" variant="soft" color="primary">
           Orders
@@ -136,7 +136,7 @@ export default function DatasourcesPage() {
         }}
       >
         <Typography level="h1" fontSize="xl4">
-          Datastores
+          Documents
         </Typography>
         {/* <Box sx={{ flex: 999999 }} /> */}
         <Box sx={{ display: 'flex', gap: 1, '& > *': { flexGrow: 1 } }}>
@@ -153,7 +153,7 @@ export default function DatasourcesPage() {
             startDecorator={<AddIcon />}
             onClick={handleClickNewDatastore}
           >
-            New Datastore
+            Nouveau Document
           </Button>
         </Box>
       </Box>

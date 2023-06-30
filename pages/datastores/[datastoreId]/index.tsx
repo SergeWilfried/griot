@@ -128,7 +128,7 @@ export default function DatastorePage() {
               color="neutral"
               className="hover:underline"
             >
-              Datastores
+              Documents
             </Typography>
           </Link>
 
@@ -142,7 +142,7 @@ export default function DatastorePage() {
           fontSize="inherit"
           href="#some-link"
         >
-          Datastores
+          Documents
         </JoyLink> */}
           {/* <Typography fontSize="inherit" variant="soft" color="primary">
           Orders

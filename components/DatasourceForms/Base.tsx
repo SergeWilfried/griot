@@ -180,7 +180,7 @@ export default function BaseForm(props: Props) {
         {networkError && <Alert color="danger">{networkError}</Alert>}
 
         <Input
-          label="Name (optional)"
+          label="Nom (optionel)"
           control={control as any}
           {...register('name')}
         />

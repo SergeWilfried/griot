@@ -102,7 +102,7 @@ export default function CreateDatastoreModal(props: Props) {
     //   ),
     // },
     {
-      label: 'Datastore Configuration',
+      label: 'Configuration',
       // description: 'A Datastore can contain multiple datasources',
       disableButtons: true,
       component:
@@ -131,7 +131,7 @@ export default function CreateDatastoreModal(props: Props) {
                   sx={{ mt: 1, mr: 1 }}
                   variant="plain"
                 >
-                  Back
+                  Retour
                 </Button> */}
               </div>
             </Box>
@@ -188,7 +188,7 @@ export default function CreateDatastoreModal(props: Props) {
                   sx={{ mt: 1, mr: 1 }}
                   variant="plain"
                 >
-                  Back
+                  Retour
                 </Button>
               </div>
             </Box>
@@ -247,7 +247,7 @@ export default function CreateDatastoreModal(props: Props) {
                           onClick={handleBack}
                           sx={{ mt: 1, mr: 1 }}
                         >
-                          Back
+                          Retour
                         </Button>
                       </div>
                     </Box>

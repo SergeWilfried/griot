@@ -46,10 +46,7 @@ RUN NODE_OPTIONS="--max_old_space_size=4096" yarn build
 # If using npm comment out above and use below instead
 # RUN npm run build
 
-RUN --mount=type=secret,id=db_secret \
-    DATABASE_URL="$(cat /run/secrets/db_secret)" \
-        npx prisma migrate deploy \
-        && npx prisma generate
+RUN npx prisma migrate deploy && npx prisma generate
 
 # Production image, copy all the files and run next
 FROM base AS runner

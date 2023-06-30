@@ -285,7 +285,7 @@ export default function AccountPage() {
                 </Typography>
                 {/* <Typography level="h6">
                   <Stack direction={'row'} spacing={1}>
-                    <Typography color="neutral">Datastores:</Typography>
+                    <Typography color="neutral">Documents:</Typography>
                     <Typography
                       color={
                         session?.user?.nbDatastores >=
@@ -327,7 +327,7 @@ export default function AccountPage() {
                 level="h6"
                 startDecorator={<CheckRoundedIcon color="success" />}
               >
-                <Typography>{`${currentPlan?.limits?.maxDatastores} Datastores`}</Typography>
+                <Typography>{`${currentPlan?.limits?.maxDatastores} Documents`}</Typography>
               </Typography>
               <Typography
                 level="h6"

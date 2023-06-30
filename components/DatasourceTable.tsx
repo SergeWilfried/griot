@@ -381,7 +381,7 @@ export default function DatasourceTable({
                   sx={{ verticalAlign: 'text-bottom' }}
                 />
               </th>
-              <th style={{ width: 220, padding: 12 }}>Name</th>
+              <th style={{ width: 220, padding: 12 }}>Nom</th>
               <th style={{ width: 120, padding: 12 }}>Type</th>
               <th style={{ width: 120, padding: 12 }}>Size</th>
               <th style={{ width: 120, padding: 12 }}>Last Synch</th>

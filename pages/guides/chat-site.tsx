@@ -64,7 +64,7 @@ export default function DatasourcesPage() {
           fontSize="inherit"
           href="#some-link"
         >
-          Datastores
+          Documents
         </JoyLink> */}
         {/* <Typography fontSize="inherit" variant="soft" color="primary">
           Orders
