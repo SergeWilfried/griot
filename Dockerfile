@@ -32,6 +32,7 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 RUN mv next.config.docker.js next.config.js
 RUN yarn prisma:generate
+RUN yarn db:push
 
 ARG NEXT_PUBLIC_S3_BUCKET_NAME
 ARG NEXT_PUBLIC_DASHBOARD_URL
