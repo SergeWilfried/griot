@@ -72,7 +72,7 @@ export default function CreateDatastoreModal(props: Props) {
   const steps = [
     {
       label: "Choisir un Document",
-      description: `An empty Datastore is not very useful! Now add some data in it`,
+      description: `Un document vide n'est pas très utile ! Ajoutons maintenant des données`,
       disableButtons: true,
       component: (
         <DatasourceOptions
@@ -178,8 +178,8 @@ export default function CreateDatastoreModal(props: Props) {
                     <Typography>{step.description}</Typography>
 
                     <Alert color="primary">
-                      Griot works best with unstructured data. Better support
-                      for tabular data (csv, spreadsheet, etc...) is coming soon
+                      Griot fonctionne mieux avec des données non structurées. Un meilleur support
+                      pour les données tabulaires (csv, excel, etc...) sera bientôt disponible.
                       😉
                     </Alert>
 
