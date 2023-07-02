@@ -9,6 +9,7 @@ import { QueuePro } from "@app/utils/bullmq-pro";
     username: process.env.REDIS_USERNAME!,
     password: process.env.REDIS_HOST_PASSWORD!,
     host:   process.env.REDIS_HOST!,
+    family: 6,
     port: Number(process.env.REDIS_PORT!),
   });
 

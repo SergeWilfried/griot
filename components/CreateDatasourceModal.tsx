@@ -86,7 +86,7 @@ export default function CreateDatastoreModal(props: Props) {
       ),
     },
     {
-      label: "Setup the Datasource",
+      label: "Configuration de la source de données",
       // description: `An empty Datastore is not very useful! Now add some data in it`,
       disableButtons: true,
       component: state?.selectedSourceType && (
