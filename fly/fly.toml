@@ -11,6 +11,7 @@ kill_timeout = 5
 [processes]
 web = "node server.js"
 # https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
+worker = "node --max-old-space-size=1536 server/datasource-loader.js"
 
 
 
@@ -36,4 +37,7 @@ web = "node server.js"
     hard_limit = 550
     soft_limit = 500
 
-
+[[services]]
+  processes = ["worker"]
+  auto_stop_machines = true
+  auto_start_machines = true
